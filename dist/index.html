@@ -15,10 +15,13 @@
 </head>
 <body>
   <header class="masthead">
-    <a class="brand" href="./" aria-label="Sunday Split home"><i data-lucide="columns-2"></i> SUNDAY<span>SPLIT</span></a>
-    <div class="header-right"><span class="edition">2026 SEASON / PROTOTYPE</span><button id="motion" class="icon-button" title="Reduce motion" aria-label="Reduce motion" aria-pressed="false"><i data-lucide="sparkles"></i></button></div>
+    <div class="masthead-inner">
+      <a class="brand" href="./" aria-label="Sunday Split home"><i data-lucide="columns-2" aria-hidden="true"></i><span class="brand-name">SUNDAY<span>SPLIT</span></span></a>
+      <nav class="mode-nav" aria-label="Game mode"><a id="daily-nav" href="./">Daily</a><a id="practice-nav" href="?practice=practice">Practice</a></nav>
+      <div class="header-right"><span class="edition">2026 SEASON<span>PROTOTYPE</span></span><button id="motion" class="icon-button" title="Reduce motion" aria-label="Reduce motion" aria-pressed="false"><i data-lucide="sparkles" aria-hidden="true"></i></button></div>
+    </div>
   </header>
-  <main id="app"></main>
+  <main id="app" aria-label="Sunday Split game"></main>
   <footer><span>Real lineups. Real results.</span><span>10-team Sleeper leagues <span class="footer-divider">/</span> <span id="pool-count">2026 season</span></span></footer>
   <div id="toast" role="status"></div>
 </body>

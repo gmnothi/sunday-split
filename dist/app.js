@@ -4,6 +4,13 @@
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
   const practiceParam=new URLSearchParams(location.search).get('practice');
   const practiceSeed=practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:null;
+  function newPracticeUrl() {
+    const seed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
+    const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);url.hash='';return url;
+  }
+  const practiceNav=document.querySelector('#practice-nav');
+  practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
+  document.querySelector(practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
   const selectionKey=`sunday-split:selection:${practiceSeed}`;
   let savedKeys=null,seen=[];
   try {
@@ -60,14 +67,14 @@
   function progress() {
     return `<div class="progress" aria-label="Round progress">${pack.rounds.map((_,i)=> {
       const r = results[i];
-      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" aria-label="Round ${i+1}${r ? correct(r,i) ? ': correct' : ': incorrect' : ''}">${r ? icon(correct(r,i)?'check':'x') : i+1}</span>`;
+      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}${r ? correct(r,i) ? ': correct' : ': incorrect' : ''}">${r ? icon(correct(r,i)?'check':'x') : String(i+1).padStart(2,'0')}</span>`;
     }).join('')}</div>`;
   }
   function player(p,side,i,slotLabel) {
     const defense = p.slot === 'DEF';
     return `<div class="player ${side === 1 ? 'right-player' : ''}" data-side="${side}" data-row="${i}">
       <div class="portrait">${defense ? `<span class="defense">${esc(p.player_id)}</span>` : `<span class="initials">${esc(p.name.split(' ').map(n=>n[0]).slice(0,2).join(''))}</span><img src="https://sleepercdn.com/content/nfl/players/thumb/${encodeURIComponent(p.player_id)}.jpg" alt="" loading="eager" decoding="async">`}</div>
-      <div class="player-info"><span class="player-name">${esc(p.name)}</span><span class="player-meta">${esc(slotLabel)}${defense ? ' / TEAM DEFENSE' : ''}</span></div>
+      <div class="player-info"><span class="player-name">${esc(p.name)}</span><span class="player-meta">${defense ? 'Team defense' : esc(slotLabel)}</span></div>
       <span class="player-score" aria-label="Points hidden">&mdash;</span>
     </div>`;
   }
@@ -83,14 +90,15 @@
       seen[p.slot] = (seen[p.slot]||0)+1;
       return p.slot==='DEF' ? 'DST' : `${p.slot}${count>1 ? seen[p.slot] : ''}`;
     });
-    app.innerHTML = `<section class="game-top"><div><div class="eyebrow">${pack.mode==='daily'?'DAILY MATCHUPS':'PRACTICE MATCHUPS'} <span class="mini-slash">/</span> ${date}</div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${points()}<small>/10</small></span><label>YOUR POINTS</label></div></section>
-      <div class="round-bar">${progress()}<span class="round-count">ROUND ${index+1} OF 5</span></div>
+    app.innerHTML = `<section class="game-top"><div><div class="eyebrow"><span class="edition-tag">${pack.mode==='daily'?'DAILY FIVE':'PRACTICE FIVE'}</span><span class="game-date">${date}</span></div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${points()}<small>/10</small></span><span class="score-label">YOUR POINTS</span></div></section>
+      <div class="round-bar">${progress()}<span class="round-count">MATCHUP <strong>${String(index+1).padStart(2,'0')}</strong> / 05</span></div>
       <section class="matchup" aria-label="Fantasy matchup">
-        <div class="matchup-meta"><span>${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
+        <div class="matchup-meta"><span class="week-label">${icon('calendar-days')} ${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false" aria-controls="scoring-detail">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
         <div id="scoring-detail" hidden>Passing: ${r.scoring.pass_yd} points/yard, ${r.scoring.pass_td}/TD, ${r.scoring.pass_int}/INT. Rushing and receiving: ${r.scoring.rush_yd} and ${r.scoring.rec_yd} points/yard; ${r.scoring.rush_td} and ${r.scoring.rec_td}/TD. Receptions: ${r.scoring.rec || 0}. <a href="${r.source.replace(/\/matchups\/\d+$/,'')}" target="_blank" rel="noopener">Full league scoring</a></div>
-        <div class="scoreboard"><div class="team-head team-a"><div><span class="team-tag">LINEUP A</span><h2>The home side</h2></div><span class="total" id="total-0">&mdash;</span></div><div class="versus">VS</div><div class="team-head team-b"><div><span class="team-tag">LINEUP B</span><h2>The away side</h2></div><span class="total" id="total-1">&mdash;</span></div><div id="broadcast" class="broadcast" hidden><span id="broadcast-label"></span><span id="broadcast-detail"></span></div></div>
+        <div class="scoreboard"><div class="team-head team-a"><div class="team-identity"><span class="lineup-mark" aria-hidden="true">A</span><div><span class="team-tag">${r.teams[0].players.length} STARTERS</span><h2>Lineup A</h2></div></div><div class="team-total"><span class="total" id="total-0">&mdash;</span><span class="total-label">POINTS</span></div></div><div class="versus"><span>VS</span></div><div class="team-head team-b"><div class="team-identity"><span class="lineup-mark" aria-hidden="true">B</span><div><span class="team-tag">${r.teams[1].players.length} STARTERS</span><h2>Lineup B</h2></div></div><div class="team-total"><span class="total" id="total-1">&mdash;</span><span class="total-label">POINTS</span></div></div><div id="broadcast" class="broadcast" hidden><span id="broadcast-label"></span><span id="broadcast-detail"></span></div></div>
+        <div class="roster-heading" aria-hidden="true"><span><b class="lineup-dot dot-a"></b> LINEUP A <small>PTS</small></span><span>POS</span><span><b class="lineup-dot dot-b"></b> LINEUP B <small>PTS</small></span></div>
         <div class="roster">${r.teams[0].players.map((p,i)=>`<div class="paired-row" data-row="${i}">${player(p,0,i,slotLabels[i])}<button class="slot" data-hint="${i}" aria-label="Reveal both ${slotLabels[i]} scores" title="Reveal both ${slotLabels[i]} scores" disabled><span>${slotLabels[i]}</span>${icon('eye')}</button>${player(r.teams[1].players[i],1,i,slotLabels[i])}</div>`).join('')}</div>
-        <div class="hint-bar"><button id="hint" class="hint-button">${icon('scan-eye')} <span>${hint === null ? 'Use a hint' : `${slotLabels[hint]} revealed`}</span></button><span id="hint-note">${hint === null ? 'Unassisted win: 2 pts' : 'Assisted win: 1 pt'}</span></div>
+        <div class="hint-bar"><button id="hint" class="hint-button" aria-pressed="false">${icon('scan-eye')} <span>${hint === null ? 'Use a hint' : `${slotLabels[hint]} revealed`}</span></button><span id="hint-note">${hint === null ? 'Unassisted win: 2 pts' : 'Assisted win: 1 pt'}</span></div>
       </section>
       <div class="decision" id="decision"><button class="pick pick-a" data-pick="0">${icon('check')} Pick lineup A</button><span class="decision-or">OR</span><button class="pick pick-b" data-pick="1">${icon('check')} Pick lineup B</button></div>
       <section id="result" class="result" hidden aria-live="polite"></section>
@@ -114,6 +122,7 @@
     document.querySelector('.roster').classList.toggle('choosing-hint',hintMode);
     document.querySelectorAll('[data-hint]').forEach(b=>b.disabled=!hintMode);
     document.querySelector('#hint').classList.toggle('active',hintMode);
+    document.querySelector('#hint').setAttribute('aria-pressed',String(hintMode));
     document.querySelector('#hint span').textContent=hintMode?'Cancel hint':'Use a hint';
     document.querySelector('#hint-note').textContent=hintMode?'Choose a position':'Unassisted win: 2 pts';
   }
@@ -131,7 +140,7 @@
     round().teams.forEach((t,s)=> {
       const score=row.querySelector(`[data-side="${s}"] .player-score`);
       score.textContent=fmt(t.players[i].points); score.setAttribute('aria-label',`${t.players[i].points} points`);
-      if(!reduceMotion && !alreadyRevealed) score.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
+      if(!reduceMotion && !alreadyRevealed) score.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});
     });
   }
   function countTotal(side,target,duration=1000) {
@@ -237,10 +246,10 @@
     document.querySelector('#next').onclick=()=>{index++;hint=null;save();render();window.scrollTo({top:0,behavior:reduceMotion?'instant':'smooth'});};
     icons();
     if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});
-    if(ok && !reduceMotion) section.animate([{transform:'translateY(10px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});
+    if(ok && !reduceMotion) section.animate([{transform:'translateY(10px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:260,easing:'cubic-bezier(.23,1,.32,1)'});
     if(withCelebration && !reduceMotion) {
       const winningHead=document.querySelectorAll('.team-head')[win];
-      winningHead.animate([{filter:'brightness(1)'},{filter:'brightness(1.65)'},{filter:'brightness(1)'}],{duration:1000});
+      winningHead.animate([{opacity:1,transform:'translateY(0)'},{opacity:.75,transform:'translateY(-3px)'},{opacity:1,transform:'translateY(0)'}],{duration:1000});
       if(ok) celebrate(win);
     }
   }
@@ -252,10 +261,7 @@
       const text=`Sunday Split / ${pack.mode==='daily'?date:'Practice'}\n${results.map((r,i)=>correct(r,i)?'🟩':'🟥').join('')} ${wins}/5\n${points()}/10 points · ${unassisted} unassisted wins`;
       try {await navigator.clipboard.writeText(text);notify('Results copied');} catch {const dialog=document.createElement('dialog');dialog.innerHTML='<h2>Your results</h2><textarea aria-label="Shareable results" readonly></textarea><button>Close</button>';document.body.append(dialog);dialog.querySelector('textarea').value=text;dialog.querySelector('button').onclick=()=>dialog.remove();dialog.showModal();dialog.querySelector('textarea').select();}
     };
-    document.querySelector('#more').onclick=()=> {
-      const seed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
-      const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);location.assign(url);
-    };
+    document.querySelector('#more').onclick=()=>location.assign(newPracticeUrl());
     icons();
   }
   const motion=document.querySelector('#motion');
