@@ -5,6 +5,7 @@
   const labels = ['A', 'B'];
   let results = [], hint = null, hintMode = false, revealing = false, finished = false;
   let timers = [], animations = [], reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let totalFrames = [null, null];
   let index = 0;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt = n => Number(n).toFixed(2);
@@ -33,7 +34,7 @@
     const t = document.querySelector('#toast'); t.textContent = message; t.classList.add('visible');
     setTimeout(()=>t.classList.remove('visible'),2400);
   }
-  function cancel() { timers.forEach(clearTimeout); timers=[]; animations.forEach(cancelAnimationFrame); animations=[]; }
+  function cancel() { timers.forEach(clearTimeout); timers=[]; animations.forEach(cancelAnimationFrame); animations=[]; document.querySelector('.celebration')?.remove(); }
   function progress() {
     return `<div class="progress" aria-label="Round progress">${pack.rounds.map((_,i)=> {
       const r = results[i];
@@ -65,7 +66,7 @@
       <section class="matchup" aria-label="Fantasy matchup">
         <div class="matchup-meta"><span>${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
         <div id="scoring-detail" hidden>Passing: ${r.scoring.pass_yd} points/yard, ${r.scoring.pass_td}/TD, ${r.scoring.pass_int}/INT. Rushing and receiving: ${r.scoring.rush_yd} and ${r.scoring.rec_yd} points/yard; ${r.scoring.rush_td} and ${r.scoring.rec_td}/TD. Receptions: ${r.scoring.rec || 0}. <a href="${r.source.replace(/\/matchups\/\d+$/,'')}" target="_blank" rel="noopener">Full league scoring</a></div>
-        <div class="scoreboard"><div class="team-head team-a"><div><span class="team-tag">LINEUP A</span><h2>The home side</h2></div><span class="total" id="total-0">&mdash;</span></div><div class="versus">VS</div><div class="team-head team-b"><div><span class="team-tag">LINEUP B</span><h2>The away side</h2></div><span class="total" id="total-1">&mdash;</span></div></div>
+        <div class="scoreboard"><div class="team-head team-a"><div><span class="team-tag">LINEUP A</span><h2>The home side</h2></div><span class="total" id="total-0">&mdash;</span></div><div class="versus">VS</div><div class="team-head team-b"><div><span class="team-tag">LINEUP B</span><h2>The away side</h2></div><span class="total" id="total-1">&mdash;</span></div><div id="broadcast" class="broadcast" hidden><span id="broadcast-label"></span><span id="broadcast-detail"></span></div></div>
         <div class="roster">${r.teams[0].players.map((p,i)=>`<div class="paired-row" data-row="${i}">${player(p,0,i,slotLabels[i])}<button class="slot" data-hint="${i}" aria-label="Reveal both ${slotLabels[i]} scores" title="Reveal both ${slotLabels[i]} scores" disabled><span>${slotLabels[i]}</span>${icon('eye')}</button>${player(r.teams[1].players[i],1,i,slotLabels[i])}</div>`).join('')}</div>
         <div class="hint-bar"><button id="hint" class="hint-button">${icon('scan-eye')} <span>${hint === null ? 'Use a hint' : `${slotLabels[hint]} revealed`}</span></button><span id="hint-note">${hint === null ? 'Unassisted win: 2 pts' : 'Assisted win: 1 pt'}</span></div>
       </section>
@@ -111,13 +112,34 @@
       if(!reduceMotion && !alreadyRevealed) score.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
     });
   }
-  function countTotal(side,target) {
+  function countTotal(side,target,duration=1000) {
     const el=document.querySelector(`#total-${side}`);
-    const start=Number(el.dataset.value || 0); el.dataset.value=target;
+    cancelAnimationFrame(totalFrames[side]);
+    const start=Number.parseFloat(el.textContent) || 0; el.dataset.value=target;
     if(reduceMotion) {el.textContent=fmt(target);return;}
     const begin=performance.now();
-    const tick = now=> {const p=Math.min((now-begin)/450,1);el.textContent=fmt(start+(target-start)*(1-Math.pow(1-p,3)));if(p<1) animations.push(requestAnimationFrame(tick));};
-    animations.push(requestAnimationFrame(tick));
+    const tick = now=> {const p=Math.min((now-begin)/duration,1);el.textContent=fmt(start+(target-start)*(1-Math.pow(1-p,3)));if(p<1) {totalFrames[side]=requestAnimationFrame(tick);animations.push(totalFrames[side]);}};
+    totalFrames[side]=requestAnimationFrame(tick);animations.push(totalFrames[side]);
+  }
+  function broadcast(label,detail='') {
+    const el=document.querySelector('#broadcast');el.hidden=false;
+    document.querySelector('#broadcast-label').textContent=label;
+    document.querySelector('#broadcast-detail').textContent=detail;
+    document.querySelector('#reveal-status').textContent=label;
+  }
+  function celebrate(win) {
+    const board=document.querySelector('.scoreboard');
+    board.classList.add('final-whistle');
+    board.animate([{transform:'scale(1)'},{transform:'scale(1.015)'},{transform:'scale(1)'}],{duration:650,easing:'ease-out'});
+    const layer=document.createElement('div');layer.className='celebration';layer.setAttribute('aria-hidden','true');document.body.append(layer);
+    for(let i=0;i<44;i++) {
+      const piece=document.createElement('span');layer.append(piece);
+      piece.style.left=`${35+Math.random()*30}%`;
+      piece.style.background=[win===0?'#6ee5c5':'#ff977f','#f2f5f3','#f4d36b'][i%3];
+      const fall=piece.animate([{transform:'translate(0,0) rotate(0deg)',opacity:0},{opacity:1,offset:.08},{transform:`translate(${(Math.random()-.5)*innerWidth*.9}px,${innerHeight*.85}px) rotate(${Math.random()*700-350}deg)`,opacity:0}],{duration:1700+Math.random()*900,delay:Math.random()*160,easing:'cubic-bezier(.12,.55,.45,1)',fill:'both'});
+      fall.onfinish=()=>piece.remove();
+    }
+    timers.push(setTimeout(()=>layer.remove(),3000));
   }
   function pick(side) {
     if(finished || revealing || results[index]) return;
@@ -130,31 +152,55 @@
     document.querySelector('#hint').disabled=true;
     document.querySelector('#decision').innerHTML=`<span class="locked">${icon('lock-keyhole')} Lineup ${labels[side]} locked in</span><button id="skip" class="text-button">Show all ${icon('fast-forward')}</button>`;
     document.querySelector('#skip').onclick=()=> {cancel();allRows();showResult();};
+    broadcast('PICK LOCKED',`LINEUP ${labels[side]}`);
     const groups=['QB','RB','WR','TE','FLEX','SPECIAL TEAMS'].map(group=>({group,rows:round().teams[0].players.map((p,i)=>({p,i})).filter(({p})=>group==='SPECIAL TEAMS'?['K','DEF'].includes(p.slot):p.slot===group).map(({i})=>i)})).filter(g=>g.rows.length);
     const revealed=new Set();
-    groups.forEach((g,j)=>timers.push(setTimeout(()=> {
-      g.rows.forEach(i=>{revealRow(i);revealed.add(i);});
-      const totals=round().teams.map(t=>t.players.reduce((sum,p,i)=>sum+(revealed.has(i)?p.points:0),0));
-      totals.forEach((n,s)=>countTotal(s,n));
-      document.querySelectorAll('.team-head').forEach((el,s)=>el.classList.toggle('leading',totals[s]>totals[1-s]));
-      document.querySelector('#reveal-status').textContent=`${g.group} scores revealed`;
-      if(innerWidth <= 600) {
-        const lastRow=document.querySelector(`.paired-row[data-row="${g.rows.at(-1)}"]`);
-        if(lastRow.getBoundingClientRect().bottom>innerHeight-90) lastRow.scrollIntoView({block:'center',behavior:reduceMotion?'instant':'smooth'});
+    const closeFinish=Math.abs(round().teams[0].total-round().teams[1].total)<=5;
+    let elapsed=900;
+    // Fixed group order; only the pacing changes for close final margins.
+    groups.forEach((g,j)=> {
+      const last=j===groups.length-1;
+      if(last && closeFinish) {
+        timers.push(setTimeout(()=> {
+          document.querySelector('.scoreboard').classList.add('suspense');
+          broadcast('DOWN TO THE WIRE','LAST POINTS COMING IN');
+        },reduceMotion?0:elapsed));
+        elapsed+=2200;
       }
-    },reduceMotion?0:450+j*800)));
-    timers.push(setTimeout(()=>showResult(),reduceMotion?30:450+groups.length*800)); icons();
+      const groupStart=elapsed;
+      timers.push(setTimeout(()=> {
+        document.querySelectorAll('.paired-row').forEach(row=>row.classList.remove('on-air'));
+        g.rows.forEach(i=>document.querySelector(`.paired-row[data-row="${i}"]`).classList.add('on-air'));
+        broadcast(last?'FINAL TALLY':`${g.group} ON THE BOARD`,`${j+1} / ${groups.length}`);
+      },reduceMotion?0:groupStart));
+      g.rows.forEach((i,k)=>timers.push(setTimeout(()=> {
+        revealRow(i);revealed.add(i);
+        const totals=round().teams.map(t=>t.players.reduce((sum,p,row)=>sum+(revealed.has(row)?p.points:0),0));
+        totals.forEach((n,s)=>countTotal(s,n,last&&closeFinish?1600:1000));
+        document.querySelectorAll('.team-head').forEach((el,s)=>el.classList.toggle('leading',totals[s]>totals[1-s]));
+        if(innerWidth<=600) {
+          const row=document.querySelector(`.paired-row[data-row="${i}"]`);
+          if(row.getBoundingClientRect().bottom>innerHeight-90) row.scrollIntoView({block:'center',behavior:reduceMotion?'instant':'smooth'});
+        }
+      },reduceMotion?0:groupStart+k*(last&&closeFinish?1100:420))));
+      elapsed+=last&&closeFinish?2900:Math.max(1800,(g.rows.length-1)*420+1250);
+    });
+    timers.push(setTimeout(()=>showResult(true),reduceMotion?30:elapsed)); icons();
   }
   function allRows() {
     round().teams[0].players.forEach((_,i)=>revealRow(i));
     round().teams.forEach((t,s)=>{const el=document.querySelector(`#total-${s}`);el.textContent=fmt(t.total);el.dataset.value=t.total;});
   }
-  function showResult() {
+  function showResult(withCelebration=false) {
     revealing=false;finished=true;
     document.querySelector('.matchup').classList.remove('in-reveal');
     document.querySelector('#decision').classList.remove('reveal-controls');
     const r=round(), win=winner(r), entry=results[index], ok=entry.pick===win;
     const earned=ok ? entry.hint === null ? 2:1:0;
+    const closeFinish=Math.abs(r.teams[0].total-r.teams[1].total)<=5;
+    document.querySelector('.scoreboard').classList.remove('suspense');
+    document.querySelectorAll('.paired-row').forEach(row=>row.classList.remove('on-air'));
+    broadcast(`LINEUP ${labels[win]} WINS`,closeFinish?'PHOTO FINISH':'FINAL');
     const swings={};
     r.teams[win].players.forEach((p,i)=>{const group=['K','DEF'].includes(p.slot)?'special teams':p.slot;swings[group]=(swings[group]||0)+p.points-r.teams[1-win].players[i].points;});
     const [position,advantage]=Object.entries(swings).sort((a,b)=>b[1]-a[1])[0];
@@ -170,6 +216,11 @@
     icons();
     if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});
     if(ok && !reduceMotion) section.animate([{transform:'translateY(10px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});
+    if(withCelebration && !reduceMotion) {
+      const winningHead=document.querySelectorAll('.team-head')[win];
+      winningHead.animate([{filter:'brightness(1)'},{filter:'brightness(1.65)'},{filter:'brightness(1)'}],{duration:1000});
+      if(ok) celebrate(win);
+    }
   }
   function summary() {
     const wins=results.filter(correct).length;
