@@ -16,3 +16,4 @@ footer{max-width:1120px;margin:auto;border-top:1px solid var(--line);display:fle
 @media(max-width:600px){.broadcast{margin:0 10px 8px;font-size:10px}.broadcast span:last-child{font-size:9px;max-width:150px}.in-reveal .scoreboard{padding-bottom:10px}}
 .scoreboard .broadcast{grid-column:1/-1;margin:8px 0 0}.in-reveal .roster{padding-bottom:4px}
 @media(max-width:600px){.paired-row{scroll-margin-top:180px}}
+.more-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;border:1px solid var(--a);border-radius:5px;background:transparent;color:var(--a);padding:14px 20px;font-size:13px;font-weight:700}.more-button:hover{background:#6ee5c514}

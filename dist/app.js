@@ -1,5 +1,20 @@
 (() => {
-  const pack = window.ROUND_PACK;
+  const pool=window.MATCHUP_POOL;
+  const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
+  const practiceParam=new URLSearchParams(location.search).get('practice');
+  const practiceSeed=practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:null;
+  const selectionKey=`sunday-split:selection:${practiceSeed}`;
+  let savedKeys=null,seen=[];
+  try {
+    savedKeys=JSON.parse(localStorage.getItem(selectionKey));
+    if(!Array.isArray(savedKeys)) savedKeys=null;
+    const storedSeen=JSON.parse(localStorage.getItem('sunday-split:seen'));
+    if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
+  } catch {}
+  const pack=window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys:practiceSeed?savedKeys:null});
+  if(practiceSeed) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
+  document.querySelector('#pool-count').textContent=`${pool.rounds.length} matchups / 2026 season`;
   const app = document.querySelector('#app');
   const storageKey = `sunday-split:${pack.id}`;
   const labels = ['A', 'B'];
@@ -27,7 +42,14 @@
     }
   } catch { /* Browser storage is optional. */ }
   function save() {
-    try { localStorage.setItem(storageKey,JSON.stringify({results,pendingIndex:index,pendingHint:hint})); } catch {}
+    try {
+      localStorage.setItem(storageKey,JSON.stringify({results,pendingIndex:index,pendingHint:hint}));
+      if(index<5 && results[index]) {
+        const key=pack.rounds[index].key;
+        seen=[...new Set([...seen,key])];
+        localStorage.setItem('sunday-split:seen',JSON.stringify(seen));
+      }
+    } catch {}
   }
   function icons() { window.lucide?.createIcons(); }
   function notify(message) {
@@ -61,7 +83,7 @@
       seen[p.slot] = (seen[p.slot]||0)+1;
       return p.slot==='DEF' ? 'DST' : `${p.slot}${count>1 ? seen[p.slot] : ''}`;
     });
-    app.innerHTML = `<section class="game-top"><div><div class="eyebrow">DAILY MATCHUPS <span class="mini-slash">/</span> PACK 01</div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${points()}<small>/10</small></span><label>YOUR POINTS</label></div></section>
+    app.innerHTML = `<section class="game-top"><div><div class="eyebrow">${pack.mode==='daily'?'DAILY MATCHUPS':'PRACTICE MATCHUPS'} <span class="mini-slash">/</span> ${date}</div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${points()}<small>/10</small></span><label>YOUR POINTS</label></div></section>
       <div class="round-bar">${progress()}<span class="round-count">ROUND ${index+1} OF 5</span></div>
       <section class="matchup" aria-label="Fantasy matchup">
         <div class="matchup-meta"><span>${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
@@ -225,12 +247,15 @@
   function summary() {
     const wins=results.filter(correct).length;
     const unassisted=results.filter((r,i)=>correct(r,i)&&r.hint===null).length;
-    app.innerHTML=`<section class="summary"><div class="eyebrow">PACK 01 COMPLETE</div><div class="trophy">${icon('trophy')}</div><h1>${wins===5?'A perfect read.':wins>=3?'You know ball.':'Any given Sunday.'}</h1><p class="summary-sub">Five matchups. Your calls are in.</p><div class="big-result">${wins}<span>/5</span></div><span class="summary-label">WINNERS PICKED</span>${progress()}<div class="summary-stats"><div><strong>${points()}<small>/10</small></strong><span>POINTS</span></div><div><strong>${unassisted}</strong><span>UNASSISTED WINS</span></div><div><strong>${results.filter(r=>r.hint!==null).length}</strong><span>HINTS USED</span></div></div><div class="round-recap">${results.map((r,i)=>`<div><span class="recap-round">${String(i+1).padStart(2,'0')}</span><span>Lineup ${labels[r.pick]} ${icon(correct(r,i)?'check':'x')}</span><span>${r.hint===null?'Unassisted':'With hint'}</span><strong>${correct(r,i)?r.hint===null?2:1:0} pts</strong></div>`).join('')}</div><button id="share" class="share-button">${icon('share-2')} Share results</button><button id="replay" class="text-button">${icon('rotate-ccw')} Replay prototype</button><p class="prototype-note">Curated pack 01. Replays use the same five matchups.</p></section>`;
+    app.innerHTML=`<section class="summary"><div class="eyebrow">${pack.mode==='daily'?'DAILY GAME':'PRACTICE SET'} COMPLETE / ${date}</div><div class="trophy">${icon('trophy')}</div><h1>${wins===5?'A perfect read.':wins>=3?'You know ball.':'Any given Sunday.'}</h1><p class="summary-sub">Five matchups. Your calls are in.</p><div class="big-result">${wins}<span>/5</span></div><span class="summary-label">WINNERS PICKED</span>${progress()}<div class="summary-stats"><div><strong>${points()}<small>/10</small></strong><span>POINTS</span></div><div><strong>${unassisted}</strong><span>UNASSISTED WINS</span></div><div><strong>${results.filter(r=>r.hint!==null).length}</strong><span>HINTS USED</span></div></div><div class="round-recap">${results.map((r,i)=>`<div><span class="recap-round">${String(i+1).padStart(2,'0')}</span><span>Lineup ${labels[r.pick]} ${icon(correct(r,i)?'check':'x')}</span><span>${r.hint===null?'Unassisted':'With hint'}</span><strong>${correct(r,i)?r.hint===null?2:1:0} pts</strong></div>`).join('')}</div><button id="share" class="share-button">${icon('share-2')} Share results</button><button id="more" class="more-button">${icon('shuffle')} Play another five</button>${pack.mode==='practice'?'<a class="text-button" href="./">Today\'s game</a>':''}<p class="prototype-note">${pack.mode==='daily'?'Next daily game: midnight Eastern.':'Practice results are separate from your daily score.'}</p></section>`;
     document.querySelector('#share').onclick=async()=> {
-      const text=`Sunday Split / Pack 01\n${results.map((r,i)=>correct(r,i)?'🟩':'🟥').join('')} ${wins}/5\n${points()}/10 points · ${unassisted} unassisted wins`;
+      const text=`Sunday Split / ${pack.mode==='daily'?date:'Practice'}\n${results.map((r,i)=>correct(r,i)?'🟩':'🟥').join('')} ${wins}/5\n${points()}/10 points · ${unassisted} unassisted wins`;
       try {await navigator.clipboard.writeText(text);notify('Results copied');} catch {const dialog=document.createElement('dialog');dialog.innerHTML='<h2>Your results</h2><textarea aria-label="Shareable results" readonly></textarea><button>Close</button>';document.body.append(dialog);dialog.querySelector('textarea').value=text;dialog.querySelector('button').onclick=()=>dialog.remove();dialog.showModal();dialog.querySelector('textarea').select();}
     };
-    document.querySelector('#replay').onclick=()=>{if(!confirm('Replay the same five matchups? Your saved prototype score will reset.'))return;results=[];index=0;hint=null;save();render();window.scrollTo(0,0);};
+    document.querySelector('#more').onclick=()=> {
+      const seed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
+      const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);location.assign(url);
+    };
     icons();
   }
   const motion=document.querySelector('#motion');
