@@ -79,7 +79,7 @@
     document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>pick(Number(b.dataset.pick)));
     document.querySelector('#hint').onclick = toggleHint;
     document.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>useHint(Number(b.dataset.hint)));
-    if(hint !== null) revealRow(hint,true);
+    if(hint !== null) { revealRow(hint,true); document.querySelector('#hint').disabled=true; }
     if(played) { allRows(); showResult(); }
     icons();
     const next = pack.rounds[index+1];
@@ -103,11 +103,12 @@
   }
   function revealRow(i,assisted=false) {
     const row=document.querySelector(`.paired-row[data-row="${i}"]`);
+    const alreadyRevealed=row.classList.contains('revealed');
     row.classList.add('revealed'); if(assisted) row.classList.add('hinted');
     round().teams.forEach((t,s)=> {
       const score=row.querySelector(`[data-side="${s}"] .player-score`);
       score.textContent=fmt(t.players[i].points); score.setAttribute('aria-label',`${t.players[i].points} points`);
-      if(!reduceMotion) score.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
+      if(!reduceMotion && !alreadyRevealed) score.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
     });
   }
   function countTotal(side,target) {
@@ -122,6 +123,9 @@
     if(finished || revealing || results[index]) return;
     if(hintMode) toggleHint();
     results.push({pick:side,hint}); save(); revealing=true;
+    document.querySelector('.matchup').classList.add('in-reveal');
+    document.querySelector('#decision').classList.add('reveal-controls');
+    if(innerWidth <= 600) document.querySelector('.scoreboard').scrollIntoView({block:'start',behavior:'instant'});
     document.querySelectorAll('[data-pick]').forEach(b=>{b.disabled=true;b.classList.toggle('picked',Number(b.dataset.pick)===side);});
     document.querySelector('#hint').disabled=true;
     document.querySelector('#decision').innerHTML=`<span class="locked">${icon('lock-keyhole')} Lineup ${labels[side]} locked in</span><button id="skip" class="text-button">Show all ${icon('fast-forward')}</button>`;
@@ -134,6 +138,10 @@
       totals.forEach((n,s)=>countTotal(s,n));
       document.querySelectorAll('.team-head').forEach((el,s)=>el.classList.toggle('leading',totals[s]>totals[1-s]));
       document.querySelector('#reveal-status').textContent=`${g.group} scores revealed`;
+      if(innerWidth <= 600) {
+        const lastRow=document.querySelector(`.paired-row[data-row="${g.rows.at(-1)}"]`);
+        if(lastRow.getBoundingClientRect().bottom>innerHeight-90) lastRow.scrollIntoView({block:'center',behavior:reduceMotion?'instant':'smooth'});
+      }
     },reduceMotion?0:450+j*800)));
     timers.push(setTimeout(()=>showResult(),reduceMotion?30:450+groups.length*800)); icons();
   }
@@ -143,6 +151,8 @@
   }
   function showResult() {
     revealing=false;finished=true;
+    document.querySelector('.matchup').classList.remove('in-reveal');
+    document.querySelector('#decision').classList.remove('reveal-controls');
     const r=round(), win=winner(r), entry=results[index], ok=entry.pick===win;
     const earned=ok ? entry.hint === null ? 2:1:0;
     const swings={};
@@ -153,11 +163,12 @@
     document.querySelector('#reveal-status').textContent='';
     document.querySelectorAll('.team-head').forEach((el,s)=>{el.classList.remove('leading');el.classList.toggle('winner',s===win);});
     const section=document.querySelector('#result');section.hidden=false;
-    section.innerHTML=`<div class="result-icon ${ok?'success':'miss'}">${icon(ok?'check':'x')}</div><div class="result-copy"><div class="result-kicker">${ok?'GOOD CALL':'NOT THIS TIME'} <span>+${earned} ${earned===1?'PT':'PTS'}</span></div><h3>Lineup ${labels[win]} won by ${fmt(Math.abs(r.teams[0].total-r.teams[1].total))}.</h3><p>Biggest edge: ${position === 'special teams' ? position : position+'s'}, +${fmt(advantage)} points.</p><details><summary>Matchup source</summary><a href="${r.source}" target="_blank" rel="noopener">Sleeper / 2026 / Week ${r.week} / ${esc(r.leagueId)}</a></details></div><button id="next" class="next-button">${index===4?'See results':'Next round'} ${icon(index===4?'trophy':'chevron-right')}</button>`;
+    section.innerHTML=`<div class="result-icon ${ok?'success':'miss'}">${icon(ok?'check':'x')}</div><div class="result-copy"><div class="result-kicker">${ok?'GOOD CALL':'NOT THIS TIME'} <span>+${earned} ${earned===1?'PT':'PTS'}</span></div><h3>Lineup ${labels[win]} won by ${fmt(Math.abs(r.teams[0].total-r.teams[1].total))}.</h3><p>Biggest edge: ${position === 'special teams' ? position : position+' group'}, +${fmt(advantage)} points.</p><details><summary>Matchup source</summary><a href="${r.source}" target="_blank" rel="noopener">Sleeper / 2026 / Week ${r.week} / ${esc(r.leagueId)}</a></details></div><button id="next" class="next-button">${index===4?'See results':'Next round'} ${icon(index===4?'trophy':'chevron-right')}</button>`;
     document.querySelector('#hint').disabled=true;
     document.querySelector('.session-score>span').innerHTML=`${points()}<small>/10</small>`;
     document.querySelector('#next').onclick=()=>{index++;hint=null;save();render();window.scrollTo({top:0,behavior:reduceMotion?'instant':'smooth'});};
     icons();
+    if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});
     if(ok && !reduceMotion) section.animate([{transform:'translateY(10px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});
   }
   function summary() {
