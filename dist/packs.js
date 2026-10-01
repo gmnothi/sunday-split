@@ -35,5 +35,18 @@
     const ordered=restoring ? selected : shuffle(selected,rng);
     return {id,mode,date,rounds:ordered.map(r=>({...r,teams:random(id+':'+r.key)()<.5?[...r.teams]:[...r.teams].reverse()}))};
   }
-  window.GamePacks={makePack};
+  function endlessRound(pool,seed,index) {
+    if(!Number.isSafeInteger(index) || index<0 || !pool.rounds.length) throw new RangeError('Invalid endless round');
+    const id=`endless:${seed}:${pool.version}`;
+    const cycle=Math.floor(index/pool.rounds.length);
+    const order=shuffle(pool.rounds,random(id+':cycle:'+cycle));
+    // Keep a reshuffle from immediately repeating the previous cycle's last matchup.
+    if(cycle>0 && order.length>2) {
+      const previous=shuffle(pool.rounds,random(id+':cycle:'+(cycle-1)));
+      if(order[0].key===previous.at(-1).key) [order[0],order[1]]=[order[1],order[0]];
+    }
+    const r=order[index%order.length];
+    return {...r,teams:random(id+':round:'+index)()<.5?[...r.teams]:[...r.teams].reverse()};
+  }
+  window.GamePacks={makePack,endlessRound};
 })();

@@ -2,15 +2,26 @@
   const pool=window.MATCHUP_POOL;
   const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
-  const practiceParam=new URLSearchParams(location.search).get('practice');
-  const practiceSeed=practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:null;
+  const params=new URLSearchParams(location.search);
+  const endless=params.get('endless')==='1';
+  const practiceParam=params.get('practice');
+  const practiceSeed=!endless && practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:null;
+  let endlessSeed=null;
+  if(endless) {
+    const key=`sunday-split:endless-seed:${pool.version}`;
+    try {endlessSeed=localStorage.getItem(key);} catch {}
+    if(!endlessSeed || !/^[a-zA-Z0-9-]{1,80}$/.test(endlessSeed)) {
+      endlessSeed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
+      try {localStorage.setItem(key,endlessSeed);} catch {}
+    }
+  }
   function newPracticeUrl() {
     const seed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
     const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);url.hash='';return url;
   }
   const practiceNav=document.querySelector('#practice-nav');
   practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
-  document.querySelector(practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
+  document.querySelector(endless?'#endless-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
   const selectionKey=`sunday-split:selection:${practiceSeed}`;
   let savedKeys=null,seen=[];
   try {
@@ -19,7 +30,11 @@
     const storedSeen=JSON.parse(localStorage.getItem('sunday-split:seen'));
     if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
   } catch {}
-  const pack=window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys:practiceSeed?savedKeys:null});
+  const pack=endless ? {id:`endless:${endlessSeed}:${pool.version}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys:practiceSeed?savedKeys:null});
+  function ensureRound(i) {
+    if(endless && !pack.rounds[i]) pack.rounds[i]=window.GamePacks.endlessRound(pool,endlessSeed,i);
+    return pack.rounds[i];
+  }
   if(practiceSeed) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
   document.querySelector('#pool-count').textContent=`${pool.rounds.length} matchups / 2026 season`;
   const app = document.querySelector('#app');
@@ -38,20 +53,21 @@
   const points = () => results.reduce((sum,r,i)=>sum+(correct(r,i) ? r.hint === null ? 2 : 1 : 0),0);
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (saved && Array.isArray(saved.results) && saved.results.length <= 5 && saved.results.every((r,i) =>
-      [0,1].includes(r.pick) && (r.hint === null || Number.isInteger(r.hint) && r.hint >= 0 && r.hint < pack.rounds[i].teams[0].players.length))) {
+    if (saved && Array.isArray(saved.results) && (endless || saved.results.length <= 5) && saved.results.every((r,i) =>
+      r && [0,1].includes(r.pick) && (r.hint === null || Number.isInteger(r.hint) && r.hint >= 0 && r.hint < ensureRound(i).teams[0].players.length))) {
       results = saved.results;
-      index = results.length === 5 ? 5 : Math.max(0,results.length-1);
+      results.forEach((_,i)=>ensureRound(i));
+      index = !endless && results.length === 5 ? 5 : Math.max(0,results.length-1);
       if (results.length === 0) index = 0;
-      if (saved.pendingIndex === results.length && results.length < 5) index = results.length;
+      if (saved.pendingIndex === results.length && (endless || results.length < 5)) index = results.length;
       const pending = saved.pendingHint;
-      if (index === results.length && Number.isInteger(pending) && pending >= 0 && pending < pack.rounds[index]?.teams[0].players.length) hint = pending;
+      if (index === results.length && Number.isInteger(pending) && pending >= 0 && pending < ensureRound(index)?.teams[0].players.length) hint = pending;
     }
   } catch { /* Browser storage is optional. */ }
   function save() {
     try {
       localStorage.setItem(storageKey,JSON.stringify({results,pendingIndex:index,pendingHint:hint}));
-      if(index<5 && results[index]) {
+      if((endless || index<5) && results[index]) {
         const key=pack.rounds[index].key;
         seen=[...new Set([...seen,key])];
         localStorage.setItem('sunday-split:seen',JSON.stringify(seen));
@@ -65,10 +81,20 @@
   }
   function cancel() { timers.forEach(clearTimeout); timers=[]; animations.forEach(cancelAnimationFrame); animations=[]; document.querySelector('.celebration')?.remove(); }
   function progress() {
-    return `<div class="progress" aria-label="Round progress">${pack.rounds.map((_,i)=> {
+    const first=endless?Math.max(0,index-4):0;
+    const count=endless?index-first+1:5;
+    return `<div class="progress" aria-label="${endless?'Recent rounds':'Round progress'}">${Array.from({length:count},(_,offset)=> {
+      const i=first+offset;
       const r = results[i];
-      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}${r ? correct(r,i) ? ': correct' : ': incorrect' : ''}">${r ? icon(correct(r,i)?'check':'x') : String(i+1).padStart(2,'0')}</span>`;
+      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}${r ? correct(r,i) ? ': correct' : ': incorrect' : ''}">${r ? icon(correct(r,i)?'check':'x') : endless?icon('circle-dot'):String(i+1).padStart(2,'0')}</span>`;
     }).join('')}</div>`;
+  }
+  function scoreMarkup() {return `${points()}<small>${endless?' pts':'/10'}</small>`;}
+  function endlessStats() {
+    const wins=results.filter(correct).length;
+    let streak=0;
+    for(let i=results.length-1;i>=0 && correct(results[i],i);i--) streak++;
+    return `<span><strong>${wins}/${results.length}</strong> CORRECT</span><span><strong>${results.length?Math.round(wins/results.length*100):0}%</strong> ACCURACY</span><span><strong>${streak}</strong> STREAK</span>`;
   }
   function player(p,side,i,slotLabel) {
     const defense = p.slot === 'DEF';
@@ -80,7 +106,8 @@
   }
   function render() {
     cancel();
-    if (index >= 5) { summary(); return; }
+    if (!endless && index >= 5) { summary(); return; }
+    ensureRound(index);
     const r = round(); const played = results[index]; hint = played ? played.hint : hint;
     finished = !!played; revealing=false; hintMode=false;
     const scoring = r.scoring.rec === 1 ? 'PPR' : r.scoring.rec === 0.5 ? 'HALF PPR' : 'STANDARD';
@@ -90,8 +117,9 @@
       seen[p.slot] = (seen[p.slot]||0)+1;
       return p.slot==='DEF' ? 'DST' : `${p.slot}${count>1 ? seen[p.slot] : ''}`;
     });
-    app.innerHTML = `<section class="game-top"><div><div class="eyebrow"><span class="edition-tag">${pack.mode==='daily'?'DAILY FIVE':'PRACTICE FIVE'}</span><span class="game-date">${date}</span></div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${points()}<small>/10</small></span><span class="score-label">YOUR POINTS</span></div></section>
-      <div class="round-bar">${progress()}<span class="round-count">MATCHUP <strong>${String(index+1).padStart(2,'0')}</strong> / 05</span></div>
+    app.innerHTML = `<section class="game-top"><div><div class="eyebrow"><span class="edition-tag">${endless?'ENDLESS':pack.mode==='daily'?'DAILY FIVE':'PRACTICE FIVE'}</span><span class="game-date">${date}</span></div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${scoreMarkup()}</span><span class="score-label">YOUR POINTS</span></div></section>
+      <div class="round-bar">${progress()}<span class="round-count">MATCHUP <strong>${String(index+1).padStart(2,'0')}</strong>${endless?'':' / 05'}</span></div>
+      ${endless?`<div id="endless-stats" class="endless-stats">${endlessStats()}</div>`:''}
       <section class="matchup" aria-label="Fantasy matchup">
         <div class="matchup-meta"><span class="week-label">${icon('calendar-days')} ${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false" aria-controls="scoring-detail">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
         <div id="scoring-detail" hidden>Passing: ${r.scoring.pass_yd} points/yard, ${r.scoring.pass_td}/TD, ${r.scoring.pass_int}/INT. Rushing and receiving: ${r.scoring.rush_yd} and ${r.scoring.rec_yd} points/yard; ${r.scoring.rush_td} and ${r.scoring.rec_td}/TD. Receptions: ${r.scoring.rec || 0}. <a href="${r.source.replace(/\/matchups\/\d+$/,'')}" target="_blank" rel="noopener">Full league scoring</a></div>
@@ -113,7 +141,7 @@
     if(hint !== null) { revealRow(hint,true); document.querySelector('#hint').disabled=true; }
     if(played) { allRows(); showResult(); }
     icons();
-    const next = pack.rounds[index+1];
+    const next = endless?ensureRound(index+1):pack.rounds[index+1];
     if(next) next.teams.flatMap(t=>t.players).filter(p=>p.slot!=='DEF').forEach(p=>{const img=new Image();img.src=`https://sleepercdn.com/content/nfl/players/thumb/${p.player_id}.jpg`;});
   }
   function toggleHint() {
@@ -240,9 +268,13 @@
     document.querySelector('#reveal-status').textContent='';
     document.querySelectorAll('.team-head').forEach((el,s)=>{el.classList.remove('leading');el.classList.toggle('winner',s===win);});
     const section=document.querySelector('#result');section.hidden=false;
-    section.innerHTML=`<div class="result-icon ${ok?'success':'miss'}">${icon(ok?'check':'x')}</div><div class="result-copy"><div class="result-kicker">${ok?'GOOD CALL':'NOT THIS TIME'} <span>+${earned} ${earned===1?'PT':'PTS'}</span></div><h3>Lineup ${labels[win]} won by ${fmt(Math.abs(r.teams[0].total-r.teams[1].total))}.</h3><p>Biggest edge: ${position === 'special teams' ? position : position+' group'}, +${fmt(advantage)} points.</p><details><summary>Matchup source</summary><a href="${r.source}" target="_blank" rel="noopener">Sleeper / 2026 / Week ${r.week} / ${esc(r.leagueId)}</a></details></div><button id="next" class="next-button">${index===4?'See results':'Next round'} ${icon(index===4?'trophy':'chevron-right')}</button>`;
+    section.innerHTML=`<div class="result-icon ${ok?'success':'miss'}">${icon(ok?'check':'x')}</div><div class="result-copy"><div class="result-kicker">${ok?'GOOD CALL':'NOT THIS TIME'} <span>+${earned} ${earned===1?'PT':'PTS'}</span></div><h3>Lineup ${labels[win]} won by ${fmt(Math.abs(r.teams[0].total-r.teams[1].total))}.</h3><p>Biggest edge: ${position === 'special teams' ? position : position+' group'}, +${fmt(advantage)} points.</p><details><summary>Matchup source</summary><a href="${r.source}" target="_blank" rel="noopener">Sleeper / 2026 / Week ${r.week} / ${esc(r.leagueId)}</a></details></div><button id="next" class="next-button">${!endless && index===4?'See results':'Next round'} ${icon(!endless && index===4?'trophy':'chevron-right')}</button>`;
     document.querySelector('#hint').disabled=true;
-    document.querySelector('.session-score>span').innerHTML=`${points()}<small>/10</small>`;
+    document.querySelector('.session-score>span').innerHTML=scoreMarkup();
+    if(endless) {
+      document.querySelector('#endless-stats').innerHTML=endlessStats();
+      document.querySelector('.round-bar .progress').outerHTML=progress();
+    }
     document.querySelector('#next').onclick=()=>{index++;hint=null;save();render();window.scrollTo({top:0,behavior:reduceMotion?'instant':'smooth'});};
     icons();
     if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});

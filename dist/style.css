@@ -82,6 +82,8 @@ h1 { font:700 40px/1.12 var(--display); margin:6px 0 0; }
 .roster-heading>span:nth-child(2) { justify-content:center; }
 .roster-heading small { margin-left:auto; font-size:11px; }
 .lineup-dot { width:6px; height:12px; flex-shrink:0; }
+.endless-stats { display:flex; flex-wrap:wrap; gap:12px 24px; padding:0 0 20px; color:var(--muted); font-size:11px; }
+.endless-stats strong { color:var(--text); font-size:14px; margin-right:4px; font-variant-numeric:tabular-nums; }
 .dot-a { background:var(--a-ink); }
 .dot-b { background:var(--b-ink); }
 .roster { padding:0 20px; }

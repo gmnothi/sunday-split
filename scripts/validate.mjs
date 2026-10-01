@@ -34,4 +34,22 @@ assert.equal(JSON.stringify(restored.rounds),JSON.stringify(practice.rounds));
 const depleted=make({date:'2026-10-01',practiceSeed:'exhausted',excluded:rounds.map(r=>r.key)});
 assert.equal(depleted.rounds.length,5);
 assert.equal(new Set(depleted.rounds.map(r=>r.key)).size,5);
-console.log(`${rounds.length} real matchups validated; daily determinism, variety, practice exclusions, and restore checks passed.`);
+const endless=ctx.window.GamePacks.endlessRound;
+for(const seed of ['run-1','run-2','run-3']) {
+  let previous=null;
+  for(let cycle=0;cycle<4;cycle++) {
+    const keys=[];
+    for(let i=0;i<rounds.length;i++) {
+      const index=cycle*rounds.length+i;
+      const r=endless(pool,seed,index);
+      assert.equal(JSON.stringify(r),JSON.stringify(endless(pool,seed,index)));
+      assert.notEqual(r.key,previous);
+      keys.push(r.key);previous=r.key;
+    }
+    assert.equal(new Set(keys).size,rounds.length);
+  }
+}
+assert.notEqual(endless(pool,'run-1',0).key,endless(pool,'run-2',0).key);
+assert.throws(()=>endless(pool,'run-1',-1));
+assert.throws(()=>endless(pool,'run-1',1.5));
+console.log(`${rounds.length} real matchups validated; daily/practice checks and endless determinism, full-pool cycles, and reshuffle boundaries passed.`);
