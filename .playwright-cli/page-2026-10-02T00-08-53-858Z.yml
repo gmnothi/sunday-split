@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Sunday Split home" [ref=e4]:
+        - /url: ./
+        - generic [ref=e7]: SUNDAYSPLIT
+      - navigation "Game mode" [ref=e8]:
+        - link "Daily" [ref=e9]:
+          - /url: ./
+        - link "Practice" [ref=e10]:
+          - /url: http://127.0.0.1:4317/?practice=0398280e-9558-4346-a2ab-48d70d18c932
+        - link "Endless" [ref=e11]:
+          - /url: "?endless=1"
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - text: 2026 SEASON
+          - generic [ref=e14]: PROTOTYPE
+        - button "Reduce motion" [ref=e15] [cursor=pointer]
+  - main "Sunday Split game" [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]: ENDLESS
+          - generic [ref=e23]: 2026-10-01
+        - heading "Who won this matchup?" [level=1] [ref=e24]
+      - generic [ref=e25]:
+        - generic [ref=e26]: 0 pts
+        - generic [ref=e27]: YOUR POINTS
+    - generic [ref=e28]:
+      - generic "Recent rounds" [ref=e29]:
+        - generic "Round 1" [ref=e30]
+      - generic [ref=e34]:
+        - text: MATCHUP
+        - strong [ref=e35]: "01"
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - strong [ref=e38]: 0/0
+        - text: CORRECT
+      - generic [ref=e39]:
+        - strong [ref=e40]: 0%
+        - text: ACCURACY
+      - generic [ref=e41]:
+        - strong [ref=e42]: "0"
+        - text: STREAK
+    - region "Fantasy matchup" [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - text: "2026"
+          - generic [ref=e48]: /
+          - text: WEEK 1
+        - button "PPR / 4-PT PASS TD" [ref=e49] [cursor=pointer]:
+          - text: PPR
+          - generic [ref=e50]: /
+          - text: 4-PT PASS TD
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [aria-hidden] [ref=e56]: A
+            - generic [ref=e57]:
+              - text: 10 STARTERS
+              - heading "Lineup A" [level=2] [ref=e58]
+          - generic [ref=e59]:
+            - generic [ref=e60]: —
+            - generic [ref=e61]: POINTS
+        - generic [ref=e62]: VS
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [aria-hidden] [ref=e65]: B
+            - generic [ref=e66]:
+              - text: 10 STARTERS
+              - heading "Lineup B" [level=2] [ref=e67]
+          - generic [ref=e68]:
+            - generic [ref=e69]: —
+            - generic [ref=e70]: POINTS
+      - generic [aria-hidden] [ref=e71]:
+        - generic [ref=e72]:
+          - text: LINEUP A
+          - generic [ref=e74]: PTS
+        - generic [ref=e75]: POS
+        - generic [ref=e76]:
+          - text: LINEUP B
+          - generic [ref=e78]: PTS
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: DP
+            - generic [ref=e84]: Dak Prescott
+            - generic "Points hidden" [ref=e86]: —
+          - button "Reveal both QB scores" [disabled] [ref=e87]:
+            - generic [ref=e88]: QB
+          - generic [ref=e89]:
+            - generic [ref=e90]: JH
+            - generic [ref=e92]: Jalen Hurts
+            - generic "Points hidden" [ref=e94]: —
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]: JT
+            - generic [ref=e99]: Jonathan Taylor
+            - generic "Points hidden" [ref=e101]: —
+          - button "Reveal both RB1 scores" [disabled] [ref=e102]:
+            - generic [ref=e103]: RB1
+          - generic [ref=e104]:
+            - generic [ref=e105]: CM
+            - generic [ref=e107]: Christian McCaffrey
+            - generic "Points hidden" [ref=e109]: —
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]: DA
+            - generic [ref=e114]: De'Von Achane
+            - generic "Points hidden" [ref=e116]: —
+          - button "Reveal both RB2 scores" [disabled] [ref=e117]:
+            - generic [ref=e118]: RB2
+          - generic [ref=e119]:
+            - generic [ref=e120]: OH
+            - generic [ref=e122]: Omarion Hampton
+            - generic "Points hidden" [ref=e124]: —
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: GW
+            - generic [ref=e129]: Garrett Wilson
+            - generic "Points hidden" [ref=e131]: —
+          - button "Reveal both WR1 scores" [disabled] [ref=e132]:
+            - generic [ref=e133]: WR1
+          - generic [ref=e134]:
+            - generic [ref=e135]: NC
+            - generic [ref=e137]: Nico Collins
+            - generic "Points hidden" [ref=e139]: —
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - generic [ref=e142]: TM
+            - generic [ref=e144]: Terry McLaurin
+            - generic "Points hidden" [ref=e146]: —
+          - button "Reveal both WR2 scores" [disabled] [ref=e147]:
+            - generic [ref=e148]: WR2
+          - generic [ref=e149]:
+            - generic [ref=e150]: CW
+            - generic [ref=e152]: Christian Watson
+            - generic "Points hidden" [ref=e154]: —
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e157]: TM
+            - generic [ref=e159]: Trey McBride
+            - generic "Points hidden" [ref=e161]: —
+          - button "Reveal both TE scores" [disabled] [ref=e162]:
+            - generic [ref=e163]: TE
+          - generic [ref=e164]:
+            - generic [ref=e165]: TW
+            - generic [ref=e167]: Tyler Warren
+            - generic "Points hidden" [ref=e169]: —
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: JL
+            - generic [ref=e174]: Jeremiyah Love
+            - generic "Points hidden" [ref=e176]: —
+          - button "Reveal both FLEX1 scores" [disabled] [ref=e177]:
+            - generic [ref=e178]: FLEX1
+          - generic [ref=e179]:
+            - generic [ref=e180]: BH
+            - generic [ref=e182]: Breece Hall
+            - generic "Points hidden" [ref=e184]: —
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - generic [ref=e187]: TT
+            - generic [ref=e189]: Tre Tucker
+            - generic "Points hidden" [ref=e191]: —
+          - button "Reveal both FLEX2 scores" [disabled] [ref=e192]:
+            - generic [ref=e193]: FLEX2
+          - generic [ref=e194]:
+            - generic [ref=e195]: CG
+            - generic [ref=e197]: Chris Godwin
+            - generic "Points hidden" [ref=e199]: —
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e202]: HM
+            - generic [ref=e204]: Harrison Mevis
+            - generic "Points hidden" [ref=e206]: —
+          - button "Reveal both K scores" [disabled] [ref=e207]:
+            - generic [ref=e208]: K
+          - generic [ref=e209]:
+            - generic [ref=e210]: JB
+            - generic [ref=e212]: Jake Bates
+            - generic "Points hidden" [ref=e214]: —
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: DEN
+            - generic [ref=e219]: Denver Broncos
+            - generic "Points hidden" [ref=e221]: —
+          - button "Reveal both DST scores" [disabled] [ref=e222]:
+            - generic [ref=e223]: DST
+          - generic [ref=e224]:
+            - generic [ref=e225]: LAC
+            - generic [ref=e227]: Los Angeles Chargers
+            - generic "Points hidden" [ref=e229]: —
+      - generic [ref=e230]:
+        - button "Use a hint" [ref=e231] [cursor=pointer]
+        - generic [ref=e240]: "Unassisted win: 2 pts"
+    - generic [ref=e241]:
+      - button "Pick lineup A" [ref=e242] [cursor=pointer]
+      - generic [ref=e245]: OR
+      - button "Pick lineup B" [ref=e246] [cursor=pointer]
+  - contentinfo [ref=e250]:
+    - generic [ref=e251]: Real lineups. Real results.
+    - generic [ref=e252]: 10-team Sleeper leagues / 72 matchups / 2026 season
+  - status
