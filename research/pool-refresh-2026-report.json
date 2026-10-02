@@ -1,0 +1,1095 @@
+{
+  "summary": {
+    "previous": 528,
+    "total": 891,
+    "added": 363,
+    "leagues": 63,
+    "distribution": {
+      "close_winner": 93,
+      "competitive_win": 168,
+      "comfortable_win": 238,
+      "blowout": 392
+    }
+  },
+  "pages": [
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=6",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=7",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=8",
+      "status": "read",
+      "drafts": 9
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=9",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=1",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=2",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=3",
+      "status": "read",
+      "drafts": 9
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=4",
+      "status": "read",
+      "drafts": 10
+    },
+    {
+      "url": "https://www.fantasyorphans.com/redraft-drafts?field_number_teams_value=teams10&field_qb_type_value=1qb&page=5",
+      "status": "read",
+      "drafts": 10
+    }
+  ],
+  "invites": [],
+  "leagues": [
+    {
+      "league_id": "1402102379922354176",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1312635303336357888",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1389704453954736128",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 13
+    },
+    {
+      "league_id": "1402727529042718720",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389708072447901696",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1401712522104483840",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1367223707642134528",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1392977483317379072",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1402832254970953728",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1399132794830987264",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1399488623161704448",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1400133300810420224",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1400556721931288576",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1395402626060779520",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389740595995480066",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1390766319405662208",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1401066384359710720",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 12
+    },
+    {
+      "league_id": "1367294982964125696",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1400701943906590720",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1389706408844365824",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1314524061405048832",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389360012215721984",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1395827459726770176",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1394736960454545408",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389706856162656258",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1396912922709458944",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389356934615814144",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1402147932328742912",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 0
+    },
+    {
+      "league_id": "1389362699644706816",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1406768938670469120",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 0
+    },
+    {
+      "league_id": "1405665562817744896",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 8
+    },
+    {
+      "league_id": "1406112884336963584",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 9
+    },
+    {
+      "league_id": "1394719780912508928",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 10
+    },
+    {
+      "league_id": "1403213200903712768",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 7
+    },
+    {
+      "league_id": "1403449701885300736",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1403162822250127360",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 13
+    },
+    {
+      "league_id": "1403370102899937280",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389372586156122112",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 0
+    },
+    {
+      "league_id": "1394185143731625984",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389693574206988288",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1403255829922062336",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 13
+    },
+    {
+      "league_id": "1401281924655226880",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1402049937130164224",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1403211792087322624",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389357974920654848",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1382195849081147392",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1399197943726125056",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389755923915894784",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 12
+    },
+    {
+      "league_id": "1403072250596306944",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1402457976001789952",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 13
+    },
+    {
+      "league_id": "1390742094192066560",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1381895213097684992",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1392278587729534977",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 0
+    },
+    {
+      "league_id": "1389360119912886272",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1389363029384114176",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1396187833743454208",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1392415516382994432",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1398697840254943232",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 14
+    },
+    {
+      "league_id": "1399730088240500736",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1395092222411563008",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    },
+    {
+      "league_id": "1401255623105982464",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 15
+    }
+  ],
+  "rejections": {
+    "wrong_season_size_or_status": 38,
+    "nonstandard_format": 47,
+    "incomplete_adjusted_or_unmapped": 173
+  },
+  "errors": [
+    "https://api.sleeper.app/v1/league/1407401460831891456: 404",
+    "https://api.sleeper.app/v1/league/1406124448897093632: 404",
+    "https://api.sleeper.app/v1/league/1405746455179694080: 404",
+    "https://api.sleeper.app/v1/league/1405232316413964288: 404",
+    "https://api.sleeper.app/v1/league/1404360585650466816: 404",
+    "https://api.sleeper.app/v1/league/1404170450086400000: 404",
+    "https://api.sleeper.app/v1/league/1403155867699814400: 404"
+  ]
+}

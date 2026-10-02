@@ -5,6 +5,34 @@ const ctx = {window:{}};
 vm.runInNewContext(fs.readFileSync(new URL('../dist/data.js', import.meta.url),'utf8'), ctx);
 const pool = ctx.window.MATCHUP_POOL;
 const {rounds} = pool;
+vm.runInNewContext(fs.readFileSync(new URL('../dist/data-2025.js',import.meta.url),'utf8'),ctx);
+const historical=ctx.window.MATCHUP_POOL_2025;
+assert(historical.rounds.length>=100);
+assert.equal(new Set(historical.rounds.map(r=>r.key)).size,historical.rounds.length);
+for(const r of historical.rounds) {
+  assert.equal(r.season,2025);
+  assert(r.week>=1&&r.week<=14);
+  assert.equal(r.teams.length,2);
+  assert.notEqual(r.teams[0].total,r.teams[1].total);
+  assert.deepEqual(r.teams[0].players.map(p=>p.slot),r.teams[1].players.map(p=>p.slot));
+  for(const t of r.teams) {
+    assert.equal(t.players.filter(p=>p.slot==='QB').length,1);
+    assert.equal(new Set(t.players.map(p=>p.player_id)).size,t.players.length);
+    assert(Math.abs(t.players.reduce((n,p)=>n+p.points,0)-t.total)<.01);
+    assert(t.players.every(p=>p.name&&p.player_id&&Number.isFinite(p.points)));
+  }
+}
+vm.runInNewContext(fs.readFileSync(new URL('../dist/confidence.js',import.meta.url),'utf8'),ctx);
+const C=ctx.window.Confidence;
+const picks=[1,2,3,4,5].map(confidence=>({pick:0,hint:null,confidence}));
+assert(C.valid(picks));
+assert(!C.valid([...picks.slice(0,4),picks[0]]));
+assert(!C.valid([{hint:null,confidence:6}]));
+assert(!C.valid([{hint:0,confidence:5}]));
+assert.equal(C.available(picks).length,0);
+assert.equal(C.available(picks.slice(0,4))[0],5);
+assert.equal(picks.reduce((n,r)=>n+C.earned(r,true),0),15);
+assert.equal(C.earned(picks[4],false),0);
 assert(rounds.length >= 50);
 assert.equal(new Set(rounds.map(r=>r.key)).size,rounds.length);
 for (const r of rounds) {
@@ -111,4 +139,4 @@ assert.equal(injected[0].async,true);
 assert.equal(tags.window.dataLayer[0].event,'gtm.js');
 assert.equal(typeof tags.window.dataLayer[0]['gtm.start'],'number');
 assert(head.includes('https://www.googletagmanager.com/ns.html?id=GTM-5BHGN67L'));
-console.log(`${rounds.length} real matchups validated; pack weighting, saved selections, endless cycles, daily streaks, and social metadata passed.`);
+console.log(`${rounds.length} current-season and ${historical.rounds.length} historical matchups validated; confidence scoring, pack weighting, saved selections, endless cycles, daily streaks, and social metadata passed.`);

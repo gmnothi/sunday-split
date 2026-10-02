@@ -53,7 +53,8 @@
   <script defer src="data.js"></script>
   <script defer src="packs.js"></script>
   <script defer src="streaks.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="confidence.js"></script>
+  <script defer src="bootstrap.js"></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -63,8 +64,8 @@
   <header class="masthead">
     <div class="masthead-inner">
       <a class="brand" href="./" aria-label="Sunday Split home"><i data-lucide="columns-2" aria-hidden="true"></i><span class="brand-name">SUNDAY<span>SPLIT</span></span></a>
-      <nav class="mode-nav" aria-label="Game mode"><a id="daily-nav" href="./">Daily</a><a id="practice-nav" href="?practice=practice">Practice</a><a id="endless-nav" href="?endless=1">Endless</a></nav>
-      <div class="header-right"><span class="edition">2026 SEASON</span><button id="motion" class="icon-button" title="Reduce motion" aria-label="Reduce motion" aria-pressed="false"><i data-lucide="sparkles" aria-hidden="true"></i></button></div>
+      <nav class="mode-nav" aria-label="Game mode"><a id="daily-nav" href="./">Daily</a><a id="practice-nav" href="?practice=practice">Practice</a><a id="confidence-nav" href="?confidence=1">Confidence</a><a id="endless-nav" href="?endless=1">Endless</a></nav>
+      <div class="header-right"><select id="season" aria-label="Season"><option value="2026">2026</option><option value="2025">2025</option></select><button id="motion" class="icon-button" title="Reduce motion" aria-label="Reduce motion" aria-pressed="false"><i data-lucide="sparkles" aria-hidden="true"></i></button></div>
     </div>
   </header>
   <main id="app" aria-label="Sunday Split game">

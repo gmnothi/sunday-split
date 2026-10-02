@@ -13,11 +13,15 @@
     for(let i=result.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
     return result;
   }
-  function makePack(pool,{date,practiceSeed=null,excluded=[],savedKeys=null}) {
+  function makePack(pool,{date,practiceSeed=null,excluded=[],savedKeys=null,freezeDaily=false}) {
     const mode=practiceSeed?'practice':'daily';
-    if(mode==='daily' && pool.dailyExpansionDate && date<pool.dailyExpansionDate) {
+    if((mode==='daily'||freezeDaily) && pool.dailyExpansionDate && date<pool.dailyExpansionDate && pool.legacyRoundKeys?.length) {
       const legacy=new Set(pool.legacyRoundKeys);
       pool={...pool,rounds:pool.rounds.filter(r=>legacy.has(r.key))};
+    }
+    if(mode==='daily'||freezeDaily) {
+      const snapshot=(pool.dailySnapshots||[]).find(s=>date<s.before);
+      if(snapshot) {const keys=new Set(snapshot.keys);pool={...pool,rounds:pool.rounds.filter(r=>keys.has(r.key))};}
     }
     const id=`${mode}:${practiceSeed||date}:${pool.version}`;
     const rng=random(id);

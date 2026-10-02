@@ -1,0 +1,258 @@
+{
+  "summary": {
+    "previous": 0,
+    "total": 863,
+    "added": 863,
+    "leagues": 14,
+    "distribution": {
+      "close_winner": 98,
+      "competitive_win": 199,
+      "comfortable_win": 261,
+      "blowout": 305
+    }
+  },
+  "pages": [],
+  "invites": [],
+  "leagues": [
+    {
+      "league_id": "1185170322272509952",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX"
+      ],
+      "accepted": 51
+    },
+    {
+      "league_id": "1248006987195629568",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 58
+    },
+    {
+      "league_id": "1257072638128304128",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 67
+    },
+    {
+      "league_id": "1255567325680111616",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 66
+    },
+    {
+      "league_id": "1248855437273481216",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 66
+    },
+    {
+      "league_id": "1268663955262287872",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 61
+    },
+    {
+      "league_id": "1257055081837101056",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 68
+    },
+    {
+      "league_id": "1257421882601242624",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 65
+    },
+    {
+      "league_id": "1257452114628583424",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 60
+    },
+    {
+      "league_id": "1268304334832013312",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 65
+    },
+    {
+      "league_id": "1266949127510441984",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 48
+    },
+    {
+      "league_id": "1256037594211307520",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "DEF"
+      ],
+      "accepted": 67
+    },
+    {
+      "league_id": "1263748243481694208",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 66
+    },
+    {
+      "league_id": "1261499011798413312",
+      "teams": 10,
+      "slots": [
+        "QB",
+        "RB",
+        "RB",
+        "WR",
+        "WR",
+        "TE",
+        "FLEX",
+        "FLEX",
+        "K",
+        "DEF"
+      ],
+      "accepted": 55
+    }
+  ],
+  "rejections": {
+    "wrong_season_size_or_status": 60,
+    "incomplete_adjusted_or_unmapped": 117
+  },
+  "errors": []
+}

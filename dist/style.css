@@ -25,6 +25,15 @@ a { color:inherit; }
 .mode-nav { display:flex; align-self:stretch; gap:20px; }
 .mode-nav a { display:flex; align-items:center; min-height:40px; border-bottom:3px solid transparent; text-decoration:none; font-weight:700; color:#b9c3c8; }
 .mode-nav a:hover,.mode-nav a[aria-current=page] { color:#fff; border-color:var(--a); }
+#season { background:var(--dark); color:white; border:1px solid var(--dark-line); border-radius:4px; padding:7px; font:inherit; font-size:12px; min-height:36px; }
+.confidence-picker { display:flex; align-items:center; gap:6px; border:0; padding:0; margin:0; min-width:0; }
+.confidence-picker legend { float:left; font-size:12px; font-weight:700; margin-right:8px; }
+.confidence-picker button { width:38px; height:40px; border:1px solid #bbc7cc; border-radius:4px; background:white; color:var(--dark); font:inherit; font-weight:800; cursor:pointer; }
+.confidence-picker button[aria-pressed=true] { background:var(--a-ink); color:white; border-color:var(--a-ink); }
+.confidence-picker button:disabled { opacity:.35; cursor:default; }
+.confidence-stake { font-size:12px; white-space:nowrap; }
+@media(max-width:800px) { .masthead-inner { flex-wrap:wrap; } .mode-nav { order:3; width:100%; min-height:40px; } }
+@media(max-width:600px) { .hint-bar:has(.confidence-picker) { flex-wrap:wrap; gap:8px; } .confidence-picker legend { margin-right:3px; } .confidence-picker button { width:34px; } }
 .header-right { margin-left:auto; display:flex; align-items:center; gap:18px; }
 .edition { font-size:12px; font-weight:700; color:#d5dde1; text-align:right; }
 .edition>span { display:block; font-size:11px; color:#99a9b0; }
@@ -189,8 +198,8 @@ dialog::backdrop { background:#0009; }
   .masthead-inner { gap:24px; } .team-head { flex-direction:column; align-items:flex-start; gap:12px; }
   .team-total { align-items:flex-start; } .total { text-align:left; } .team-b { align-items:flex-end; }
   .team-b .team-total { align-items:flex-end; } .team-b .total { text-align:right; }
-  .player { grid-template-columns:30px minmax(0,1fr) 54px; gap:6px; } .portrait { width:30px; height:36px; }
-  .player-score { width:54px; font-size:22px; } .player-name { font-size:14px; }
+  .player { grid-template-columns:30px minmax(0,1fr) 64px; gap:6px; } .portrait { width:30px; height:36px; }
+  .player-score { width:64px; font-size:22px; } .player-name { font-size:14px; }
 }
 @media (max-width:600px) {
   .masthead-inner { min-height:70px; padding:12px; gap:14px; flex-wrap:wrap; } .brand-name { font-size:28px; }
