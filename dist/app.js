@@ -375,4 +375,7 @@
   function updateMotion() {motion.setAttribute('aria-pressed',String(reduceMotion));motion.title=reduceMotion?'Enable animations':'Reduce motion';motion.setAttribute('aria-label',motion.title);}
   motion.onclick=()=>{reduceMotion=!reduceMotion;updateMotion();notify(reduceMotion?'Reduced motion enabled':'Animations enabled');if(revealing){cancel();allRows();showResult();}};
   updateMotion();render();
+  const tutorialOptions=()=>({mode:endless?'endless':confidence?'confidence':practiceSeed?'practice':'daily',reduceMotion});
+  document.querySelector('#help').onclick=event=>{event.currentTarget.focus({preventScroll:true});window.SplitTutorial?.open(tutorialOptions());};
+  window.SplitTutorial?.firstVisit(tutorialOptions());
 })();
