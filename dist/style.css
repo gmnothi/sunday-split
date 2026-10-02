@@ -85,6 +85,11 @@ h1 { font:700 40px/1.12 var(--display); margin:6px 0 0; }
 .lineup-dot { width:6px; height:12px; flex-shrink:0; }
 .endless-stats { display:flex; flex-wrap:wrap; gap:12px 24px; padding:0 0 20px; color:var(--muted); font-size:11px; }
 .endless-stats strong { color:var(--text); font-size:14px; margin-right:4px; font-variant-numeric:tabular-nums; }
+.daily-stats { display:flex; flex-wrap:wrap; gap:10px 20px; padding:0 0 20px; color:var(--muted); font-size:11px; }
+.daily-stats>span { display:flex; align-items:center; gap:4px; }
+.daily-stats strong { color:var(--text); font-size:14px; font-variant-numeric:tabular-nums; }
+.daily-stats svg { width:15px; height:15px; color:var(--a-ink); }
+.summary .daily-stats { justify-content:center; padding:16px 0 0; }
 .dot-a { background:var(--a-ink); }
 .dot-b { background:var(--b-ink); }
 .roster { padding:0 20px; }

@@ -52,4 +52,32 @@ for(const seed of ['run-1','run-2','run-3']) {
 assert.notEqual(endless(pool,'run-1',0).key,endless(pool,'run-2',0).key);
 assert.throws(()=>endless(pool,'run-1',-1));
 assert.throws(()=>endless(pool,'run-1',1.5));
-console.log(`${rounds.length} real matchups validated; daily/practice checks and endless determinism, full-pool cycles, and reshuffle boundaries passed.`);
+for(let i=0;i<30;i++) {
+  const date=new Date(Date.UTC(2026,9,2+i)).toISOString().slice(0,10);
+  const pack=make({date});
+  assert.equal(new Set(pack.rounds.map(r=>r.key)).size,5);
+  assert.equal(pack.rounds.filter(r=>r.resultClass==='close_winner').length,2);
+  assert.equal(pack.rounds.filter(r=>r.resultClass==='competitive_win').length,2);
+  assert.equal(pack.rounds.filter(r=>r.resultClass==='comfortable_win').length,1);
+  assert.equal(JSON.stringify(pack),JSON.stringify(make({date,savedKeys:pack.rounds.map(r=>r.key)})));
+}
+const sparse={...pool,rounds:rounds.filter(r=>r.resultClass==='blowout').slice(0,5)};
+assert.equal(ctx.window.GamePacks.makePack(sparse,{date:'2026-10-02'}).rounds.length,5);
+vm.runInNewContext(fs.readFileSync(new URL('../dist/streaks.js',import.meta.url),'utf8'),ctx);
+const stats=(dates,today)=>JSON.parse(JSON.stringify(ctx.window.DailyStreaks.stats(dates,today)));
+assert.deepEqual(stats([],'2026-10-01'),{current:0,best:0,completed:0,dates:[]});
+assert.equal(stats(['2026-09-29','2026-09-30'],'2026-10-01').current,2);
+assert.equal(stats(['2026-09-29','2026-09-30','2026-10-01'],'2026-10-01').current,3);
+assert.equal(stats(['2026-09-29','2026-09-30'],'2026-10-02').current,0);
+assert.equal(stats(['2026-09-29','2026-09-30','2026-10-02'],'2026-10-02').best,2);
+assert.deepEqual(stats(['bad','2026-02-30','2026-10-01','2026-10-01','2026-10-02'],'2026-10-01'),{current:1,best:1,completed:1,dates:['2026-10-01']});
+assert.equal(stats(['2024-02-28','2024-02-29','2024-03-01'],'2024-03-01').current,3);
+assert.equal(stats(['2025-12-31','2026-01-01'],'2026-01-01').current,2);
+assert.throws(()=>stats([],'invalid'));
+const head=fs.readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
+assert(head.includes('<title>Sunday Split | Wordle for fantasy football</title>'));
+for(const tag of ['og:title','og:description','og:image','og:url','twitter:card','twitter:image']) assert(head.includes(tag));
+const png=fs.readFileSync(new URL('../dist/og.png',import.meta.url));
+assert.equal(png.readUInt32BE(16),1200);
+assert.equal(png.readUInt32BE(20),630);
+console.log(`${rounds.length} real matchups validated; pack weighting, saved selections, endless cycles, daily streaks, and social metadata passed.`);

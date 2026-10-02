@@ -24,8 +24,11 @@
     if(restoring) {
       selected.push(...savedKeys.map(key=>pool.rounds.find(r=>r.key===key)));
     } else {
-      // A varied set: one of each margin class, then a fifth distinct matchup.
-      for(const category of ['close_winner','competitive_win','comfortable_win','blowout']) {
+      // Keep already-played daily games intact; favor suspense in new sets.
+      const categories=mode==='daily' && date<'2026-10-02'
+        ? ['close_winner','competitive_win','comfortable_win','blowout']
+        : ['close_winner','close_winner','competitive_win','competitive_win','comfortable_win'];
+      for(const category of categories) {
         const r=available.find(r=>r.resultClass===category && !selected.includes(r));
         if(r) selected.push(r);
       }

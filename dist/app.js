@@ -22,7 +22,7 @@
   const practiceNav=document.querySelector('#practice-nav');
   practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
   document.querySelector(endless?'#endless-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
-  const selectionKey=`sunday-split:selection:${practiceSeed}`;
+  const selectionKey=practiceSeed?`sunday-split:selection:${practiceSeed}`:`sunday-split:selection:daily:${date}:${pool.version}`;
   let savedKeys=null,seen=[];
   try {
     savedKeys=JSON.parse(localStorage.getItem(selectionKey));
@@ -30,12 +30,12 @@
     const storedSeen=JSON.parse(localStorage.getItem('sunday-split:seen'));
     if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
   } catch {}
-  const pack=endless ? {id:`endless:${endlessSeed}:${pool.version}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys:practiceSeed?savedKeys:null});
+  const pack=endless ? {id:`endless:${endlessSeed}:${pool.version}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
   function ensureRound(i) {
     if(endless && !pack.rounds[i]) pack.rounds[i]=window.GamePacks.endlessRound(pool,endlessSeed,i);
     return pack.rounds[i];
   }
-  if(practiceSeed) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
+  if(!endless) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
   document.querySelector('#pool-count').textContent=`${pool.rounds.length} matchups / 2026 season`;
   const app = document.querySelector('#app');
   const storageKey = `sunday-split:${pack.id}`;
@@ -51,6 +51,29 @@
   const winner = r => r.teams[0].total > r.teams[1].total ? 0 : 1;
   const correct = (r,i) => r.pick === winner(pack.rounds[i]);
   const points = () => results.reduce((sum,r,i)=>sum+(correct(r,i) ? r.hint === null ? 2 : 1 : 0),0);
+  const streakKey='sunday-split:daily-completions';
+  let completionDates=[];
+  try {
+    const stored=JSON.parse(localStorage.getItem(streakKey));
+    if(Array.isArray(stored)) completionDates=stored;
+    // Recover prior completed daily games already saved on this device.
+    for(let i=0;i<localStorage.length;i++) {
+      const key=localStorage.key(i),match=/^sunday-split:daily:(\d{4}-\d{2}-\d{2}):/.exec(key);
+      if(!match) continue;
+      const saved=JSON.parse(localStorage.getItem(key));
+      if(saved?.results?.length===5 && saved.results.every(r=>r && [0,1].includes(r.pick))) completionDates.push(match[1]);
+    }
+  } catch {}
+  const streak=()=>window.DailyStreaks.stats(completionDates,date);
+  function recordDaily() {
+    if(pack.mode!=='daily' || results.length!==5) return;
+    completionDates=window.DailyStreaks.stats([...completionDates,date],date).dates;
+    try {localStorage.setItem(streakKey,JSON.stringify(completionDates));} catch {}
+  }
+  function dailyStats() {
+    const s=streak();
+    return `<span>${icon('flame')} <strong>${s.current}</strong> DAILY STREAK</span><span><strong>${s.best}</strong> BEST STREAK</span><span><strong>${s.completed}</strong> DAYS PLAYED</span>`;
+  }
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
     if (saved && Array.isArray(saved.results) && (endless || saved.results.length <= 5) && saved.results.every((r,i) =>
@@ -120,6 +143,7 @@
     app.innerHTML = `<section class="game-top"><div><div class="eyebrow"><span class="edition-tag">${endless?'ENDLESS':pack.mode==='daily'?'DAILY FIVE':'PRACTICE FIVE'}</span><span class="game-date">${date}</span></div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${scoreMarkup()}</span><span class="score-label">YOUR POINTS</span></div></section>
       <div class="round-bar">${progress()}<span class="round-count">MATCHUP <strong>${String(index+1).padStart(2,'0')}</strong>${endless?'':' / 05'}</span></div>
       ${endless?`<div id="endless-stats" class="endless-stats">${endlessStats()}</div>`:''}
+      ${pack.mode==='daily'?`<div id="daily-stats" class="daily-stats">${dailyStats()}</div>`:''}
       <section class="matchup" aria-label="Fantasy matchup">
         <div class="matchup-meta"><span class="week-label">${icon('calendar-days')} ${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false" aria-controls="scoring-detail">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
         <div id="scoring-detail" hidden>Passing: ${r.scoring.pass_yd} points/yard, ${r.scoring.pass_td}/TD, ${r.scoring.pass_int}/INT. Rushing and receiving: ${r.scoring.rush_yd} and ${r.scoring.rec_yd} points/yard; ${r.scoring.rush_td} and ${r.scoring.rec_td}/TD. Receptions: ${r.scoring.rec || 0}. <a href="${r.source.replace(/\/matchups\/\d+$/,'')}" target="_blank" rel="noopener">Full league scoring</a></div>
@@ -275,6 +299,7 @@
       document.querySelector('#endless-stats').innerHTML=endlessStats();
       document.querySelector('.round-bar .progress').outerHTML=progress();
     }
+    if(pack.mode==='daily') {recordDaily();document.querySelector('#daily-stats').innerHTML=dailyStats();}
     document.querySelector('#next').onclick=()=>{index++;hint=null;save();render();window.scrollTo({top:0,behavior:reduceMotion?'instant':'smooth'});};
     icons();
     if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});
@@ -286,11 +311,13 @@
     }
   }
   function summary() {
+    recordDaily();
     const wins=results.filter(correct).length;
     const unassisted=results.filter((r,i)=>correct(r,i)&&r.hint===null).length;
     app.innerHTML=`<section class="summary"><div class="eyebrow">${pack.mode==='daily'?'DAILY GAME':'PRACTICE SET'} COMPLETE / ${date}</div><div class="trophy">${icon('trophy')}</div><h1>${wins===5?'A perfect read.':wins>=3?'You know ball.':'Any given Sunday.'}</h1><p class="summary-sub">Five matchups. Your calls are in.</p><div class="big-result">${wins}<span>/5</span></div><span class="summary-label">WINNERS PICKED</span>${progress()}<div class="summary-stats"><div><strong>${points()}<small>/10</small></strong><span>POINTS</span></div><div><strong>${unassisted}</strong><span>UNASSISTED WINS</span></div><div><strong>${results.filter(r=>r.hint!==null).length}</strong><span>HINTS USED</span></div></div><div class="round-recap">${results.map((r,i)=>`<div><span class="recap-round">${String(i+1).padStart(2,'0')}</span><span>Lineup ${labels[r.pick]} ${icon(correct(r,i)?'check':'x')}</span><span>${r.hint===null?'Unassisted':'With hint'}</span><strong>${correct(r,i)?r.hint===null?2:1:0} pts</strong></div>`).join('')}</div><button id="share" class="share-button">${icon('share-2')} Share results</button><button id="more" class="more-button">${icon('shuffle')} Play another five</button>${pack.mode==='practice'?'<a class="text-button" href="./">Today\'s game</a>':''}<p class="prototype-note">${pack.mode==='daily'?'Next daily game: midnight Eastern.':'Practice results are separate from your daily score.'}</p></section>`;
+    if(pack.mode==='daily') document.querySelector('.summary-stats').insertAdjacentHTML('afterend',`<div class="daily-stats">${dailyStats()}</div>`);
     document.querySelector('#share').onclick=async()=> {
-      const text=`Sunday Split / ${pack.mode==='daily'?date:'Practice'}\n${results.map((r,i)=>correct(r,i)?'🟩':'🟥').join('')} ${wins}/5\n${points()}/10 points · ${unassisted} unassisted wins`;
+      const text=`Sunday Split / ${pack.mode==='daily'?date:'Practice'}\n${results.map((r,i)=>correct(r,i)?'🟩':'🟥').join('')} ${wins}/5\n${points()}/10 points · ${unassisted} unassisted wins${pack.mode==='daily'?`\n${streak().current}-day streak`:''}\nsundaysplit.app`;
       try {await navigator.clipboard.writeText(text);notify('Results copied');} catch {const dialog=document.createElement('dialog');dialog.innerHTML='<h2>Your results</h2><textarea aria-label="Shareable results" readonly></textarea><button>Close</button>';document.body.append(dialog);dialog.querySelector('textarea').value=text;dialog.querySelector('button').onclick=()=>dialog.remove();dialog.showModal();dialog.querySelector('textarea').select();}
     };
     document.querySelector('#more').onclick=()=>location.assign(newPracticeUrl());
