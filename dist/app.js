@@ -122,7 +122,7 @@
   function player(p,side,i,slotLabel) {
     const defense = p.slot === 'DEF';
     return `<div class="player ${side === 1 ? 'right-player' : ''}" data-side="${side}" data-row="${i}">
-      <div class="portrait">${defense ? `<span class="defense">${esc(p.player_id)}</span>` : `<span class="initials">${esc(p.name.split(' ').map(n=>n[0]).slice(0,2).join(''))}</span><img src="https://sleepercdn.com/content/nfl/players/thumb/${encodeURIComponent(p.player_id)}.jpg" alt="" loading="eager" decoding="async">`}</div>
+      <div class="portrait${defense ? ' team-portrait' : ''}">${defense ? `<span class="defense">${esc(p.player_id)}</span><img src="https://sleepercdn.com/images/team_logos/nfl/${encodeURIComponent(p.player_id.toLowerCase())}.png" alt="" loading="eager" decoding="async">` : `<span class="initials">${esc(p.name.split(' ').map(n=>n[0]).slice(0,2).join(''))}</span><img src="https://sleepercdn.com/content/nfl/players/thumb/${encodeURIComponent(p.player_id)}.jpg" alt="" loading="eager" decoding="async">`}</div>
       <div class="player-info"><span class="player-name">${esc(p.name)}</span><span class="player-meta">${defense ? 'Team defense' : esc(slotLabel)}</span></div>
       <span class="player-score" aria-label="Points hidden">&mdash;</span>
     </div>`;
