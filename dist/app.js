@@ -6,7 +6,7 @@
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
   const endless=params.get('endless')==='1';
   const confidence=!endless && params.get('confidence')==='1';
-  const endlessVersion=pool.revision||pool.version;
+  const endlessVersion=(pool.revision||pool.version)+(window.MATCHUP_CURATION?':'+window.MATCHUP_CURATION.revision:'');
   const practiceParam=params.get('practice');
   const practiceSeed=!endless && !confidence && practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:(!endless&&!confidence&&season===2025?'throwback-'+date:null);
   let endlessSeed=null;

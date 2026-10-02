@@ -26,7 +26,8 @@
     const id=`${mode}:${practiceSeed||date}:${pool.version}`;
     const rng=random(id);
     const excludedSet=new Set(excluded);
-    const available=shuffle(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng);
+    const curated=window.MATCHUP_CURATION && (mode!=='daily'&&!freezeDaily || date>=window.MATCHUP_CURATION.dailyFrom);
+    const available=curated?weightedOrder(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng):shuffle(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng);
     const selected=[];
     const restoring=savedKeys && savedKeys.length===5 && new Set(savedKeys).size===5 && savedKeys.every(key=>pool.rounds.some(r=>r.key===key));
     if(restoring) {
@@ -37,7 +38,9 @@
         ? ['close_winner','competitive_win','comfortable_win','blowout']
         : ['close_winner','close_winner','competitive_win','competitive_win','comfortable_win'];
       for(const category of categories) {
-        const r=available.find(r=>r.resultClass===category && !selected.includes(r));
+        const candidates=available.filter(r=>r.resultClass===category && !selected.includes(r));
+        const featured=curated && selected.length<3?candidates.find(r=>window.MATCHUP_CURATION.seasons[r.season]?.[r.key]):null;
+        const r=featured||candidates[0];
         if(r) selected.push(r);
       }
       selected.push(...available.filter(r=>!selected.includes(r)).slice(0,5-selected.length));
@@ -46,14 +49,28 @@
     const ordered=restoring ? selected : shuffle(selected,rng);
     return {id,mode,date,rounds:ordered.map(r=>({...r,teams:random(id+':'+r.key)()<.5?[...r.teams]:[...r.teams].reverse()}))};
   }
+  function weightedOrder(rounds,rng) {
+    return rounds.map(r=>({r,rank:-Math.log(Math.max(rng(),Number.MIN_VALUE))/(window.MATCHUP_CURATION?.seasons[r.season]?.[r.key]||1)})).sort((a,b)=>a.rank-b.rank).map(item=>item.r);
+  }
+  const orders=new WeakMap();
+  function cycleOrder(pool,id,cycle) {
+    let cache=orders.get(pool);if(!cache){cache=new Map();orders.set(pool,cache);}
+    const key=id+':'+cycle;
+    if(!cache.has(key)) {
+      const rng=random(id+':cycle:'+cycle);
+      cache.set(key,window.MATCHUP_CURATION?weightedOrder(pool.rounds,rng):shuffle(pool.rounds,rng));
+      if(cache.size>32)cache.delete(cache.keys().next().value);
+    }
+    return [...cache.get(key)];
+  }
   function endlessRound(pool,seed,index) {
     if(!Number.isSafeInteger(index) || index<0 || !pool.rounds.length) throw new RangeError('Invalid endless round');
     const id=`endless:${seed}:${pool.version}`;
     const cycle=Math.floor(index/pool.rounds.length);
-    const order=shuffle(pool.rounds,random(id+':cycle:'+cycle));
+    const order=cycleOrder(pool,id,cycle);
     // Keep a reshuffle from immediately repeating the previous cycle's last matchup.
     if(cycle>0 && order.length>2) {
-      const previous=shuffle(pool.rounds,random(id+':cycle:'+(cycle-1)));
+      const previous=cycleOrder(pool,id,cycle-1);
       if(order[0].key===previous.at(-1).key) [order[0],order[1]]=[order[1],order[0]];
     }
     const r=order[index%order.length];

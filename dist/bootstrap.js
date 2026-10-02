@@ -10,6 +10,7 @@
       await load('data-2025.js');
     }
     const season=new URLSearchParams(location.search).get('season')==='2025'?2025:2026;
+    try {await load('curation.js');}catch { /* Fall back to the original pool order. */ }
     try {await load(`clues-${season}.js`);}catch { /* A missing clue pack must not prevent playing. */ }
     await load('app.js');
   }catch {
