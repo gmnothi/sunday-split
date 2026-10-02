@@ -1,3 +1,5 @@
 node_modules/
 .sites-runtime/
 output/
+.playwright-cli/
+.DS_Store
