@@ -54,6 +54,8 @@
   let timers = [], animations = [], reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let totalFrames = [null, null];
   let index = 0;
+  let revealPace='quick';
+  try {if(localStorage.getItem('sunday-split:reveal-pace')==='cinematic')revealPace='cinematic';} catch {}
   let confidenceValue=null;
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fmt = n => Number(n).toFixed(2);
@@ -163,7 +165,7 @@
     });
     app.innerHTML = `<section class="game-top"><div><div class="eyebrow"><span class="edition-tag">${endless?'ENDLESS':pack.mode==='daily'?'DAILY FIVE':'PRACTICE FIVE'}</span><span class="game-date">${date}</span></div><h1>Who won this matchup?</h1></div><div class="session-score"><span>${scoreMarkup()}</span><span class="score-label">YOUR POINTS</span></div></section>
       <div class="round-bar">${progress()}<span class="round-count">MATCHUP <strong>${String(index+1).padStart(2,'0')}</strong>${endless?'':' / 05'}</span></div>
-      ${endless?`<div id="endless-stats" class="endless-stats">${endlessStats()}</div>`:''}
+      ${endless?`<div class="endless-toolbar"><div id="endless-stats" class="endless-stats">${endlessStats()}</div><label class="reveal-pace">${icon('fast-forward')}<select id="reveal-pace" aria-label="Reveal speed"><option value="quick" ${revealPace==='quick'?'selected':''}>Quick reveal</option><option value="cinematic" ${revealPace==='cinematic'?'selected':''}>Cinematic reveal</option></select></label></div>`:''}
       ${pack.mode==='daily'?`<div id="daily-stats" class="daily-stats">${dailyStats()}</div>`:''}
       <section class="matchup" aria-label="Fantasy matchup">
         <div class="matchup-meta"><span class="week-label">${icon('calendar-days')} ${r.season} <span>/</span> WEEK ${r.week}</span><button class="scoring-trigger" id="scoring" aria-expanded="false" aria-controls="scoring-detail">${scoring} <span>/</span> ${r.scoring.pass_td}-PT PASS TD ${icon('info')}</button></div>
@@ -181,6 +183,8 @@
       const d = document.querySelector('#scoring-detail'); d.hidden=!d.hidden; e.currentTarget.setAttribute('aria-expanded',String(!d.hidden));
     };
     document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>pick(Number(b.dataset.pick)));
+    const paceControl=document.querySelector('#reveal-pace');
+    if(paceControl)paceControl.onchange=()=>{revealPace=paceControl.value;try {localStorage.setItem('sunday-split:reveal-pace',revealPace);} catch {}};
     document.querySelector('#hint').onclick = toggleHint;
     document.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>useHint(Number(b.dataset.hint)));
     if(confidence) {
@@ -261,6 +265,7 @@
     if(confidence && !window.Confidence.available(results).includes(confidenceValue))return;
     if(hintMode) toggleHint();
     results.push({pick:side,hint,...(confidence?{confidence:confidenceValue}:{})}); save(); revealing=true;
+    const paceControl=document.querySelector('#reveal-pace');if(paceControl)paceControl.disabled=true;
     document.querySelector('.matchup').classList.add('in-reveal');
     document.querySelector('#decision').classList.add('reveal-controls');
     document.querySelectorAll('[data-pick]').forEach(b=>{b.disabled=true;b.classList.toggle('picked',Number(b.dataset.pick)===side);});
@@ -279,7 +284,11 @@
     const groups=['QB','RB','WR','TE','FLEX','SPECIAL TEAMS'].map(group=>({group,rows:round().teams[0].players.map((p,i)=>({p,i})).filter(({p})=>group==='SPECIAL TEAMS'?['K','DEF'].includes(p.slot):p.slot===group).map(({i})=>i)})).filter(g=>g.rows.length);
     const revealed=new Set();
     const closeFinish=Math.abs(round().teams[0].total-round().teams[1].total)<=5;
-    let elapsed=900;
+    const quick=endless && revealPace==='quick';
+    const stagger=quick?140:420;
+    const countDuration=quick?300:1000;
+    let elapsed=quick?450:900;
+    let priorLeader=null;
     // Fixed group order; only the pacing changes for close final margins.
     groups.forEach((g,j)=> {
       const last=j===groups.length-1;
@@ -288,7 +297,7 @@
           document.querySelector('.scoreboard').classList.add('suspense');
           broadcast('DOWN TO THE WIRE','LAST POINTS COMING IN');
         },reduceMotion?0:elapsed));
-        elapsed+=2200;
+        elapsed+=quick?350:2200;
       }
       const groupStart=elapsed;
       timers.push(setTimeout(()=> {
@@ -299,7 +308,10 @@
       g.rows.forEach((i,k)=>timers.push(setTimeout(()=> {
         revealRow(i);revealed.add(i);
         const totals=round().teams.map(t=>t.players.reduce((sum,p,row)=>sum+(revealed.has(row)?p.points:0),0));
-        totals.forEach((n,s)=>countTotal(s,n,last&&closeFinish?1600:1000));
+        totals.forEach((n,s)=>countTotal(s,n,last&&closeFinish&&!quick?1600:countDuration));
+        const leader=totals[0]===totals[1]?null:totals[0]>totals[1]?0:1;
+        if(leader!==null && priorLeader!==null && leader!==priorLeader)broadcast('LEAD CHANGE',`LINEUP ${labels[leader]} +${fmt(Math.abs(totals[0]-totals[1]))}`);
+        if(leader!==null)priorLeader=leader;
         document.querySelectorAll('.team-head').forEach((el,s)=>el.classList.toggle('leading',totals[s]>totals[1-s]));
         if(innerWidth<=600) {
           const row=document.querySelector(`.paired-row[data-row="${i}"]`);
@@ -308,8 +320,8 @@
           const bottom=document.querySelector('#decision').getBoundingClientRect().top-8;
           if(bounds.top<top || bounds.bottom>bottom) window.scrollTo({top:window.scrollY+bounds.top-top,behavior:reduceMotion?'instant':'smooth'});
         }
-      },reduceMotion?0:groupStart+k*(last&&closeFinish?1100:420))));
-      elapsed+=last&&closeFinish?2900:Math.max(1800,(g.rows.length-1)*420+1250);
+      },reduceMotion?0:groupStart+k*(last&&closeFinish&&!quick?1100:stagger))));
+      elapsed+=last&&closeFinish&&!quick?2900:Math.max(quick?480:1800,(g.rows.length-1)*stagger+countDuration+100);
     });
     timers.push(setTimeout(()=>showResult(true),reduceMotion?30:elapsed)); icons();
   }
@@ -320,6 +332,7 @@
   function showResult(withCelebration=false) {
     revealing=false;finished=true;
     document.querySelector('.matchup').classList.remove('in-reveal');
+    const paceControl=document.querySelector('#reveal-pace');if(paceControl)paceControl.disabled=false;
     document.querySelector('#decision').classList.remove('reveal-controls');
     const r=round(), win=winner(r), entry=results[index], ok=entry.pick===win;
     const earned=ok ? confidence?entry.confidence:entry.hint === null ? 2:1:0;
@@ -336,6 +349,16 @@
     document.querySelectorAll('.team-head').forEach((el,s)=>{el.classList.remove('leading');el.classList.toggle('winner',s===win);});
     const section=document.querySelector('#result');section.hidden=false;
     section.innerHTML=`<div class="result-icon ${ok?'success':'miss'}">${icon(ok?'check':'x')}</div><div class="result-copy"><div class="result-kicker">${ok?'GOOD CALL':'NOT THIS TIME'} <span>+${earned} ${earned===1?'PT':'PTS'}</span></div><h3>Lineup ${labels[win]} won by ${fmt(Math.abs(r.teams[0].total-r.teams[1].total))}.</h3><p>Biggest edge: ${position === 'special teams' ? position : position+' group'}, +${fmt(advantage)} points.</p><details><summary>Matchup source</summary><a href="${r.source}" target="_blank" rel="noopener">Sleeper / ${r.season} / Week ${r.week} / ${esc(r.leagueId)}</a></details></div><button id="next" class="next-button">${!endless && index===4?'See results':'Next round'} ${icon(!endless && index===4?'trophy':'chevron-right')}</button>`;
+    const positions=Object.keys(swings).map(group=>{
+      const totals=r.teams.map(t=>t.players.filter(p=>(['K','DEF'].includes(p.slot)?'special teams':p.slot)===group).reduce((sum,p)=>sum+p.points,0));
+      const edge=totals[0]-totals[1];
+      return `<tr><th scope="row">${esc(group==='special teams'?'K / DST':group)}</th><td>${fmt(totals[0])}</td><td>${fmt(totals[1])}</td><td>${Math.abs(edge)<.005?'Even':`${edge>0?'A':'B'} +${fmt(Math.abs(edge))}`}</td></tr>`;
+    }).join('');
+    const standouts=r.teams.flatMap((t,side)=>t.players.map(p=>{
+      const clue=window.PlayerClues?.player(r,p.player_id);
+      return clue?.games.length?{p,side,average:clue.average,delta:p.points-clue.average,count:clue.games.length}:null;
+    })).filter(Boolean).sort((a,b)=>Math.abs(b.delta)-Math.abs(a.delta)).slice(0,3);
+    section.querySelector('.result-copy').insertAdjacentHTML('beforeend',`<details class="matchup-breakdown"><summary>Inside the matchup</summary><table><caption>Points by position</caption><thead><tr><th scope="col">Position</th><th scope="col">A</th><th scope="col">B</th><th scope="col">Edge</th></tr></thead><tbody>${positions}</tbody></table>${standouts.length?`<h4>Biggest swings from recent form</h4><ul>${standouts.map(({p,side,delta,count})=>`<li><span><b>${esc(p.name)}</b><small>Lineup ${labels[side]} / ${fmt(p.points)} pts / last ${count}-game average</small></span><strong class="${delta>=0?'above-form':'below-form'}">${delta>=0?'+':''}${fmt(delta)}</strong></li>`).join('')}</ul>`:''}</details>`);
     if(!confidence)document.querySelector('#hint').disabled=true;
     document.querySelector('.session-score>span').innerHTML=scoreMarkup();
     if(endless) {
@@ -350,7 +373,7 @@
     if(withCelebration && !reduceMotion) {
       const winningHead=document.querySelectorAll('.team-head')[win];
       winningHead.animate([{opacity:1,transform:'translateY(0)'},{opacity:.75,transform:'translateY(-3px)'},{opacity:1,transform:'translateY(0)'}],{duration:1000});
-      if(ok) celebrate(win);
+      if(ok && !(endless && revealPace==='quick')) celebrate(win);
     }
   }
   function finishScreen() {

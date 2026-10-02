@@ -121,6 +121,26 @@ h1 { font:700 40px/1.12 var(--display); margin:6px 0 0; }
 .player-form b { color:var(--text); font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; }
 .player-form>span { font-size:9px; }
 .player-form .form-label-mobile { display:none; }
+.endless-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.endless-toolbar .endless-stats { padding-bottom:0; }
+.endless-toolbar { padding-bottom:20px; }
+.result:has(.matchup-breakdown) { align-items:flex-start; }
+.reveal-pace { display:flex; align-items:center; gap:6px; color:var(--muted); font-size:12px; }
+.reveal-pace svg { width:16px; height:16px; }
+.reveal-pace select { min-height:36px; max-width:180px; padding:4px 6px; border:1px solid var(--line); background:white; color:var(--text); font:inherit; border-radius:4px; }
+.matchup-breakdown { margin-top:12px; }
+.matchup-breakdown table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; font-variant-numeric:tabular-nums; }
+.matchup-breakdown caption { text-align:left; margin-bottom:8px; font-weight:700; }
+.matchup-breakdown th,.matchup-breakdown td { padding:8px 4px; border-bottom:1px solid #dce2e5; text-align:right; }
+.matchup-breakdown th:first-child { text-align:left; }
+.matchup-breakdown h4 { font-size:12px; margin:16px 0 8px; }
+.matchup-breakdown ul { list-style:none; padding:0; margin:0; }
+.matchup-breakdown li { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #dce2e5; font-size:12px; }
+.matchup-breakdown li span { min-width:0; }
+.matchup-breakdown small { display:block; font-size:10px; margin-top:4px; color:var(--muted); }
+.matchup-breakdown li strong { white-space:nowrap; font-variant-numeric:tabular-nums; }
+.above-form { color:#087863; }
+.below-form { color:#a23a2b; }
 .player-score { display:block; width:64px; text-align:right; color:#6d7b82; font:700 24px/1 var(--display); font-variant-numeric:tabular-nums; white-space:nowrap; }
 .slot { margin:auto; width:40px; height:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border:1px solid #d4dde2; border-radius:4px; background:#f0f3f5; color:#53626a; font-size:11px; font-weight:700; }
 .slot svg { display:none; width:14px; height:14px; }
