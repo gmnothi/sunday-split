@@ -14,6 +14,8 @@ Reveals take roughly 12 seconds; margins of 5 points or less add a suspense hold
 
 Run `npm install`, then `npm start`; open http://127.0.0.1:4317. `npm run check` validates the fixture totals. Static output is in `dist/`.
 
+Browser layout regression: with the local server and a Playwright CLI session open, run `playwright-cli run-code "$(< scripts/qa-lineups.js)"`. The audit checks all 72 matchup fixtures at 12 widths, with hidden scores, active reveals, and hints, for portrait boundaries, paired alignment, text overlaps, and horizontal overflow. It replaces test-page roster content; reload before further gameplay checks.
+
 Data is a snapshot, not an automatic Sleeper importer. The browser rotates daily sets from that snapshot, balancing margin classes. Import script retains source endpoint URLs and removes league-owner identities. Week-specific NFL opponents are not yet enriched. Sleeper headshot URLs are undocumented and have initials fallbacks. Image rights and commercial API licensing must be clarified.
 
 Progress is saved only on this device. Scores are shipped in browser assets for this prototype; competitive production play requires server-side answer validation. No accounts, leaderboards, or automatic live-data imports are implemented.

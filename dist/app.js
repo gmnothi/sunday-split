@@ -269,7 +269,10 @@
         document.querySelectorAll('.team-head').forEach((el,s)=>el.classList.toggle('leading',totals[s]>totals[1-s]));
         if(innerWidth<=600) {
           const row=document.querySelector(`.paired-row[data-row="${i}"]`);
-          if(row.getBoundingClientRect().bottom>innerHeight-90) row.scrollIntoView({block:'center',behavior:reduceMotion?'instant':'smooth'});
+          const bounds=row.getBoundingClientRect();
+          const top=document.querySelector('.scoreboard').getBoundingClientRect().bottom+8;
+          const bottom=document.querySelector('#decision').getBoundingClientRect().top-8;
+          if(bounds.top<top || bounds.bottom>bottom) window.scrollTo({top:window.scrollY+bounds.top-top,behavior:reduceMotion?'instant':'smooth'});
         }
       },reduceMotion?0:groupStart+k*(last&&closeFinish?1100:420))));
       elapsed+=last&&closeFinish?2900:Math.max(1800,(g.rows.length-1)*420+1250);
