@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#161a1b">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="description" content="Wordle for fantasy football. Read five real lineups, pick the winners, and build your daily streak. Free daily and endless play.">
   <title>Sunday Split | Wordle for fantasy football</title>
   <link rel="canonical" href="https://sundaysplit.app/">
@@ -23,6 +24,22 @@
   <meta name="twitter:image:alt" content="Sunday Split: Wordle for fantasy football, with teal and coral lineups facing off.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": "https://sundaysplit.app/#game",
+    "name": "Sunday Split",
+    "url": "https://sundaysplit.app/",
+    "description": "Wordle for fantasy football. Pick the winners of five real historical fantasy football matchups each day, with optional hints, daily streaks, and endless play.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "image": "https://sundaysplit.app/og.png",
+    "isAccessibleForFree": true
+  }
+  </script>
   <script defer src="vendor/lucide.js"></script>
   <script defer src="data.js"></script>
   <script defer src="packs.js"></script>
@@ -37,7 +54,13 @@
       <div class="header-right"><span class="edition">2026 SEASON</span><button id="motion" class="icon-button" title="Reduce motion" aria-label="Reduce motion" aria-pressed="false"><i data-lucide="sparkles" aria-hidden="true"></i></button></div>
     </div>
   </header>
-  <main id="app" aria-label="Sunday Split game"></main>
+  <main id="app" aria-label="Sunday Split game">
+    <section class="summary">
+      <h1>Sunday Split</h1>
+      <p class="summary-sub">Wordle for fantasy football. Five real matchups. One daily challenge.</p>
+      <noscript><p>Enable JavaScript to play Sunday Split.</p></noscript>
+    </section>
+  </main>
   <footer><span>Real lineups. Real results.</span><span>10-team Sleeper leagues <span class="footer-divider">/</span> <span id="pool-count">2026 season</span></span></footer>
   <div id="toast" role="status"></div>
 </body>

@@ -80,4 +80,16 @@ for(const tag of ['og:title','og:description','og:image','og:url','twitter:card'
 const png=fs.readFileSync(new URL('../dist/og.png',import.meta.url));
 assert.equal(png.readUInt32BE(16),1200);
 assert.equal(png.readUInt32BE(20),630);
+const schema=JSON.parse(head.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+assert.equal(schema.name,'Sunday Split');
+assert.equal(schema.url,'https://sundaysplit.app/');
+assert.equal(schema.applicationCategory,'GameApplication');
+assert(head.includes('<h1>Sunday Split</h1>'));
+assert(head.includes('index,follow,max-image-preview:large'));
+const robots=fs.readFileSync(new URL('../dist/robots.txt',import.meta.url),'utf8');
+assert(robots.includes('Allow: /'));
+assert(robots.includes('Sitemap: https://sundaysplit.app/sitemap.xml'));
+const sitemap=fs.readFileSync(new URL('../dist/sitemap.xml',import.meta.url),'utf8');
+assert.equal((sitemap.match(/<loc>/g)||[]).length,1);
+assert(sitemap.includes('<loc>https://sundaysplit.app/</loc>'));
 console.log(`${rounds.length} real matchups validated; pack weighting, saved selections, endless cycles, daily streaks, and social metadata passed.`);
