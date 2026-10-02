@@ -120,6 +120,7 @@ h1 { font:700 40px/1.12 var(--display); margin:6px 0 0; }
 .player-form { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px; margin-top:4px; color:var(--muted); font-size:10px; line-height:1.35; }
 .player-form b { color:var(--text); font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; }
 .player-form>span { font-size:9px; }
+.player-form .form-label-mobile { display:none; }
 .player-score { display:block; width:64px; text-align:right; color:#6d7b82; font:700 24px/1 var(--display); font-variant-numeric:tabular-nums; white-space:nowrap; }
 .slot { margin:auto; width:40px; height:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border:1px solid #d4dde2; border-radius:4px; background:#f0f3f5; color:#53626a; font-size:11px; font-weight:700; }
 .slot svg { display:none; width:14px; height:14px; }
@@ -262,6 +263,8 @@ dialog::backdrop { background:#0009; }
   .player-meta { display:none; }
   .player-matchup { font-size:10px; }
   .player-form b { font-size:11px; }
+  .player-form .form-label-desktop { display:none; }
+  .player-form .form-label-mobile { display:inline; }
   .player-score { grid-column:2; grid-row:2; justify-self:end; width:100%; font-size:20px; }
   .initials,.defense { font-size:10px; } .slot { width:40px; height:40px; font-size:10px; }
   .hint-bar { padding:8px 6px; gap:4px; } .hint-button { padding:0 4px; } #hint-note { font-size:11px; }

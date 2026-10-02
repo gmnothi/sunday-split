@@ -13,13 +13,18 @@ async page => {
     assert(await page.locator('.player-form').count()===players,'Missing form labels');
     assert((await page.locator('.player-score').allTextContents()).every(s=>s.trim()==='\u2014'),'Actual scores leaked before pick');
     const forms=await page.locator('.player-form').allTextContents();
-    assert(forms.some(s=>/\dG AVG/.test(s)),'No visible averages');
+    assert(forms.some(s=>/LAST [1-3]/.test(s)),'No visible averages');
     assert(forms.every(s=>!s.includes('AVG UNAVAILABLE')),'Wrong or missing season pack');
     for(const width of [320,393,600,768,1280]) {
       await page.setViewportSize({width,height:852});
       const failures=await page.evaluate(()=>{
         const issues=[];
         if(document.documentElement.scrollWidth>innerWidth)issues.push('Page overflow');
+        for(const label of document.querySelectorAll('.form-label-desktop,.form-label-mobile')) {
+          const hidden=getComputedStyle(label).display==='none';
+          const shouldHide=label.classList.contains('form-label-desktop')?innerWidth<=600:innerWidth>600;
+          if(hidden!==shouldHide)issues.push('Wrong responsive form label');
+        }
         for(const cell of document.querySelectorAll('.player')) {
           const rect=cell.getBoundingClientRect(),score=cell.querySelector('.player-score').getBoundingClientRect(),info=cell.querySelector('.player-info').getBoundingClientRect();
           if(info.bottom>score.top+1 && info.left<score.right && score.left<info.right)issues.push('Context overlaps actual score');

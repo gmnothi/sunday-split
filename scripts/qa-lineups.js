@@ -28,7 +28,7 @@ async page => {
             if(form) {
               form.replaceChildren();
               const label=document.createElement('span');
-              if(clue?.games.length) {const number=document.createElement('b');number.textContent=clue.average.toFixed(2);form.append(number);label.textContent=`${clue.games.length}G AVG`;}
+              if(clue?.games.length) {const number=document.createElement('b');number.textContent=clue.average.toFixed(2);form.append(number);label.className='form-label-desktop';label.textContent=`LAST ${clue.games.length}`;const mobile=document.createElement('span');mobile.className='form-label-mobile';mobile.textContent=`L${clue.games.length}G`;form.append(mobile);}
               else label.textContent=clue?'NO PRIOR GAMES':'AVG UNAVAILABLE';
               form.append(label);
             }
