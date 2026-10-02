@@ -230,12 +230,18 @@
     results.push({pick:side,hint}); save(); revealing=true;
     document.querySelector('.matchup').classList.add('in-reveal');
     document.querySelector('#decision').classList.add('reveal-controls');
-    if(innerWidth <= 600) document.querySelector('.scoreboard').scrollIntoView({block:'start',behavior:'instant'});
     document.querySelectorAll('[data-pick]').forEach(b=>{b.disabled=true;b.classList.toggle('picked',Number(b.dataset.pick)===side);});
     document.querySelector('#hint').disabled=true;
     document.querySelector('#decision').innerHTML=`<span class="locked">${icon('lock-keyhole')} Lineup ${labels[side]} locked in</span><button id="skip" class="text-button">Show all ${icon('fast-forward')}</button>`;
     document.querySelector('#skip').onclick=()=> {cancel();allRows();showResult();};
     broadcast('PICK LOCKED',`LINEUP ${labels[side]}`);
+    if(innerWidth <= 600) {
+      const qbIndex=round().teams[0].players.findIndex(p=>p.slot==='QB');
+      const row=document.querySelector(`.paired-row[data-row="${Math.max(0,qbIndex)}"]`);
+      const scoreboard=document.querySelector('.scoreboard');
+      // Keep the starting reveal visible below the sticky scoreboard.
+      window.scrollTo({top:window.scrollY+row.getBoundingClientRect().top-scoreboard.offsetHeight-8,behavior:reduceMotion?'instant':'smooth'});
+    }
     const groups=['QB','RB','WR','TE','FLEX','SPECIAL TEAMS'].map(group=>({group,rows:round().teams[0].players.map((p,i)=>({p,i})).filter(({p})=>group==='SPECIAL TEAMS'?['K','DEF'].includes(p.slot):p.slot===group).map(({i})=>i)})).filter(g=>g.rows.length);
     const revealed=new Set();
     const closeFinish=Math.abs(round().teams[0].total-round().teams[1].total)<=5;
