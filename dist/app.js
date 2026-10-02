@@ -122,7 +122,8 @@
     return `<div class="progress" aria-label="${endless?'Recent rounds':'Round progress'}">${Array.from({length:count},(_,offset)=> {
       const i=first+offset;
       const r = results[i];
-      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}${r ? correct(r,i) ? ': correct' : ': incorrect' : ''}">${r ? icon(correct(r,i)?'check':'x') : endless?icon('circle-dot'):String(i+1).padStart(2,'0')}</span>`;
+      const status=r?`${correct(r,i)?'Correct':'Incorrect'} / ${earned(r,i)} points`:i===index?'Current matchup':'Not played';
+      return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}: ${status}" title="Round ${i+1}: ${status}">${r ? icon(correct(r,i)?'check':'x') : endless?icon('circle-dot'):String(i+1).padStart(2,'0')}</span>`;
     }).join('')}</div>`;
   }
   function scoreMarkup() {return `${points()}<small>${endless?' pts':confidence?'/15':'/10'}</small>`;}
@@ -346,6 +347,21 @@
       if(ok) celebrate(win);
     }
   }
+  function finishScreen() {
+    const section=document.querySelector('.summary');
+    section.classList.add('game-complete');
+    const progress=section.querySelector('.progress');
+    progress.setAttribute('aria-label','Spoiler-free results');
+    progress.insertAdjacentHTML('beforebegin','<div class="calls-label">YOUR FIVE CALLS</div>');
+    section.querySelector('.trophy').innerHTML=icon(results.filter(correct).length===5?'trophy':'flag');
+    const recap=section.querySelector('.round-recap');
+    const details=document.createElement('details');details.className='summary-details';
+    details.innerHTML=`<summary>Round breakdown ${icon('chevron-down')}</summary>`;
+    recap.replaceWith(details);details.append(recap);
+    [...recap.children].forEach((row,i)=>row.classList.add(correct(results[i],i)?'recap-win':'recap-loss'));
+    section.querySelector('#share').insertAdjacentHTML('afterend',`<div class="share-footnote">${icon('shield-check')} Spoiler-free results</div>`);
+    if(pack.mode==='daily')section.querySelector('.prototype-note').outerHTML=`<div class="next-daily">${icon('calendar-clock')}<span>THE NEXT DAILY FIVE<strong>Midnight Eastern</strong></span></div>`;
+  }
   function confidenceSummary() {
     const wins=results.filter(correct).length;
     app.innerHTML=`<section class="summary"><div class="eyebrow">CONFIDENCE FIVE / ${season} / ${date}</div><div class="trophy">${icon('trophy')}</div><h1>${points()===15?'Perfect confidence.':wins>=3?'You know ball.':'Any given Sunday.'}</h1><div class="big-result">${points()}<span>/15</span></div><span class="summary-label">CONFIDENCE POINTS</span>${progress()}<div class="summary-stats"><div><strong>${wins}<small>/5</small></strong><span>WINNERS PICKED</span></div><div><strong>${results.filter((r,i)=>!correct(r,i)).reduce((n,r)=>n+r.confidence,0)}</strong><span>POINTS MISSED</span></div></div><div class="round-recap">${results.map((r,i)=>`<div><span class="recap-round">${i+1}</span><span>Lineup ${labels[r.pick]} ${icon(correct(r,i)?'check':'x')}</span><span>Confidence ${r.confidence}</span><strong>${earned(r,i)} pts</strong></div>`).join('')}</div><button id="share" class="share-button">${icon('share-2')} Share results</button><a class="more-button" href="${newPracticeUrl()}">Practice another five</a></section>`;
@@ -355,7 +371,7 @@
         const dialog=document.createElement('dialog');dialog.innerHTML='<h2>Your results</h2><textarea aria-label="Shareable results" readonly></textarea><button>Close</button>';document.body.append(dialog);dialog.querySelector('textarea').value=text;dialog.querySelector('button').onclick=()=>dialog.remove();dialog.showModal();
       }
     };
-    icons();
+    finishScreen();icons();
   }
   function summary() {
     if(confidence){confidenceSummary();return;}
@@ -369,7 +385,7 @@
       try {await navigator.clipboard.writeText(text);notify('Results copied');} catch {const dialog=document.createElement('dialog');dialog.innerHTML='<h2>Your results</h2><textarea aria-label="Shareable results" readonly></textarea><button>Close</button>';document.body.append(dialog);dialog.querySelector('textarea').value=text;dialog.querySelector('button').onclick=()=>dialog.remove();dialog.showModal();dialog.querySelector('textarea').select();}
     };
     document.querySelector('#more').onclick=()=>location.assign(newPracticeUrl());
-    icons();
+    finishScreen();icons();
   }
   const motion=document.querySelector('#motion');
   function updateMotion() {motion.setAttribute('aria-pressed',String(reduceMotion));motion.title=reduceMotion?'Enable animations':'Reduce motion';motion.setAttribute('aria-label',motion.title);}
