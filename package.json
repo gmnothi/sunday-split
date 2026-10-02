@@ -1,6 +1,6 @@
 {
   "name": "sunday-split-prototype",
   "private": true,
-  "scripts": { "start": "node serve.mjs", "check": "node --check dist/app.js && node scripts/validate.mjs" },
+  "scripts": { "start": "node serve.mjs", "check": "node --check dist/app.js && node scripts/validate.mjs", "refresh:pool": "node scripts/refresh-pool.mjs" },
   "dependencies": { "lucide": "^0.468.0" }
 }

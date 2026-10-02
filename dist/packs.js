@@ -15,6 +15,10 @@
   }
   function makePack(pool,{date,practiceSeed=null,excluded=[],savedKeys=null}) {
     const mode=practiceSeed?'practice':'daily';
+    if(mode==='daily' && pool.dailyExpansionDate && date<pool.dailyExpansionDate) {
+      const legacy=new Set(pool.legacyRoundKeys);
+      pool={...pool,rounds:pool.rounds.filter(r=>legacy.has(r.key))};
+    }
     const id=`${mode}:${practiceSeed||date}:${pool.version}`;
     const rng=random(id);
     const excludedSet=new Set(excluded);

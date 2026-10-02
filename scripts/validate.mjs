@@ -20,6 +20,14 @@ for (const r of rounds) {
 vm.runInNewContext(fs.readFileSync(new URL('../dist/packs.js', import.meta.url),'utf8'), ctx);
 const make = options=>ctx.window.GamePacks.makePack(pool,options);
 const daily=make({date:'2026-10-01'});
+if(pool.legacyRoundKeys) {
+  const legacy={...pool,rounds:rounds.filter(r=>pool.legacyRoundKeys.includes(r.key))};
+  assert.equal(JSON.stringify(daily),JSON.stringify(ctx.window.GamePacks.makePack(legacy,{date:'2026-10-01'})));
+  assert.equal(pool.legacyRoundKeys.length,72);
+  assert(rounds.length>pool.legacyRoundKeys.length);
+  assert(rounds.every(r=>r.week>=1&&r.week<=3));
+  assert(rounds.filter(r=>r.resultClass==='close_winner').length>13);
+}
 assert.equal(daily.rounds.length,5);
 assert.equal(new Set(daily.rounds.map(r=>r.key)).size,5);
 assert.equal(JSON.stringify(daily),JSON.stringify(make({date:'2026-10-01'})));

@@ -4,11 +4,12 @@
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
   const params=new URLSearchParams(location.search);
   const endless=params.get('endless')==='1';
+  const endlessVersion=pool.revision||pool.version;
   const practiceParam=params.get('practice');
   const practiceSeed=!endless && practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:null;
   let endlessSeed=null;
   if(endless) {
-    const key=`sunday-split:endless-seed:${pool.version}`;
+    const key=`sunday-split:endless-seed:${endlessVersion}`;
     try {endlessSeed=localStorage.getItem(key);} catch {}
     if(!endlessSeed || !/^[a-zA-Z0-9-]{1,80}$/.test(endlessSeed)) {
       endlessSeed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
@@ -30,7 +31,7 @@
     const storedSeen=JSON.parse(localStorage.getItem('sunday-split:seen'));
     if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
   } catch {}
-  const pack=endless ? {id:`endless:${endlessSeed}:${pool.version}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
+  const pack=endless ? {id:`endless:${endlessSeed}:${endlessVersion}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
   function ensureRound(i) {
     if(endless && !pack.rounds[i]) pack.rounds[i]=window.GamePacks.endlessRound(pool,endlessSeed,i);
     return pack.rounds[i];
