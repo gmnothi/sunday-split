@@ -6,6 +6,43 @@
   --a-ink:#09644e; --b-ink:#a53d2b; --font:Inter,Arial,sans-serif;
   --display:'Barlow Condensed',Impact,sans-serif; color-scheme:light;
 }
+:root[data-theme=dark] {
+  --bg:#101314; --panel:#1a1f21; --line:#384145; --text:#f0f3f4; --muted:#b1bdc2;
+  --a-ink:#6ee5c5; --b-ink:#ff977f; color-scheme:dark;
+}
+#theme-menu { position:fixed; inset:78px 20px auto auto; margin:0; width:180px; padding:12px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--text); box-shadow:0 8px 24px #0004; }
+#theme-menu fieldset { border:0; margin:0; padding:0; }
+#theme-menu legend { font-size:12px; font-weight:700; padding:0 8px 8px; color:var(--muted); }
+#theme-menu label { display:flex; align-items:center; gap:10px; min-height:40px; padding:6px 8px; cursor:pointer; }
+#theme-menu label:hover { background:var(--bg); }
+#theme-menu input { accent-color:var(--a-ink); }
+:root[data-theme=dark] .roster-heading,:root[data-theme=dark] .hint-bar { background:#202729; }
+:root[data-theme=dark] .paired-row { border-color:var(--line); }
+:root[data-theme=dark] .paired-row:nth-child(even):not(.on-air) { background:#1e2426; }
+:root[data-theme=dark] .paired-row.on-air { background:#203730; }
+:root[data-theme=dark] .slot { background:#252e32; color:var(--muted); border-color:#465156; }
+:root[data-theme=dark] .choosing-hint .slot,:root[data-theme=dark] .hinted .slot { background:#24453b; color:var(--a); border-color:#6ee5c5; }
+:root[data-theme=dark] .on-air .slot { background:var(--dark); color:#fff; border-color:var(--a); }
+:root[data-theme=dark] .portrait,:root[data-theme=dark] .portrait img { background:#354044; }
+:root[data-theme=dark] .initials,:root[data-theme=dark] .defense { color:#dbe6e2; }
+:root[data-theme=dark] .defense,:root[data-theme=dark] .team-portrait img { background:#2a3e36; }
+:root[data-theme=dark] .step:not(.correct):not(.wrong) { background:#252e32; border-color:#536168; }
+:root[data-theme=dark] .step.current { border-bottom-color:var(--a); }
+:root[data-theme=dark] .confidence-picker button { background:#252e32; color:var(--text); border-color:#536168; }
+:root[data-theme=dark] .confidence-picker button[aria-pressed=true] { background:var(--a); color:#123d30; border-color:var(--a); }
+:root[data-theme=dark] .hint-button:hover:not(:disabled),:root[data-theme=dark] .hint-button.active { background:#24453b; border-color:var(--a); }
+:root[data-theme=dark] .reveal-pace select { background:var(--panel); }
+:root[data-theme=dark] .matchup-breakdown th,:root[data-theme=dark] .matchup-breakdown td,:root[data-theme=dark] .matchup-breakdown li { border-color:var(--line); }
+:root[data-theme=dark] .above-form { color:var(--a); }
+:root[data-theme=dark] .below-form { color:var(--b); }
+:root[data-theme=dark] .result-icon.success,:root[data-theme=dark] .game-complete .trophy { background:#24453b; border-color:#3c7664; }
+:root[data-theme=dark] .result-icon.miss { background:#4a2a25; }
+:root[data-theme=dark] .game-complete .big-result { color:var(--text); }
+:root[data-theme=dark] .game-complete>.eyebrow { border-color:var(--line); }
+:root[data-theme=dark] .game-complete .more-button { background:var(--panel); color:var(--text); }
+:root[data-theme=dark] .more-button:hover { background:#24453b; }
+:root[data-theme=dark] .next-button { background:#2c363a; border-color:#536168; }
+:root[data-theme=dark] button:focus-visible,:root[data-theme=dark] a:focus-visible,:root[data-theme=dark] summary:focus-visible,:root[data-theme=dark] input:focus-visible { outline-color:var(--a); }
 * { box-sizing:border-box; letter-spacing:0; }
 html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 var(--font); }
