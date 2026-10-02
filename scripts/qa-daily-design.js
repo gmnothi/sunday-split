@@ -43,6 +43,7 @@ async page => {
     report.push({mode:mode?'practice':'daily',points,completed:true});
   }
   await page.goto('http://127.0.0.1:4317/?endless=1');await page.locator('.roster').waitFor();
+  if(await page.locator('#next').count())await page.locator('#next').click();
   await page.getByRole('button',{name:'Pick lineup A',exact:true}).click();
   await page.locator('#result').waitFor({state:'visible'});
   await page.getByRole('button',{name:'Next round',exact:true}).click();

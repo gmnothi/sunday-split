@@ -23,7 +23,7 @@
     });
     const titles=['You know ball. Prove it.','Make your call.',endless?'Keep the calls coming.':'Five matchups. One score.'];
     const descriptions=[
-      'Two real starting lineups from the same week. Points hidden. Who won?',
+      'Two real starting lineups. Compare recent form and NFL opponents. Who won?',
       'Pick a lineup below for a spoiler-free sample reveal.',
       confidence?'Use each confidence value, 1 to 5, once. A correct pick earns its value. No hints.':endless?'Correct picks earn 2 points, or 1 with a hint. Keep playing for your best run.':'A correct pick earns 2 points, or 1 with a hint. Wrong picks earn 0.'
     ];

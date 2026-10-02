@@ -22,6 +22,16 @@ async page => {
             const player=round.teams[s].players[i];
             cell.querySelector('.player-name').textContent=player.name;
             cell.querySelector('.player-meta').textContent=player.slot;
+            const clue=window.PlayerClues?.player(round,player.player_id),opponent=clue?.opponent;
+            if(cell.querySelector('.player-matchup'))cell.querySelector('.player-matchup').textContent=opponent?`${opponent.team} ${opponent.home?'vs':'@'} ${opponent.opponent}`:'Opponent unavailable';
+            const form=cell.querySelector('.player-form');
+            if(form) {
+              form.replaceChildren();
+              const label=document.createElement('span');
+              if(clue?.games.length) {const number=document.createElement('b');number.textContent=clue.average.toFixed(2);form.append(number);label.textContent=`${clue.games.length}G AVG`;}
+              else label.textContent=clue?'NO PRIOR GAMES':'AVG UNAVAILABLE';
+              form.append(label);
+            }
             cell.querySelector('.player-score').dataset.testPoints=player.points.toFixed(2);
           });
           return row;
@@ -45,6 +55,9 @@ async page => {
               if(range.getBoundingClientRect().width>score.width+1) failures.push({key:round.key,state,issue:'score overflow'});
               if(portrait.left<p.left+7 || portrait.right>p.right || portrait.top<p.top || portrait.bottom>p.bottom) failures.push({key:round.key,state,issue:'portrait boundary'});
               if(intersects(portrait,name)||intersects(portrait,score)||intersects(slot,portrait)||intersects(slot,name)||intersects(name,score)) failures.push({key:round.key,state,issue:'overlap'});
+              const info=rect(cell.querySelector('.player-info'));
+              if(intersects(info,score))failures.push({key:round.key,state,issue:'context overlap'});
+              if(info.bottom>p.bottom+1)failures.push({key:round.key,state,issue:'context overflow'});
             }
           }
         }

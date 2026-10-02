@@ -1,0 +1,18 @@
+[
+  {
+    "season": 2025,
+    "rounds": 863,
+    "verifiedScores": 16833,
+    "uniqueForms": 14255,
+    "missingOpponent": 19,
+    "missingHistory": 99
+  },
+  {
+    "season": 2026,
+    "rounds": 891,
+    "verifiedScores": 17228,
+    "uniqueForms": 8962,
+    "missingOpponent": 0,
+    "missingHistory": 128
+  }
+]
