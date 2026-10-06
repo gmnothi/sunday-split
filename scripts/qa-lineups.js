@@ -31,6 +31,7 @@ async page => {
               if(clue?.games.length) {const number=document.createElement('b');number.textContent=clue.average.toFixed(2);form.append(number);label.className='form-label-desktop';label.textContent=`LAST ${clue.games.length}`;const mobile=document.createElement('span');mobile.className='form-label-mobile';mobile.textContent=`L${clue.games.length}G`;form.append(mobile);}
               else label.textContent=clue?'NO PRIOR GAMES':'AVG UNAVAILABLE';
               form.append(label);
+              if(clue?.games.length)form.insertAdjacentHTML('beforeend',window.FormTrend.markup(clue.games));
             }
             cell.querySelector('.player-score').dataset.testPoints=player.points.toFixed(2);
           });

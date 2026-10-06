@@ -1,6 +1,6 @@
 {
   "name": "sunday-split-prototype",
   "private": true,
-  "scripts": { "start": "node serve.mjs", "check": "node --check dist/app.js && node --check dist/theme.js && node --check dist/clues.js && node scripts/test-clues.mjs && node scripts/validate.mjs && node scripts/test-curation.mjs && node scripts/test-week4.mjs", "refresh:pool": "node scripts/refresh-pool.mjs", "refresh:clues": "node scripts/enrich-clues.mjs", "curate:swings": "node scripts/curate-swings.mjs" },
+  "scripts": { "start": "node serve.mjs", "check": "node --check dist/app.js && node --check dist/theme.js && node --check dist/clues.js && node scripts/test-clues.mjs && node scripts/test-form-trend.mjs && node scripts/validate.mjs && node scripts/test-curation.mjs && node scripts/test-week4.mjs", "refresh:pool": "node scripts/refresh-pool.mjs", "refresh:clues": "node scripts/enrich-clues.mjs", "curate:swings": "node scripts/curate-swings.mjs" },
   "dependencies": { "lucide": "^0.468.0" }
 }
