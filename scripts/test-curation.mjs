@@ -16,7 +16,8 @@ for(const [i,pool] of pools.entries()) {
     const date=new Date(Date.UTC(2026,9,3+day)).toISOString().slice(0,10);
     const pack=ctx.window.GamePacks.makePack(pool,{date});
     assert.equal(new Set(pack.rounds.map(r=>r.key)).size,5);
-    assert(pack.rounds.filter(r=>features[r.key]).length>=3,'Missing featured rounds');
+    const effective=(curation.dailySnapshots||[]).find(s=>date<s.before)?.seasons[pool.rounds[0].season]||features;
+    assert(pack.rounds.filter(r=>effective[r.key]).length>=3,'Missing featured rounds');
     assert.equal(JSON.stringify(pack),JSON.stringify(ctx.window.GamePacks.makePack(pool,{date,savedKeys:pack.rounds.map(r=>r.key)})));
   }
   let featured=0;

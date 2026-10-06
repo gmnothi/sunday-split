@@ -26,8 +26,9 @@
     const id=`${mode}:${practiceSeed||date}:${pool.version}`;
     const rng=random(id);
     const excludedSet=new Set(excluded);
-    const curated=window.MATCHUP_CURATION && (mode!=='daily'&&!freezeDaily || date>=window.MATCHUP_CURATION.dailyFrom);
-    const available=curated?weightedOrder(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng):shuffle(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng);
+    const curation=(mode==='daily'||freezeDaily)?(window.MATCHUP_CURATION?.dailySnapshots||[]).find(s=>date<s.before)||window.MATCHUP_CURATION:window.MATCHUP_CURATION;
+    const curated=curation && (mode!=='daily'&&!freezeDaily || date>=curation.dailyFrom);
+    const available=curated?weightedOrder(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng,curation):shuffle(pool.rounds.filter(r=>!excludedSet.has(r.key)),rng);
     const selected=[];
     const restoring=savedKeys && savedKeys.length===5 && new Set(savedKeys).size===5 && savedKeys.every(key=>pool.rounds.some(r=>r.key===key));
     if(restoring) {
@@ -39,7 +40,7 @@
         : ['close_winner','close_winner','competitive_win','competitive_win','comfortable_win'];
       for(const category of categories) {
         const candidates=available.filter(r=>r.resultClass===category && !selected.includes(r));
-        const featured=curated && selected.length<3?candidates.find(r=>window.MATCHUP_CURATION.seasons[r.season]?.[r.key]):null;
+        const featured=curated && selected.length<3?candidates.find(r=>curation.seasons[r.season]?.[r.key]):null;
         const r=featured||candidates[0];
         if(r) selected.push(r);
       }
@@ -49,8 +50,8 @@
     const ordered=restoring ? selected : shuffle(selected,rng);
     return {id,mode,date,rounds:ordered.map(r=>({...r,teams:random(id+':'+r.key)()<.5?[...r.teams]:[...r.teams].reverse()}))};
   }
-  function weightedOrder(rounds,rng) {
-    return rounds.map(r=>({r,rank:-Math.log(Math.max(rng(),Number.MIN_VALUE))/(window.MATCHUP_CURATION?.seasons[r.season]?.[r.key]||1)})).sort((a,b)=>a.rank-b.rank).map(item=>item.r);
+  function weightedOrder(rounds,rng,curation=window.MATCHUP_CURATION) {
+    return rounds.map(r=>({r,rank:-Math.log(Math.max(rng(),Number.MIN_VALUE))/(curation?.seasons[r.season]?.[r.key]||1)})).sort((a,b)=>a.rank-b.rank).map(item=>item.r);
   }
   const orders=new WeakMap();
   function cycleOrder(pool,id,cycle) {

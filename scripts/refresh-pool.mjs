@@ -21,8 +21,10 @@ async function request(url,json=true) {
 const api=path=>request(`https://api.sleeper.app/v1/${path}`);
 const state=await api('state/nfl');
 assert.equal(state.season,'2026');
-const lastWeek=season===2025?14:Math.min(3,state.week-1);
+const lastWeek=season===2025?14:Math.min(4,state.week-1);
+const knownOnly=process.argv.includes('--known-only');
 const ids=new Set(registry.league_ids);
+if(knownOnly)original.rounds.forEach(r=>ids.add(r.leagueId));
 if(season===2025) {
   const current={window:{}};
   vm.runInNewContext(await fs.readFile(new URL('../dist/data.js',import.meta.url),'utf8'),current);
@@ -30,7 +32,7 @@ if(season===2025) {
     try {const league=await api(`league/${id}`);if(league.previous_league_id)ids.add(league.previous_league_id);}catch(error){report.errors.push(error.message);}
   }
 }
-for(const url of season===2025?[]:registry.draft_pages||[]) {
+for(const url of season===2025||knownOnly?[]:registry.draft_pages||[]) {
   try {
     const html=await request(url,false);
     const drafts=new Set([...html.matchAll(/href="\/draft\/([0-9]+)"/g)].map(m=>m[1]));
@@ -43,14 +45,14 @@ for(const url of season===2025?[]:registry.draft_pages||[]) {
 }
 const invites=new Map();
 for(const entry of registry.invites||[])invites.set(entry.code,entry.source);
-for(const url of season===2025||process.argv.includes('--drafts-only')?[]:registry.discovery_pages) {
+for(const url of season===2025||knownOnly||process.argv.includes('--drafts-only')?[]:registry.discovery_pages) {
   try {
     const html=await request(url,false);
     for(const match of html.matchAll(/sleeper\.(?:com|app)\/i\/([A-Za-z0-9]+)/g)) invites.set(match[1],url);
     report.pages.push({url,status:'read'});
   } catch(error) {report.errors.push(error.message);}
 }
-for(const [code,source] of season===2025||process.argv.includes('--drafts-only')?[]:[...invites].slice(0,240)) {
+for(const [code,source] of season===2025||knownOnly||process.argv.includes('--drafts-only')?[]:[...invites].slice(0,240)) {
   try {
     const html=await request(`https://sleeper.com/i/${code}`,false);
     const id=html.match(/league_id[^0-9]{1,20}([0-9]{15,22})/)?.[1];
@@ -70,7 +72,7 @@ for(const id of ids) {
     const scoring=league.scoring_settings;
     if(slots.length>12||slots.filter(s=>s==='QB').length!==1||!slots.every(s=>['QB','RB','WR','TE','FLEX','K','DEF'].includes(s))||league.settings.best_ball===1||![0,.5,1].includes(scoring.rec??0)||Object.entries(scoring).some(([k,v])=>v!==0&&/bonus|first_down|rush_att|pass_att|rec_att/.test(k))) {reject('nonstandard_format');continue;}
     const item={league_id:id,teams:10,slots,accepted:0};
-    for(let week=1;week<=lastWeek;week++) {
+    for(let week=knownOnly?Math.max(1,...original.rounds.map(r=>r.week))+1:1;week<=lastWeek;week++) {
       if(Number(league.settings.last_scored_leg)<week)continue;
       const weekly=await api(`league/${id}/matchups/${week}`);
       if(!Array.isArray(weekly))continue;
@@ -97,6 +99,7 @@ if(!summary.added){console.log(JSON.stringify(summary));process.exit(0);}
 const revision=createHash('sha256').update(ordered.map(r=>r.key).join('\n')).digest('hex').slice(0,12);
 const snapshots=original.dailySnapshots||[];
 if(season===2026&&!snapshots.some(s=>s.before==='2026-10-03'))snapshots.push({before:'2026-10-03',keys:original.rounds.map(r=>r.key)});
+if(season===2026&&!snapshots.some(s=>s.before==='2026-10-07'))snapshots.push({before:'2026-10-07',keys:original.rounds.map(r=>r.key)});
 const pool={...original,revision:`${season}-${revision}`,dailySnapshots:snapshots,legacyRoundKeys:original.legacyRoundKeys||original.rounds.map(r=>r.key),dailyExpansionDate:original.dailyExpansionDate||'2026-10-02',refreshedAt:new Date().toISOString(),rounds:ordered};
 await fs.writeFile(output,`window.${season===2025?'MATCHUP_POOL_2025':'MATCHUP_POOL'} = ${JSON.stringify(pool,null,2)};\n`);
 console.log(JSON.stringify(summary));

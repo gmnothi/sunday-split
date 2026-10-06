@@ -3,15 +3,37 @@
   "reports": [
     {
       "season": 2026,
-      "total": 891,
-      "featured": 223,
+      "total": 1167,
+      "featured": 292,
       "classes": {
-        "blowout": 71,
-        "comfortable_win": 62,
-        "competitive_win": 54,
-        "close_winner": 36
+        "blowout": 103,
+        "competitive_win": 64,
+        "comfortable_win": 86,
+        "close_winner": 39
       },
       "topExamples": [
+        {
+          "key": "1393351811208871936:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 138.27,
+          "priorFormDeficit": 82.92,
+          "largestPlayerDeparture": 23.37,
+          "revealDeficit": 5.52,
+          "completeHistory": true
+        },
+        {
+          "key": "1403449701885300736:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 126.59,
+          "priorFormDeficit": 61.37,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 30.5,
+          "completeHistory": true
+        },
         {
           "key": "1403213200903712768:2:4",
           "season": 2026,
@@ -21,6 +43,28 @@
           "priorFormDeficit": 54.63,
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 26.88,
+          "completeHistory": true
+        },
+        {
+          "key": "1389693574206988288:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 117.51,
+          "priorFormDeficit": 67.17,
+          "largestPlayerDeparture": 23.37,
+          "revealDeficit": 8.38,
+          "completeHistory": true
+        },
+        {
+          "key": "1398697840254943232:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 115.54,
+          "priorFormDeficit": 41.61,
+          "largestPlayerDeparture": 30.93,
+          "revealDeficit": 37.2,
           "completeHistory": true
         },
         {
@@ -35,6 +79,17 @@
           "completeHistory": true
         },
         {
+          "key": "1406112884336963584:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 113.46,
+          "priorFormDeficit": 32.62,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 44.1,
+          "completeHistory": true
+        },
+        {
           "key": "1392415516382994432:1:2",
           "season": 2026,
           "week": 1,
@@ -43,6 +98,28 @@
           "priorFormDeficit": 40.9,
           "largestPlayerDeparture": 24.47,
           "revealDeficit": 41.84,
+          "completeHistory": true
+        },
+        {
+          "key": "1402457976001789952:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 108.02,
+          "priorFormDeficit": 60.78,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 14.18,
+          "completeHistory": true
+        },
+        {
+          "key": "1389357974920654848:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 100.56,
+          "priorFormDeficit": 44.83,
+          "largestPlayerDeparture": 20.09,
+          "revealDeficit": 28.22,
           "completeHistory": true
         },
         {
@@ -57,6 +134,39 @@
           "completeHistory": true
         },
         {
+          "key": "1399132794830987264:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 98.16,
+          "priorFormDeficit": 39.49,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 31.84,
+          "completeHistory": true
+        },
+        {
+          "key": "1314524061405048832:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 97.89,
+          "priorFormDeficit": 41.36,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 15.42,
+          "completeHistory": true
+        },
+        {
+          "key": "1403162822250127360:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 94.75,
+          "priorFormDeficit": 43.44,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 9.16,
+          "completeHistory": true
+        },
+        {
           "key": "1401281924655226880:1:1",
           "season": 2026,
           "week": 1,
@@ -65,6 +175,17 @@
           "priorFormDeficit": 52.52,
           "largestPlayerDeparture": 25.63,
           "revealDeficit": 4.44,
+          "completeHistory": true
+        },
+        {
+          "key": "1389693574206988288:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 93.43,
+          "priorFormDeficit": 57.56,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 0,
           "completeHistory": true
         },
         {
@@ -90,6 +211,17 @@
           "completeHistory": true
         },
         {
+          "key": "1389356934615814144:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 88.81,
+          "priorFormDeficit": 21.37,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 36.32,
+          "completeHistory": true
+        },
+        {
           "key": "1402457976001789952:2:4",
           "season": 2026,
           "week": 2,
@@ -98,143 +230,33 @@
           "priorFormDeficit": 32.2,
           "largestPlayerDeparture": 23.57,
           "revealDeficit": 30.12,
-          "completeHistory": true
-        },
-        {
-          "key": "1389360119912886272:2:1",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 84.36,
-          "priorFormDeficit": 51.5,
-          "largestPlayerDeparture": 21.21,
-          "revealDeficit": 0.9,
-          "completeHistory": true
-        },
-        {
-          "key": "1399488623161704448:1:5",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "close_winner",
-          "score": 83.69,
-          "priorFormDeficit": 34.73,
-          "largestPlayerDeparture": 20.5,
-          "revealDeficit": 26.1,
-          "completeHistory": true
-        },
-        {
-          "key": "1402832254970953728:1:5",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "comfortable_win",
-          "score": 83.27,
-          "priorFormDeficit": 45.99,
-          "largestPlayerDeparture": 25.63,
-          "revealDeficit": 3.66,
-          "completeHistory": true
-        },
-        {
-          "key": "1401281924655226880:2:2",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "comfortable_win",
-          "score": 82.38,
-          "priorFormDeficit": 43.75,
-          "largestPlayerDeparture": 21.21,
-          "revealDeficit": 10.54,
-          "completeHistory": true
-        },
-        {
-          "key": "1402102379922354176:3:4",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "comfortable_win",
-          "score": 81.2,
-          "priorFormDeficit": 36.9,
-          "largestPlayerDeparture": 20.07,
-          "revealDeficit": 20.78,
-          "completeHistory": true
-        },
-        {
-          "key": "1389708072447901696:3:3",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "competitive_win",
-          "score": 80.83,
-          "priorFormDeficit": 35.77,
-          "largestPlayerDeparture": 16.5,
-          "revealDeficit": 25.68,
-          "completeHistory": true
-        },
-        {
-          "key": "1402457976001789952:1:3",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "competitive_win",
-          "score": 79.98,
-          "priorFormDeficit": 51.99,
-          "largestPlayerDeparture": 17,
-          "revealDeficit": 0,
-          "completeHistory": true
-        },
-        {
-          "key": "1394832678041161728:3:2",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "comfortable_win",
-          "score": 79.25,
-          "priorFormDeficit": 28.93,
-          "largestPlayerDeparture": 18.67,
-          "revealDeficit": 32.18,
-          "completeHistory": true
-        },
-        {
-          "key": "1398697840254943232:2:4",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "blowout",
-          "score": 77.64,
-          "priorFormDeficit": 33.41,
-          "largestPlayerDeparture": 30.97,
-          "revealDeficit": 11.56,
-          "completeHistory": true
-        },
-        {
-          "key": "1395181284304617472:2:4",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "competitive_win",
-          "score": 77.39,
-          "priorFormDeficit": 22.55,
-          "largestPlayerDeparture": 26.5,
-          "revealDeficit": 32.06,
-          "completeHistory": true
-        },
-        {
-          "key": "1389363029384114176:3:2",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "competitive_win",
-          "score": 76.72,
-          "priorFormDeficit": 38.68,
-          "largestPlayerDeparture": 17.9,
-          "revealDeficit": 15.8,
-          "completeHistory": true
-        },
-        {
-          "key": "1395092222411563008:2:2",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "blowout",
-          "score": 76.24,
-          "priorFormDeficit": 30.77,
-          "largestPlayerDeparture": 23.23,
-          "revealDeficit": 21.86,
           "completeHistory": true
         }
       ],
       "featuredMetrics": [
         {
+          "key": "1393351811208871936:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 138.27,
+          "priorFormDeficit": 82.92,
+          "largestPlayerDeparture": 23.37,
+          "revealDeficit": 5.52,
+          "completeHistory": true
+        },
+        {
+          "key": "1403449701885300736:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 126.59,
+          "priorFormDeficit": 61.37,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 30.5,
+          "completeHistory": true
+        },
+        {
           "key": "1403213200903712768:2:4",
           "season": 2026,
           "week": 2,
@@ -243,6 +265,28 @@
           "priorFormDeficit": 54.63,
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 26.88,
+          "completeHistory": true
+        },
+        {
+          "key": "1389693574206988288:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 117.51,
+          "priorFormDeficit": 67.17,
+          "largestPlayerDeparture": 23.37,
+          "revealDeficit": 8.38,
+          "completeHistory": true
+        },
+        {
+          "key": "1398697840254943232:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 115.54,
+          "priorFormDeficit": 41.61,
+          "largestPlayerDeparture": 30.93,
+          "revealDeficit": 37.2,
           "completeHistory": true
         },
         {
@@ -257,6 +301,17 @@
           "completeHistory": true
         },
         {
+          "key": "1406112884336963584:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 113.46,
+          "priorFormDeficit": 32.62,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 44.1,
+          "completeHistory": true
+        },
+        {
           "key": "1392415516382994432:1:2",
           "season": 2026,
           "week": 1,
@@ -265,6 +320,28 @@
           "priorFormDeficit": 40.9,
           "largestPlayerDeparture": 24.47,
           "revealDeficit": 41.84,
+          "completeHistory": true
+        },
+        {
+          "key": "1402457976001789952:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 108.02,
+          "priorFormDeficit": 60.78,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 14.18,
+          "completeHistory": true
+        },
+        {
+          "key": "1389357974920654848:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 100.56,
+          "priorFormDeficit": 44.83,
+          "largestPlayerDeparture": 20.09,
+          "revealDeficit": 28.22,
           "completeHistory": true
         },
         {
@@ -279,6 +356,39 @@
           "completeHistory": true
         },
         {
+          "key": "1399132794830987264:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 98.16,
+          "priorFormDeficit": 39.49,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 31.84,
+          "completeHistory": true
+        },
+        {
+          "key": "1314524061405048832:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 97.89,
+          "priorFormDeficit": 41.36,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 15.42,
+          "completeHistory": true
+        },
+        {
+          "key": "1403162822250127360:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 94.75,
+          "priorFormDeficit": 43.44,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 9.16,
+          "completeHistory": true
+        },
+        {
           "key": "1401281924655226880:1:1",
           "season": 2026,
           "week": 1,
@@ -287,6 +397,17 @@
           "priorFormDeficit": 52.52,
           "largestPlayerDeparture": 25.63,
           "revealDeficit": 4.44,
+          "completeHistory": true
+        },
+        {
+          "key": "1389693574206988288:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 93.43,
+          "priorFormDeficit": 57.56,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 0,
           "completeHistory": true
         },
         {
@@ -312,6 +433,17 @@
           "completeHistory": true
         },
         {
+          "key": "1389356934615814144:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 88.81,
+          "priorFormDeficit": 21.37,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 36.32,
+          "completeHistory": true
+        },
+        {
           "key": "1402457976001789952:2:4",
           "season": 2026,
           "week": 2,
@@ -320,6 +452,50 @@
           "priorFormDeficit": 32.2,
           "largestPlayerDeparture": 23.57,
           "revealDeficit": 30.12,
+          "completeHistory": true
+        },
+        {
+          "key": "1395092222411563008:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 86.93,
+          "priorFormDeficit": 41.08,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 4.88,
+          "completeHistory": true
+        },
+        {
+          "key": "1389704453954736128:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 86.33,
+          "priorFormDeficit": 21.84,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 33.14,
+          "completeHistory": true
+        },
+        {
+          "key": "1394719780912508928:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 85.14,
+          "priorFormDeficit": 28.43,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 35.4,
+          "completeHistory": true
+        },
+        {
+          "key": "1396912922709458944:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 84.85,
+          "priorFormDeficit": 31.96,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 16.48,
           "completeHistory": true
         },
         {
@@ -367,6 +543,28 @@
           "completeHistory": true
         },
         {
+          "key": "1399488623161704448:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 81.67,
+          "priorFormDeficit": 26.6,
+          "largestPlayerDeparture": 30.43,
+          "revealDeficit": 26.34,
+          "completeHistory": true
+        },
+        {
+          "key": "1401712522104483840:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 81.43,
+          "priorFormDeficit": 37.65,
+          "largestPlayerDeparture": 17.53,
+          "revealDeficit": 22.42,
+          "completeHistory": true
+        },
+        {
           "key": "1402102379922354176:3:4",
           "season": 2026,
           "week": 3,
@@ -378,6 +576,17 @@
           "completeHistory": true
         },
         {
+          "key": "1401712522104483840:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 81.19,
+          "priorFormDeficit": 40.51,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
           "key": "1389708072447901696:3:3",
           "season": 2026,
           "week": 3,
@@ -386,6 +595,28 @@
           "priorFormDeficit": 35.77,
           "largestPlayerDeparture": 16.5,
           "revealDeficit": 25.68,
+          "completeHistory": true
+        },
+        {
+          "key": "1403213200903712768:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 80.69,
+          "priorFormDeficit": 29.96,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 15.32,
+          "completeHistory": true
+        },
+        {
+          "key": "1403072250596306944:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 80.12,
+          "priorFormDeficit": 48.5,
+          "largestPlayerDeparture": 22.37,
+          "revealDeficit": 0,
           "completeHistory": true
         },
         {
@@ -411,6 +642,17 @@
           "completeHistory": true
         },
         {
+          "key": "1394736960454545408:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 79.13,
+          "priorFormDeficit": 43.61,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 6.62,
+          "completeHistory": true
+        },
+        {
           "key": "1398697840254943232:2:4",
           "season": 2026,
           "week": 2,
@@ -430,6 +672,28 @@
           "priorFormDeficit": 22.55,
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 32.06,
+          "completeHistory": true
+        },
+        {
+          "key": "1389706408844365824:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 77.28,
+          "priorFormDeficit": 41.85,
+          "largestPlayerDeparture": 14.37,
+          "revealDeficit": 14.5,
+          "completeHistory": true
+        },
+        {
+          "key": "1402832254970953728:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 77.23,
+          "priorFormDeficit": 25.92,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 17.92,
           "completeHistory": true
         },
         {
@@ -485,6 +749,17 @@
           "priorFormDeficit": 31.67,
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 15.6,
+          "completeHistory": true
+        },
+        {
+          "key": "1399582281898672128:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 74.51,
+          "priorFormDeficit": 33.34,
+          "largestPlayerDeparture": 17.96,
+          "revealDeficit": 21.54,
           "completeHistory": true
         },
         {
@@ -565,6 +840,17 @@
           "completeHistory": true
         },
         {
+          "key": "1399730088240500736:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 71.51,
+          "priorFormDeficit": 44.28,
+          "largestPlayerDeparture": 20.09,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
           "key": "1381895213097684992:2:2",
           "season": 2026,
           "week": 2,
@@ -595,6 +881,17 @@
           "priorFormDeficit": 43.84,
           "largestPlayerDeparture": 20.07,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1389360119912886272:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 70.77,
+          "priorFormDeficit": 21,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 18.84,
           "completeHistory": true
         },
         {
@@ -708,6 +1005,17 @@
           "completeHistory": true
         },
         {
+          "key": "1399197943726125056:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 66.73,
+          "priorFormDeficit": 35.2,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 11.26,
+          "completeHistory": true
+        },
+        {
           "key": "1389755923915894784:2:5",
           "season": 2026,
           "week": 2,
@@ -739,6 +1047,50 @@
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 54.04,
           "completeHistory": false
+        },
+        {
+          "key": "1390742094192066560:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 64.97,
+          "priorFormDeficit": 29.01,
+          "largestPlayerDeparture": 16.37,
+          "revealDeficit": 20.08,
+          "completeHistory": true
+        },
+        {
+          "key": "1381895213097684992:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 64.86,
+          "priorFormDeficit": 25.59,
+          "largestPlayerDeparture": 30.43,
+          "revealDeficit": 11.04,
+          "completeHistory": true
+        },
+        {
+          "key": "1403162822250127360:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 64.6,
+          "priorFormDeficit": 16.14,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 37.72,
+          "completeHistory": true
+        },
+        {
+          "key": "1399488623161704448:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 64.04,
+          "priorFormDeficit": 41.25,
+          "largestPlayerDeparture": 15,
+          "revealDeficit": 2.16,
+          "completeHistory": true
         },
         {
           "key": "1367294982964125696:1:3",
@@ -818,6 +1170,17 @@
           "completeHistory": true
         },
         {
+          "key": "1403211792087322624:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 61.8,
+          "priorFormDeficit": 27.58,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
           "key": "1394185143731625984:1:4",
           "season": 2026,
           "week": 1,
@@ -826,6 +1189,39 @@
           "priorFormDeficit": 19.5,
           "largestPlayerDeparture": 24.47,
           "revealDeficit": 22.82,
+          "completeHistory": true
+        },
+        {
+          "key": "1399730088240500736:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 61.4,
+          "priorFormDeficit": 40.02,
+          "largestPlayerDeparture": 16.37,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1390766319405662208:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 61.29,
+          "priorFormDeficit": 33.23,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 4.36,
+          "completeHistory": true
+        },
+        {
+          "key": "1389740595995480066:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 60.81,
+          "priorFormDeficit": 33.79,
+          "largestPlayerDeparture": 12.96,
+          "revealDeficit": 10.12,
           "completeHistory": true
         },
         {
@@ -848,6 +1244,17 @@
           "priorFormDeficit": 23.3,
           "largestPlayerDeparture": 25.63,
           "revealDeficit": 15.04,
+          "completeHistory": true
+        },
+        {
+          "key": "1402727529042718720:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 60.26,
+          "priorFormDeficit": 21.95,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 6.9,
           "completeHistory": true
         },
         {
@@ -895,6 +1302,17 @@
           "completeHistory": true
         },
         {
+          "key": "1392415516382994432:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 59.15,
+          "priorFormDeficit": 24.8,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 1.52,
+          "completeHistory": true
+        },
+        {
           "key": "1314524061405048832:2:2",
           "season": 2026,
           "week": 2,
@@ -928,6 +1346,17 @@
           "completeHistory": true
         },
         {
+          "key": "1389357974920654848:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 57.48,
+          "priorFormDeficit": 32.73,
+          "largestPlayerDeparture": 15,
+          "revealDeficit": 8.38,
+          "completeHistory": true
+        },
+        {
           "key": "1398697840254943232:3:5",
           "season": 2026,
           "week": 3,
@@ -939,6 +1368,28 @@
           "completeHistory": true
         },
         {
+          "key": "1367294982964125696:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 57.13,
+          "priorFormDeficit": 24.91,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 12.68,
+          "completeHistory": true
+        },
+        {
+          "key": "1392415516382994432:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 57.05,
+          "priorFormDeficit": 32.81,
+          "largestPlayerDeparture": 15.43,
+          "revealDeficit": 7.4,
+          "completeHistory": true
+        },
+        {
           "key": "1403370102899937280:3:4",
           "season": 2026,
           "week": 3,
@@ -947,6 +1398,17 @@
           "priorFormDeficit": 26.67,
           "largestPlayerDeparture": 16.5,
           "revealDeficit": 15.54,
+          "completeHistory": true
+        },
+        {
+          "key": "1393351811208871936:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 56.94,
+          "priorFormDeficit": 21.71,
+          "largestPlayerDeparture": 17.37,
+          "revealDeficit": 22,
           "completeHistory": true
         },
         {
@@ -980,6 +1442,17 @@
           "priorFormDeficit": 37.68,
           "largestPlayerDeparture": 15,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1394185143731625984:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 56.47,
+          "priorFormDeficit": 21.71,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 19.88,
           "completeHistory": true
         },
         {
@@ -1057,6 +1530,17 @@
           "priorFormDeficit": 34.04,
           "largestPlayerDeparture": 17,
           "revealDeficit": 0.24,
+          "completeHistory": true
+        },
+        {
+          "key": "1394832678041161728:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 53.21,
+          "priorFormDeficit": 23.28,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 11.2,
           "completeHistory": true
         },
         {
@@ -1170,6 +1654,17 @@
           "completeHistory": false
         },
         {
+          "key": "1389360012215721984:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 51.03,
+          "priorFormDeficit": 21.59,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 11.56,
+          "completeHistory": true
+        },
+        {
           "key": "1401066384359710720:3:2",
           "season": 2026,
           "week": 3,
@@ -1214,6 +1709,17 @@
           "completeHistory": true
         },
         {
+          "key": "1402457976001789952:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 49.84,
+          "priorFormDeficit": 24.66,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 5.76,
+          "completeHistory": true
+        },
+        {
           "key": "1312635303336357888:3:3",
           "season": 2026,
           "week": 3,
@@ -1233,6 +1739,39 @@
           "priorFormDeficit": 25.44,
           "largestPlayerDeparture": 26.5,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1389755923915894784:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 49.61,
+          "priorFormDeficit": 31.1,
+          "largestPlayerDeparture": 17.96,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1394719780912508928:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 49.19,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 45.16,
+          "completeHistory": true
+        },
+        {
+          "key": "1394719780912508928:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 48.99,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 28.56,
           "completeHistory": true
         },
         {
@@ -1280,6 +1819,17 @@
           "completeHistory": true
         },
         {
+          "key": "1394736960454545408:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 48.08,
+          "priorFormDeficit": 29.87,
+          "largestPlayerDeparture": 17.53,
+          "revealDeficit": 0.74,
+          "completeHistory": true
+        },
+        {
           "key": "1403370102899937280:3:3",
           "season": 2026,
           "week": 3,
@@ -1299,6 +1849,17 @@
           "priorFormDeficit": 13.46,
           "largestPlayerDeparture": 20.57,
           "revealDeficit": 21.24,
+          "completeHistory": true
+        },
+        {
+          "key": "1390742094192066560:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 46.95,
+          "priorFormDeficit": 20.05,
+          "largestPlayerDeparture": 17.73,
+          "revealDeficit": 14.14,
           "completeHistory": true
         },
         {
@@ -1324,6 +1885,17 @@
           "completeHistory": true
         },
         {
+          "key": "1402102379922354176:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 46.57,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 30.43,
+          "revealDeficit": 31.14,
+          "completeHistory": true
+        },
+        {
           "key": "1367294982964125696:3:3",
           "season": 2026,
           "week": 3,
@@ -1346,6 +1918,17 @@
           "completeHistory": false
         },
         {
+          "key": "1402102379922354176:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 46.35,
+          "priorFormDeficit": 24.87,
+          "largestPlayerDeparture": 16.37,
+          "revealDeficit": 7.68,
+          "completeHistory": true
+        },
+        {
           "key": "1389706408844365824:2:3",
           "season": 2026,
           "week": 2,
@@ -1355,6 +1938,28 @@
           "largestPlayerDeparture": 23.57,
           "revealDeficit": 37.56,
           "completeHistory": false
+        },
+        {
+          "key": "1402832254970953728:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 45.87,
+          "priorFormDeficit": 26.49,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 2.1,
+          "completeHistory": true
+        },
+        {
+          "key": "1312635303336357888:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 45.45,
+          "priorFormDeficit": 16.68,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 0,
+          "completeHistory": true
         },
         {
           "key": "1400294460448833536:3:1",
@@ -1401,6 +2006,17 @@
           "completeHistory": true
         },
         {
+          "key": "1367223707642134528:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 44.32,
+          "priorFormDeficit": 10.75,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 25.52,
+          "completeHistory": true
+        },
+        {
           "key": "1402102379922354176:2:5",
           "season": 2026,
           "week": 2,
@@ -1431,6 +2047,17 @@
           "priorFormDeficit": 28.18,
           "largestPlayerDeparture": 16.73,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1399132794830987264:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 43.97,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 23.54,
           "completeHistory": true
         },
         {
@@ -1467,6 +2094,17 @@
           "completeHistory": false
         },
         {
+          "key": "1390766319405662208:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 43,
+          "priorFormDeficit": 11.42,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 5.44,
+          "completeHistory": true
+        },
+        {
           "key": "1399582281898672128:3:5",
           "season": 2026,
           "week": 3,
@@ -1475,6 +2113,17 @@
           "priorFormDeficit": 21.32,
           "largestPlayerDeparture": 15.33,
           "revealDeficit": 10.54,
+          "completeHistory": true
+        },
+        {
+          "key": "1389708072447901696:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 42.81,
+          "priorFormDeficit": 12.51,
+          "largestPlayerDeparture": 17.53,
+          "revealDeficit": 21.52,
           "completeHistory": true
         },
         {
@@ -1508,6 +2157,28 @@
           "priorFormDeficit": 3.52,
           "largestPlayerDeparture": 18.73,
           "revealDeficit": 33.56,
+          "completeHistory": true
+        },
+        {
+          "key": "1403449701885300736:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 42.57,
+          "priorFormDeficit": 14.76,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1389360012215721984:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 41.71,
+          "priorFormDeficit": 12.57,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 2.42,
           "completeHistory": true
         },
         {
@@ -1575,6 +2246,28 @@
           "largestPlayerDeparture": 18.73,
           "revealDeficit": 37.14,
           "completeHistory": false
+        },
+        {
+          "key": "1395827459726770176:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 40.63,
+          "priorFormDeficit": 19.67,
+          "largestPlayerDeparture": 17.53,
+          "revealDeficit": 8.6,
+          "completeHistory": true
+        },
+        {
+          "key": "1389360012215721984:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 40.36,
+          "priorFormDeficit": 18.03,
+          "largestPlayerDeparture": 14.37,
+          "revealDeficit": 13.32,
+          "completeHistory": true
         },
         {
           "key": "1389706856162656258:2:4",
@@ -1665,6 +2358,28 @@
           "completeHistory": true
         },
         {
+          "key": "1400556721931288576:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 39.49,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 19.06,
+          "completeHistory": true
+        },
+        {
+          "key": "1389363029384114176:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 39.44,
+          "priorFormDeficit": 5.31,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 11.04,
+          "completeHistory": true
+        },
+        {
           "key": "1382195849081147392:3:3",
           "season": 2026,
           "week": 3,
@@ -1709,6 +2424,17 @@
           "completeHistory": true
         },
         {
+          "key": "1389708072447901696:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 38.94,
+          "priorFormDeficit": 16.67,
+          "largestPlayerDeparture": 23.37,
+          "revealDeficit": 5.56,
+          "completeHistory": true
+        },
+        {
           "key": "1312635303336357888:2:1",
           "season": 2026,
           "week": 2,
@@ -1728,6 +2454,17 @@
           "priorFormDeficit": 2.6,
           "largestPlayerDeparture": 23.23,
           "revealDeficit": 26.54,
+          "completeHistory": true
+        },
+        {
+          "key": "1401255623105982464:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 38.51,
+          "priorFormDeficit": 12.05,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 0,
           "completeHistory": true
         },
         {
@@ -1753,6 +2490,17 @@
           "completeHistory": true
         },
         {
+          "key": "1390742094192066560:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 38.26,
+          "priorFormDeficit": 16.5,
+          "largestPlayerDeparture": 21.87,
+          "revealDeficit": 6.64,
+          "completeHistory": true
+        },
+        {
           "key": "1395181284304617472:1:2",
           "season": 2026,
           "week": 1,
@@ -1762,6 +2510,17 @@
           "largestPlayerDeparture": 20.07,
           "revealDeficit": 33.16,
           "completeHistory": false
+        },
+        {
+          "key": "1402102379922354176:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 38.22,
+          "priorFormDeficit": 15.81,
+          "largestPlayerDeparture": 12.5,
+          "revealDeficit": 14.5,
+          "completeHistory": true
         },
         {
           "key": "1399197943726125056:2:1",
@@ -1816,6 +2575,50 @@
           "priorFormDeficit": 22.55,
           "largestPlayerDeparture": 18.73,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1401281924655226880:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 37.54,
+          "priorFormDeficit": 23.02,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 0.34,
+          "completeHistory": true
+        },
+        {
+          "key": "1382195849081147392:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 37.53,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 33.5,
+          "completeHistory": true
+        },
+        {
+          "key": "1389706856162656258:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 37.47,
+          "priorFormDeficit": 20.65,
+          "largestPlayerDeparture": 16,
+          "revealDeficit": 5.5,
+          "completeHistory": true
+        },
+        {
+          "key": "1403255829922062336:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 37.25,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 16.82,
           "completeHistory": true
         },
         {
@@ -1885,6 +2688,39 @@
           "completeHistory": false
         },
         {
+          "key": "1389706856162656258:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 36.81,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 16.38,
+          "completeHistory": true
+        },
+        {
+          "key": "1402832254970953728:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 36.7,
+          "priorFormDeficit": 24.42,
+          "largestPlayerDeparture": 15.07,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1403449701885300736:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 36.62,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 22.47,
+          "revealDeficit": 29.15,
+          "completeHistory": true
+        },
+        {
           "key": "1389706408844365824:2:1",
           "season": 2026,
           "week": 2,
@@ -1904,6 +2740,17 @@
           "priorFormDeficit": 0,
           "largestPlayerDeparture": 21.21,
           "revealDeficit": 30.18,
+          "completeHistory": true
+        },
+        {
+          "key": "1389356934615814144:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 36.38,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 16,
+          "revealDeficit": 35.38,
           "completeHistory": true
         },
         {
@@ -1962,6 +2809,17 @@
           "completeHistory": true
         },
         {
+          "key": "1389755923915894784:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 35.61,
+          "priorFormDeficit": 2.25,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 11.8,
+          "completeHistory": true
+        },
+        {
           "key": "1314524061405048832:2:1",
           "season": 2026,
           "week": 2,
@@ -1995,6 +2853,17 @@
           "completeHistory": false
         },
         {
+          "key": "1390766319405662208:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 35.38,
+          "priorFormDeficit": 20.95,
+          "largestPlayerDeparture": 18.96,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
           "key": "1398697840254943232:2:1",
           "season": 2026,
           "week": 2,
@@ -2004,6 +2873,17 @@
           "largestPlayerDeparture": 16.87,
           "revealDeficit": 33.2,
           "completeHistory": false
+        },
+        {
+          "key": "1398697840254943232:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 35.07,
+          "priorFormDeficit": 22.8,
+          "largestPlayerDeparture": 15.87,
+          "revealDeficit": 0,
+          "completeHistory": true
         },
         {
           "key": "1395827459726770176:1:3",
@@ -2083,6 +2963,39 @@
           "completeHistory": false
         },
         {
+          "key": "1400133300810420224:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 34.41,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 30.43,
+          "revealDeficit": 18.98,
+          "completeHistory": true
+        },
+        {
+          "key": "1403072250596306944:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 34.09,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 34.43,
+          "revealDeficit": 14.66,
+          "completeHistory": true
+        },
+        {
+          "key": "1389740595995480066:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 33.98,
+          "priorFormDeficit": 3.85,
+          "largestPlayerDeparture": 31.93,
+          "revealDeficit": 11.28,
+          "completeHistory": true
+        },
+        {
           "key": "1395402626060779520:3:4",
           "season": 2026,
           "week": 3,
@@ -2116,6 +3029,17 @@
           "completeHistory": true
         },
         {
+          "key": "1312635303336357888:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 33.64,
+          "priorFormDeficit": 19.74,
+          "largestPlayerDeparture": 19.03,
+          "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
           "key": "1382195849081147392:1:5",
           "season": 2026,
           "week": 1,
@@ -2136,6 +3060,17 @@
           "largestPlayerDeparture": 31.63,
           "revealDeficit": 16.82,
           "completeHistory": false
+        },
+        {
+          "key": "1392415516382994432:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 33.41,
+          "priorFormDeficit": 20.59,
+          "largestPlayerDeparture": 17.53,
+          "revealDeficit": 0,
+          "completeHistory": true
         },
         {
           "key": "1389755923915894784:3:1",
@@ -2193,6 +3128,39 @@
           "completeHistory": false
         },
         {
+          "key": "1400556721931288576:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 33.03,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 25.94,
+          "completeHistory": true
+        },
+        {
+          "key": "1382195849081147392:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 32.91,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 30.24,
+          "completeHistory": true
+        },
+        {
+          "key": "1399730088240500736:4:4",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "comfortable_win",
+          "score": 32.89,
+          "priorFormDeficit": 16.64,
+          "largestPlayerDeparture": 16.37,
+          "revealDeficit": 6.56,
+          "completeHistory": true
+        },
+        {
           "key": "1314524061405048832:3:4",
           "season": 2026,
           "week": 3,
@@ -2201,6 +3169,17 @@
           "priorFormDeficit": 20.14,
           "largestPlayerDeparture": 17.67,
           "revealDeficit": 0,
+          "completeHistory": true
+        },
+        {
+          "key": "1389357974920654848:4:1",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "close_winner",
+          "score": 32.63,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 30.43,
+          "revealDeficit": 17.2,
           "completeHistory": true
         },
         {
@@ -2259,6 +3238,17 @@
           "completeHistory": false
         },
         {
+          "key": "1396912922709458944:4:3",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "competitive_win",
+          "score": 32.17,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 25.08,
+          "completeHistory": true
+        },
+        {
           "key": "1394736960454545408:1:4",
           "season": 2026,
           "week": 1,
@@ -2278,6 +3268,17 @@
           "priorFormDeficit": 0,
           "largestPlayerDeparture": 25.63,
           "revealDeficit": 21.4,
+          "completeHistory": true
+        },
+        {
+          "key": "1395827459726770176:4:5",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 31.84,
+          "priorFormDeficit": 19.45,
+          "largestPlayerDeparture": 17.67,
+          "revealDeficit": 0,
           "completeHistory": true
         },
         {
@@ -2334,6 +3335,17 @@
           "largestPlayerDeparture": 24.27,
           "revealDeficit": 22,
           "completeHistory": false
+        },
+        {
+          "key": "1395181284304617472:4:2",
+          "season": 2026,
+          "week": 4,
+          "resultClass": "blowout",
+          "score": 31.21,
+          "priorFormDeficit": 4.08,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 4.66,
+          "completeHistory": true
         },
         {
           "key": "1395827459726770176:1:2",
@@ -2413,279 +3425,26 @@
           "completeHistory": true
         },
         {
-          "key": "1406112884336963584:2:3",
+          "key": "1389708072447901696:4:4",
           "season": 2026,
-          "week": 2,
-          "resultClass": "comfortable_win",
-          "score": 30.38,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 23.86,
-          "revealDeficit": 21.52,
-          "completeHistory": true
-        },
-        {
-          "key": "1400133300810420224:3:2",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "close_winner",
-          "score": 30.16,
-          "priorFormDeficit": 6.19,
-          "largestPlayerDeparture": 15.33,
-          "revealDeficit": 20.54,
-          "completeHistory": true
-        },
-        {
-          "key": "1395827459726770176:1:1",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "close_winner",
-          "score": 30.09,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 24.27,
-          "revealDeficit": 20.82,
-          "completeHistory": false
-        },
-        {
-          "key": "1389693574206988288:2:1",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "comfortable_win",
-          "score": 29.93,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 22.07,
-          "revealDeficit": 22.86,
-          "completeHistory": true
-        },
-        {
-          "key": "1395092222411563008:3:5",
-          "season": 2026,
-          "week": 3,
+          "week": 4,
           "resultClass": "blowout",
-          "score": 29.5,
-          "priorFormDeficit": 17.52,
-          "largestPlayerDeparture": 17.7,
-          "revealDeficit": 0.52,
+          "score": 30.59,
+          "priorFormDeficit": 0,
+          "largestPlayerDeparture": 35.43,
+          "revealDeficit": 10.16,
           "completeHistory": true
         },
         {
-          "key": "1390742094192066560:2:1",
+          "key": "1403255829922062336:4:1",
           "season": 2026,
-          "week": 2,
+          "week": 4,
           "resultClass": "competitive_win",
-          "score": 29.49,
+          "score": 30.59,
           "priorFormDeficit": 0,
-          "largestPlayerDeparture": 29.47,
-          "revealDeficit": 15.02,
-          "completeHistory": false
-        },
-        {
-          "key": "1392415516382994432:3:4",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "comfortable_win",
-          "score": 29.25,
-          "priorFormDeficit": 15.46,
-          "largestPlayerDeparture": 17.7,
-          "revealDeficit": 3.36,
+          "largestPlayerDeparture": 22.09,
+          "revealDeficit": 23.5,
           "completeHistory": true
-        },
-        {
-          "key": "1399582281898672128:3:1",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "competitive_win",
-          "score": 29.16,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 17.7,
-          "revealDeficit": 26.46,
-          "completeHistory": false
-        },
-        {
-          "key": "1403370102899937280:2:1",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 29.07,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 23.57,
-          "revealDeficit": 20.5,
-          "completeHistory": true
-        },
-        {
-          "key": "1399132794830987264:3:5",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "close_winner",
-          "score": 28.87,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 18.73,
-          "revealDeficit": 25.14,
-          "completeHistory": false
-        },
-        {
-          "key": "1403211792087322624:2:2",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 28.87,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 21.21,
-          "revealDeficit": 22.66,
-          "completeHistory": true
-        },
-        {
-          "key": "1398697840254943232:1:5",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "close_winner",
-          "score": 28.63,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 25.63,
-          "revealDeficit": 18,
-          "completeHistory": false
-        },
-        {
-          "key": "1403072250596306944:1:1",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "competitive_win",
-          "score": 28.63,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 19.63,
-          "revealDeficit": 24,
-          "completeHistory": false
-        },
-        {
-          "key": "1312635303336357888:2:3",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "comfortable_win",
-          "score": 28.62,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 26.5,
-          "revealDeficit": 17.12,
-          "completeHistory": false
-        },
-        {
-          "key": "1400294460448833536:2:3",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 28.59,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 31.63,
-          "revealDeficit": 11.96,
-          "completeHistory": false
-        },
-        {
-          "key": "1382195849081147392:2:4",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 28.54,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 14,
-          "revealDeficit": 28.54,
-          "completeHistory": false
-        },
-        {
-          "key": "1396912922709458944:3:5",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "competitive_win",
-          "score": 28.2,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 17.9,
-          "revealDeficit": 25.3,
-          "completeHistory": false
-        },
-        {
-          "key": "1394832678041161728:3:3",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "close_winner",
-          "score": 28.18,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 17.7,
-          "revealDeficit": 25.48,
-          "completeHistory": false
-        },
-        {
-          "key": "1403255829922062336:1:2",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "blowout",
-          "score": 27.8,
-          "priorFormDeficit": 15.65,
-          "largestPlayerDeparture": 19.33,
-          "revealDeficit": 0,
-          "completeHistory": true
-        },
-        {
-          "key": "1395181284304617472:2:3",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "competitive_win",
-          "score": 27.63,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 31.63,
-          "revealDeficit": 11,
-          "completeHistory": true
-        },
-        {
-          "key": "1400133300810420224:1:2",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "close_winner",
-          "score": 27.6,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 16.9,
-          "revealDeficit": 25.7,
-          "completeHistory": true
-        },
-        {
-          "key": "1312635303336357888:2:4",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "competitive_win",
-          "score": 27.59,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 31.63,
-          "revealDeficit": 10.96,
-          "completeHistory": true
-        },
-        {
-          "key": "1399730088240500736:1:3",
-          "season": 2026,
-          "week": 1,
-          "resultClass": "blowout",
-          "score": 27.36,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 20.5,
-          "revealDeficit": 21.86,
-          "completeHistory": true
-        },
-        {
-          "key": "1389360012215721984:3:2",
-          "season": 2026,
-          "week": 3,
-          "resultClass": "competitive_win",
-          "score": 27.26,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 11.97,
-          "revealDeficit": 27.26,
-          "completeHistory": false
-        },
-        {
-          "key": "1395827459726770176:2:2",
-          "season": 2026,
-          "week": 2,
-          "resultClass": "close_winner",
-          "score": 26.83,
-          "priorFormDeficit": 0,
-          "largestPlayerDeparture": 31.63,
-          "revealDeficit": 10.2,
-          "completeHistory": false
         }
       ]
     },

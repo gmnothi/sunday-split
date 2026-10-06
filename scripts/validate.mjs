@@ -53,7 +53,7 @@ if(pool.legacyRoundKeys) {
   assert.equal(JSON.stringify(daily),JSON.stringify(ctx.window.GamePacks.makePack(legacy,{date:'2026-10-01'})));
   assert.equal(pool.legacyRoundKeys.length,72);
   assert(rounds.length>pool.legacyRoundKeys.length);
-  assert(rounds.every(r=>r.week>=1&&r.week<=3));
+  assert(rounds.every(r=>r.week>=1&&r.week<=4));
   assert(rounds.filter(r=>r.resultClass==='close_winner').length>13);
 }
 assert.equal(daily.rounds.length,5);
@@ -97,7 +97,7 @@ for(let i=0;i<30;i++) {
   assert.equal(pack.rounds.filter(r=>r.resultClass==='comfortable_win').length,1);
   assert.equal(JSON.stringify(pack),JSON.stringify(make({date,savedKeys:pack.rounds.map(r=>r.key)})));
 }
-const sparse={...pool,rounds:rounds.filter(r=>r.resultClass==='blowout').slice(0,5)};
+const sparse={...pool,dailySnapshots:[],rounds:rounds.filter(r=>r.resultClass==='blowout').slice(0,5)};
 assert.equal(ctx.window.GamePacks.makePack(sparse,{date:'2026-10-02'}).rounds.length,5);
 vm.runInNewContext(fs.readFileSync(new URL('../dist/streaks.js',import.meta.url),'utf8'),ctx);
 const stats=(dates,today)=>JSON.parse(JSON.stringify(ctx.window.DailyStreaks.stats(dates,today)));
