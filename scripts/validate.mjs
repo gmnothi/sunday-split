@@ -92,9 +92,11 @@ for(let i=0;i<30;i++) {
   const date=new Date(Date.UTC(2026,9,2+i)).toISOString().slice(0,10);
   const pack=make({date});
   assert.equal(new Set(pack.rounds.map(r=>r.key)).size,5);
-  assert.equal(pack.rounds.filter(r=>r.resultClass==='close_winner').length,2);
-  assert.equal(pack.rounds.filter(r=>r.resultClass==='competitive_win').length,2);
-  assert.equal(pack.rounds.filter(r=>r.resultClass==='comfortable_win').length,1);
+  if(date<'2026-10-08') {
+    assert.equal(pack.rounds.filter(r=>r.resultClass==='close_winner').length,2);
+    assert.equal(pack.rounds.filter(r=>r.resultClass==='competitive_win').length,2);
+    assert.equal(pack.rounds.filter(r=>r.resultClass==='comfortable_win').length,1);
+  }
   assert.equal(JSON.stringify(pack),JSON.stringify(make({date,savedKeys:pack.rounds.map(r=>r.key)})));
 }
 const sparse={...pool,dailySnapshots:[],rounds:rounds.filter(r=>r.resultClass==='blowout').slice(0,5)};

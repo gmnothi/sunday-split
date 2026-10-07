@@ -33,6 +33,9 @@
     const restoring=savedKeys && savedKeys.length===5 && new Set(savedKeys).size===5 && savedKeys.every(key=>pool.rounds.some(r=>r.key===key));
     if(restoring) {
       selected.push(...savedKeys.map(key=>pool.rounds.find(r=>r.key===key)));
+    } else if((mode!=='daily'&&!freezeDaily)||date>='2026-10-08') {
+      const fallback=curated?weightedOrder(pool.rounds,random(id+':fallback'),curation):shuffle(pool.rounds,random(id+':fallback'));
+      selected.push(...diverseFive(available,fallback,curated?curation:null));
     } else {
       // Keep already-played daily games intact; favor suspense in new sets.
       const categories=mode==='daily' && date<'2026-10-02'
@@ -49,6 +52,36 @@
     }
     const ordered=restoring ? selected : shuffle(selected,rng);
     return {id,mode,date,rounds:ordered.map(r=>({...r,teams:random(id+':'+r.key)()<.5?[...r.teams]:[...r.teams].reverse()}))};
+  }
+  function diverseFive(available,pool,curation) {
+    const targets=['close_winner','close_winner','competitive_win','competitive_win','comfortable_win'];
+    const performances=r=>[...new Set(r.teams.flatMap(t=>t.players.map(p=>`${r.season}:${r.week}:${p.player_id}`)))];
+    const entries=pool.map(r=>({r,players:performances(r),week:`${r.season}:${r.week}`}));
+    const byKey=new Map(entries.map(e=>[e.r.key,e]));
+    const fresh=available.map(r=>byKey.get(r.key));
+    function attempt(offset) {
+      const chosen=[],seen=new Set(),weeks=new Map();let repeats=0;
+      for(let i=0;i<Math.min(5,entries.length);i++) {
+        const unused=list=>list.filter(e=>!chosen.includes(e));
+        let candidates=unused(fresh);if(!candidates.length)candidates=unused(entries);
+        const ranked=candidates.map((e,rank)=>({e,rank,overlap:e.players.filter(p=>seen.has(p)).length,weekCount:weeks.get(e.week)||0,category:e.r.resultClass===targets[i]?0:1,featured:curation?.seasons[e.r.season]?.[e.r.key]?0:1}));
+        ranked.sort((a,b)=>a.overlap-b.overlap||a.weekCount-b.weekCount||a.category-b.category||(i<3?a.featured-b.featured:0)||a.rank-b.rank);
+        // Retry only equal-quality choices if an earlier choice painted us into a corner.
+        const best=ranked[0];
+        const tied=ranked.filter(c=>c.overlap===best.overlap&&c.weekCount===best.weekCount&&c.category===best.category&&(i>=3||c.featured===best.featured));
+        const pick=tied[(offset*(i+1))%Math.min(4,tied.length)];
+        chosen.push(pick.e);repeats+=pick.overlap;
+        pick.e.players.forEach(p=>seen.add(p));weeks.set(pick.e.week,pick.weekCount+1);
+      }
+      return {chosen,repeats,spread:weeks.size};
+    }
+    let best=attempt(0);
+    if(best.repeats)for(let offset=1;offset<12;offset++) {
+      const candidate=attempt(offset);
+      if(candidate.repeats<best.repeats||candidate.repeats===best.repeats&&candidate.spread>best.spread)best=candidate;
+      if(!best.repeats)break;
+    }
+    return best.chosen.map(e=>e.r);
   }
   function weightedOrder(rounds,rng,curation=window.MATCHUP_CURATION) {
     return rounds.map(r=>({r,rank:-Math.log(Math.max(rng(),Number.MIN_VALUE))/(curation?.seasons[r.season]?.[r.key]||1)})).sort((a,b)=>a.rank-b.rank).map(item=>item.r);

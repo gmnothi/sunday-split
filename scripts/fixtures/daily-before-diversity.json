@@ -1,0 +1,4212 @@
+[
+  {
+    "season": 2025,
+    "options": {
+      "date": "2026-10-07"
+    },
+    "pack": {
+      "id": "daily:2026-10-07:2025-v1",
+      "mode": "daily",
+      "date": "2026-10-07",
+      "rounds": [
+        {
+          "key": "1255567325680111616:3:3",
+          "season": 2025,
+          "week": 3,
+          "leagueId": "1255567325680111616",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -2,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 0,
+            "rec": 0.5,
+            "pts_allow_14_20": 4,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 8,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 2,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": 0,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 6,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 94.26,
+              "players": [
+                {
+                  "player_id": "96",
+                  "name": "Aaron Rodgers",
+                  "slot": "QB",
+                  "points": 11.66
+                },
+                {
+                  "player_id": "4988",
+                  "name": "Nick Chubb",
+                  "slot": "RB",
+                  "points": 5.5
+                },
+                {
+                  "player_id": "5892",
+                  "name": "David Montgomery",
+                  "slot": "RB",
+                  "points": 28.9
+                },
+                {
+                  "player_id": "6794",
+                  "name": "Justin Jefferson",
+                  "slot": "WR",
+                  "points": 10
+                },
+                {
+                  "player_id": "2133",
+                  "name": "Davante Adams",
+                  "slot": "WR",
+                  "points": 13.1
+                },
+                {
+                  "player_id": "10859",
+                  "name": "Sam LaPorta",
+                  "slot": "TE",
+                  "points": 5.3
+                },
+                {
+                  "player_id": "5947",
+                  "name": "Jakobi Meyers",
+                  "slot": "FLEX",
+                  "points": 7.8
+                },
+                {
+                  "player_id": "11533",
+                  "name": "Brandon Aubrey",
+                  "slot": "K",
+                  "points": 8
+                },
+                {
+                  "player_id": "ATL",
+                  "name": "Atlanta Falcons",
+                  "slot": "DEF",
+                  "points": 4
+                }
+              ]
+            },
+            {
+              "total": 99.54,
+              "players": [
+                {
+                  "player_id": "3294",
+                  "name": "Dak Prescott",
+                  "slot": "QB",
+                  "points": 12.04
+                },
+                {
+                  "player_id": "12527",
+                  "name": "Ashton Jeanty",
+                  "slot": "RB",
+                  "points": 6.3
+                },
+                {
+                  "player_id": "8408",
+                  "name": "Jordan Mason",
+                  "slot": "RB",
+                  "points": 23.6
+                },
+                {
+                  "player_id": "11631",
+                  "name": "Brian Thomas",
+                  "slot": "WR",
+                  "points": 6.5
+                },
+                {
+                  "player_id": "9488",
+                  "name": "Jaxon Smith-Njigba",
+                  "slot": "WR",
+                  "points": 18.1
+                },
+                {
+                  "player_id": "8130",
+                  "name": "Trey McBride",
+                  "slot": "TE",
+                  "points": 12.8
+                },
+                {
+                  "player_id": "4137",
+                  "name": "James Conner",
+                  "slot": "FLEX",
+                  "points": 5.2
+                },
+                {
+                  "player_id": "4227",
+                  "name": "Harrison Butker",
+                  "slot": "K",
+                  "points": 11
+                },
+                {
+                  "player_id": "BUF",
+                  "name": "Buffalo Bills",
+                  "slot": "DEF",
+                  "points": 4
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1255567325680111616/matchups/3"
+        },
+        {
+          "key": "1257072638128304128:11:5",
+          "season": 2025,
+          "week": 11,
+          "leagueId": "1257072638128304128",
+          "scoring": {
+            "sack": 1,
+            "qb_hit": 0,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "fgm_yds": 0,
+            "def_forced_punts": 0,
+            "bonus_rec_yd_100": 0,
+            "bonus_rush_yd_100": 0,
+            "pass_int": -1.5,
+            "fgmiss_50p": 0,
+            "pts_allow_0": 10,
+            "bonus_pass_yd_400": 0,
+            "pass_2pt": 2,
+            "rec_0_4": 0,
+            "yds_allow_450_499": 0,
+            "blk_kick_ret_yd": 0,
+            "st_td": 6,
+            "def_pr_yd": 0,
+            "rec_30_39": 0,
+            "sack_yd": 0,
+            "fgm_yds_over_30": 0,
+            "rec_td": 6,
+            "yds_allow_400_449": 0,
+            "tkl_ast": 0,
+            "rec_20_29": 0,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td_50p": 0,
+            "rush_td": 6,
+            "def_kr_yd": 0,
+            "bonus_fd_wr": 0,
+            "pts_allow": 0,
+            "def_4_and_stop": 2,
+            "fg_ret_yd": 0,
+            "yds_allow_550p": 0,
+            "pass_td_40p": 1,
+            "def_st_tkl_solo": 0,
+            "yds_allow_350_399": 0,
+            "fgm": 0,
+            "idp_sack_yd": 0,
+            "bonus_rush_rec_yd_100": 0,
+            "rec_2pt": 2,
+            "bonus_pass_cmp_25": 0,
+            "rush_fd": 0,
+            "pass_int_td": -4,
+            "int_ret_yd": 0,
+            "pass_att": 0,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "bonus_def_fum_td_50p": 0,
+            "ff": 1,
+            "bonus_sack_2p": 0,
+            "fgmiss_30_39": 0,
+            "rec": 1,
+            "yds_allow_200_299": 0,
+            "pts_allow_14_20": 1,
+            "def_2pt": 0,
+            "fgm_0_19": 3,
+            "idp_pass_def_3p": 0,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "rec_fd": 0,
+            "kr_yd": 0,
+            "fgm_60p": 6,
+            "fgmiss_20_29": 0,
+            "rush_att": 0,
+            "st_tkl_solo": 0,
+            "yds_allow": 0,
+            "rec_5_9": 0,
+            "fgm_20_29": 3,
+            "yds_allow_500_549": 0,
+            "pts_allow_21_27": 0,
+            "bonus_rec_wr": 0,
+            "bonus_pass_yd_300": 0,
+            "xpm": 1,
+            "pass_td_50p": 2,
+            "pass_sack": 0,
+            "rec_40p": 0,
+            "def_3_and_out": 0,
+            "fgmiss_0_19": 0,
+            "pass_cmp": 0,
+            "tkl_loss": 0,
+            "rush_2pt": 2,
+            "def_pass_def": 0,
+            "yds_allow_300_349": 0,
+            "fum_rec": 2,
+            "rec_10_19": 0,
+            "bonus_rec_yd_200": 0,
+            "def_st_td": 6,
+            "tkl": 0,
+            "pass_cmp_40p": 0,
+            "fgm_50p": 0,
+            "bonus_tkl_10p": 0,
+            "def_td": 6,
+            "pass_fd": 0,
+            "rec_td_40p": 0,
+            "bonus_rush_yd_200": 0,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": 0,
+            "rec_td_50p": 0,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "tkl_solo": 0,
+            "bonus_rush_att_20": 0,
+            "yds_allow_100_199": 0,
+            "bonus_def_int_td_50p": 0,
+            "bonus_fd_qb": 0,
+            "rush_yd": 0.1,
+            "yds_allow_0_100": 0,
+            "bonus_rec_rb": 0,
+            "rush_40p": 0,
+            "pr_yd": 0,
+            "fum": 0,
+            "pts_allow_28_34": -2,
+            "pts_allow_35p": -4,
+            "bonus_rush_rec_yd_200": 0,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "rush_td_40p": 0,
+            "bonus_fd_te": 0,
+            "bonus_fd_rb": 0,
+            "fum_ret_yd": 0,
+            "def_st_ff": 1,
+            "pass_inc": 0,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 138.02,
+              "players": [
+                {
+                  "player_id": "3294",
+                  "name": "Dak Prescott",
+                  "slot": "QB",
+                  "points": 24.32
+                },
+                {
+                  "player_id": "7588",
+                  "name": "Javonte Williams",
+                  "slot": "RB",
+                  "points": 10.3
+                },
+                {
+                  "player_id": "8138",
+                  "name": "James Cook",
+                  "slot": "RB",
+                  "points": 20.4
+                },
+                {
+                  "player_id": "6794",
+                  "name": "Justin Jefferson",
+                  "slot": "WR",
+                  "points": 11.1
+                },
+                {
+                  "player_id": "7564",
+                  "name": "Ja'Marr Chase",
+                  "slot": "WR",
+                  "points": 6
+                },
+                {
+                  "player_id": "4217",
+                  "name": "George Kittle",
+                  "slot": "TE",
+                  "points": 24.7
+                },
+                {
+                  "player_id": "9997",
+                  "name": "Zay Flowers",
+                  "slot": "FLEX",
+                  "points": 11.3
+                },
+                {
+                  "player_id": "5859",
+                  "name": "A.J. Brown",
+                  "slot": "FLEX",
+                  "points": 11.9
+                },
+                {
+                  "player_id": "4195",
+                  "name": "Jake Elliott",
+                  "slot": "K",
+                  "points": 11
+                },
+                {
+                  "player_id": "ATL",
+                  "name": "Atlanta Falcons",
+                  "slot": "DEF",
+                  "points": 7
+                }
+              ]
+            },
+            {
+              "total": 149.68,
+              "players": [
+                {
+                  "player_id": "4984",
+                  "name": "Josh Allen",
+                  "slot": "QB",
+                  "points": 47.68
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 20.1
+                },
+                {
+                  "player_id": "8228",
+                  "name": "Jaylen Warren",
+                  "slot": "RB",
+                  "points": 8.7
+                },
+                {
+                  "player_id": "7049",
+                  "name": "Jauan Jennings",
+                  "slot": "WR",
+                  "points": 9.4
+                },
+                {
+                  "player_id": "7569",
+                  "name": "Nico Collins",
+                  "slot": "WR",
+                  "points": 24.2
+                },
+                {
+                  "player_id": "7600",
+                  "name": "Pat Freiermuth",
+                  "slot": "TE",
+                  "points": 2.9
+                },
+                {
+                  "player_id": "12527",
+                  "name": "Ashton Jeanty",
+                  "slot": "FLEX",
+                  "points": 9.4
+                },
+                {
+                  "player_id": "2374",
+                  "name": "Tyler Lockett",
+                  "slot": "FLEX",
+                  "points": 6.3
+                },
+                {
+                  "player_id": "11533",
+                  "name": "Brandon Aubrey",
+                  "slot": "K",
+                  "points": 9
+                },
+                {
+                  "player_id": "BAL",
+                  "name": "Baltimore Ravens",
+                  "slot": "DEF",
+                  "points": 12
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1257072638128304128/matchups/11"
+        },
+        {
+          "key": "1256037594211307520:9:5",
+          "season": 2025,
+          "week": 9,
+          "leagueId": "1256037594211307520",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "idp_int": 2,
+            "rec": 0.5,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "idp_def_td": 6,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "idp_sack": 0,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 112.04,
+              "players": [
+                {
+                  "player_id": "421",
+                  "name": "Matthew Stafford",
+                  "slot": "QB",
+                  "points": 26.84
+                },
+                {
+                  "player_id": "3198",
+                  "name": "Derrick Henry",
+                  "slot": "RB",
+                  "points": 12.6
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 7.1
+                },
+                {
+                  "player_id": "2449",
+                  "name": "Stefon Diggs",
+                  "slot": "WR",
+                  "points": 11.3
+                },
+                {
+                  "player_id": "11620",
+                  "name": "Rome Odunze",
+                  "slot": "WR",
+                  "points": 0
+                },
+                {
+                  "player_id": "8110",
+                  "name": "Jake Ferguson",
+                  "slot": "TE",
+                  "points": 5.5
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "FLEX",
+                  "points": 11.2
+                },
+                {
+                  "player_id": "7543",
+                  "name": "Travis Etienne",
+                  "slot": "FLEX",
+                  "points": 14
+                },
+                {
+                  "player_id": "2133",
+                  "name": "Davante Adams",
+                  "slot": "FLEX",
+                  "points": 20.5
+                },
+                {
+                  "player_id": "JAX",
+                  "name": "Jacksonville Jaguars",
+                  "slot": "DEF",
+                  "points": 3
+                }
+              ]
+            },
+            {
+              "total": 111.9,
+              "players": [
+                {
+                  "player_id": "4943",
+                  "name": "Sam Darnold",
+                  "slot": "QB",
+                  "points": 28.2
+                },
+                {
+                  "player_id": "7567",
+                  "name": "Kenny Gainwell",
+                  "slot": "RB",
+                  "points": 5.4
+                },
+                {
+                  "player_id": "5892",
+                  "name": "David Montgomery",
+                  "slot": "RB",
+                  "points": 10
+                },
+                {
+                  "player_id": "6801",
+                  "name": "Tee Higgins",
+                  "slot": "WR",
+                  "points": 29.6
+                },
+                {
+                  "player_id": "5045",
+                  "name": "Courtland Sutton",
+                  "slot": "WR",
+                  "points": 9.5
+                },
+                {
+                  "player_id": "4217",
+                  "name": "George Kittle",
+                  "slot": "TE",
+                  "points": 4.9
+                },
+                {
+                  "player_id": "5012",
+                  "name": "Mark Andrews",
+                  "slot": "FLEX",
+                  "points": 15.6
+                },
+                {
+                  "player_id": "7594",
+                  "name": "Chuba Hubbard",
+                  "slot": "FLEX",
+                  "points": 1.7
+                },
+                {
+                  "player_id": "7090",
+                  "name": "Darnell Mooney",
+                  "slot": "FLEX",
+                  "points": 2
+                },
+                {
+                  "player_id": "GB",
+                  "name": "Green Bay Packers",
+                  "slot": "DEF",
+                  "points": 5
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1256037594211307520/matchups/9"
+        },
+        {
+          "key": "1263748243481694208:14:4",
+          "season": 2025,
+          "week": 14,
+          "leagueId": "1263748243481694208",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 3,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": 0,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": 0,
+            "ff": 0,
+            "fgmiss_30_39": -1,
+            "rec": 1,
+            "pts_allow_14_20": 2,
+            "def_2pt": 2,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgmiss_20_29": -1,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "fgmiss_0_19": -1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 4,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": -0.5,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -2,
+            "pts_allow_35p": -5,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "comfortable_win",
+          "teams": [
+            {
+              "total": 97.5,
+              "players": [
+                {
+                  "player_id": "5870",
+                  "name": "Daniel Jones",
+                  "slot": "QB",
+                  "points": 1.8
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 17.7
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 3.8
+                },
+                {
+                  "player_id": "8144",
+                  "name": "Chris Olave",
+                  "slot": "WR",
+                  "points": 6
+                },
+                {
+                  "player_id": "6786",
+                  "name": "CeeDee Lamb",
+                  "slot": "WR",
+                  "points": 18.1
+                },
+                {
+                  "player_id": "7569",
+                  "name": "Nico Collins",
+                  "slot": "WR",
+                  "points": 16.1
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 1.8
+                },
+                {
+                  "player_id": "10219",
+                  "name": "Chris Rodriguez",
+                  "slot": "FLEX",
+                  "points": 5.2
+                },
+                {
+                  "player_id": "5012",
+                  "name": "Mark Andrews",
+                  "slot": "FLEX",
+                  "points": 1.9
+                },
+                {
+                  "player_id": "1339",
+                  "name": "Zach Ertz",
+                  "slot": "FLEX",
+                  "points": 2.1
+                },
+                {
+                  "player_id": "17",
+                  "name": "Matt Prater",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "MIA",
+                  "name": "Miami Dolphins",
+                  "slot": "DEF",
+                  "points": 16
+                }
+              ]
+            },
+            {
+              "total": 122.76,
+              "players": [
+                {
+                  "player_id": "6770",
+                  "name": "Joe Burrow",
+                  "slot": "QB",
+                  "points": 25.36
+                },
+                {
+                  "player_id": "8228",
+                  "name": "Jaylen Warren",
+                  "slot": "RB",
+                  "points": 15.2
+                },
+                {
+                  "player_id": "9508",
+                  "name": "Tyjae Spears",
+                  "slot": "RB",
+                  "points": 6.7
+                },
+                {
+                  "player_id": "11624",
+                  "name": "Xavier Worthy",
+                  "slot": "WR",
+                  "points": 8.5
+                },
+                {
+                  "player_id": "12492",
+                  "name": "Pat Bryant",
+                  "slot": "WR",
+                  "points": 7.2
+                },
+                {
+                  "player_id": "12514",
+                  "name": "Emeka Egbuka",
+                  "slot": "WR",
+                  "points": 3.5
+                },
+                {
+                  "player_id": "11603",
+                  "name": "AJ Barner",
+                  "slot": "TE",
+                  "points": 5.7
+                },
+                {
+                  "player_id": "11586",
+                  "name": "Blake Corum",
+                  "slot": "FLEX",
+                  "points": 26.1
+                },
+                {
+                  "player_id": "4147",
+                  "name": "Samaje Perine",
+                  "slot": "FLEX",
+                  "points": 4.8
+                },
+                {
+                  "player_id": "12534",
+                  "name": "Kyle Monangai",
+                  "slot": "FLEX",
+                  "points": 8.7
+                },
+                {
+                  "player_id": "7839",
+                  "name": "Evan McPherson",
+                  "slot": "K",
+                  "points": 4
+                },
+                {
+                  "player_id": "LAR",
+                  "name": "Los Angeles Rams",
+                  "slot": "DEF",
+                  "points": 7
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1263748243481694208/matchups/14"
+        },
+        {
+          "key": "1257452114628583424:8:2",
+          "season": 2025,
+          "week": 8,
+          "leagueId": "1257452114628583424",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "def_4_and_stop": 1,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 132.24,
+              "players": [
+                {
+                  "player_id": "4892",
+                  "name": "Baker Mayfield",
+                  "slot": "QB",
+                  "points": 4.08
+                },
+                {
+                  "player_id": "8155",
+                  "name": "Breece Hall",
+                  "slot": "RB",
+                  "points": 32.86
+                },
+                {
+                  "player_id": "12481",
+                  "name": "Cam Skattebo",
+                  "slot": "RB",
+                  "points": 10
+                },
+                {
+                  "player_id": "7525",
+                  "name": "DeVonta Smith",
+                  "slot": "WR",
+                  "points": 14.4
+                },
+                {
+                  "player_id": "10229",
+                  "name": "Rashee Rice",
+                  "slot": "WR",
+                  "points": 25.5
+                },
+                {
+                  "player_id": "8111",
+                  "name": "Cade Otton",
+                  "slot": "TE",
+                  "points": 8
+                },
+                {
+                  "player_id": "11620",
+                  "name": "Rome Odunze",
+                  "slot": "FLEX",
+                  "points": 18.4
+                },
+                {
+                  "player_id": "12711",
+                  "name": "Tyler Loop",
+                  "slot": "K",
+                  "points": 13
+                },
+                {
+                  "player_id": "HOU",
+                  "name": "Houston Texans",
+                  "slot": "DEF",
+                  "points": 6
+                }
+              ]
+            },
+            {
+              "total": 131.56,
+              "players": [
+                {
+                  "player_id": "96",
+                  "name": "Aaron Rodgers",
+                  "slot": "QB",
+                  "points": 16.76
+                },
+                {
+                  "player_id": "4034",
+                  "name": "Christian McCaffrey",
+                  "slot": "RB",
+                  "points": 9.8
+                },
+                {
+                  "player_id": "8138",
+                  "name": "James Cook",
+                  "slot": "RB",
+                  "points": 33.6
+                },
+                {
+                  "player_id": "8137",
+                  "name": "George Pickens",
+                  "slot": "WR",
+                  "points": 14.8
+                },
+                {
+                  "player_id": "4983",
+                  "name": "DJ Moore",
+                  "slot": "WR",
+                  "points": 11.6
+                },
+                {
+                  "player_id": "8110",
+                  "name": "Jake Ferguson",
+                  "slot": "TE",
+                  "points": 0
+                },
+                {
+                  "player_id": "8144",
+                  "name": "Chris Olave",
+                  "slot": "FLEX",
+                  "points": 14
+                },
+                {
+                  "player_id": "1945",
+                  "name": "Chris Boswell",
+                  "slot": "K",
+                  "points": 20
+                },
+                {
+                  "player_id": "CLE",
+                  "name": "Cleveland Browns",
+                  "slot": "DEF",
+                  "points": 11
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1257452114628583424/matchups/8"
+        }
+      ]
+    }
+  },
+  {
+    "season": 2025,
+    "options": {
+      "date": "2026-10-07",
+      "practiceSeed": "confidence-2025-2026-10-07",
+      "freezeDaily": true
+    },
+    "pack": {
+      "id": "practice:confidence-2025-2026-10-07:2025-v1",
+      "mode": "practice",
+      "date": "2026-10-07",
+      "rounds": [
+        {
+          "key": "1261499011798413312:2:2",
+          "season": 2025,
+          "week": 2,
+          "leagueId": "1261499011798413312",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 135.58,
+              "players": [
+                {
+                  "player_id": "6797",
+                  "name": "Justin Herbert",
+                  "slot": "QB",
+                  "points": 18.78
+                },
+                {
+                  "player_id": "12527",
+                  "name": "Ashton Jeanty",
+                  "slot": "RB",
+                  "points": 7.4
+                },
+                {
+                  "player_id": "12507",
+                  "name": "Omarion Hampton",
+                  "slot": "RB",
+                  "points": 3.5
+                },
+                {
+                  "player_id": "7547",
+                  "name": "Amon-Ra St. Brown",
+                  "slot": "WR",
+                  "points": 39.2
+                },
+                {
+                  "player_id": "5872",
+                  "name": "Deebo Samuel",
+                  "slot": "WR",
+                  "points": 17.4
+                },
+                {
+                  "player_id": "8130",
+                  "name": "Trey McBride",
+                  "slot": "TE",
+                  "points": 13.8
+                },
+                {
+                  "player_id": "12529",
+                  "name": "TreVeyon Henderson",
+                  "slot": "FLEX",
+                  "points": 6
+                },
+                {
+                  "player_id": "6806",
+                  "name": "J.K. Dobbins",
+                  "slot": "FLEX",
+                  "points": 15.5
+                },
+                {
+                  "player_id": "3451",
+                  "name": "Ka'imi Fairbairn",
+                  "slot": "K",
+                  "points": 9
+                },
+                {
+                  "player_id": "GB",
+                  "name": "Green Bay Packers",
+                  "slot": "DEF",
+                  "points": 5
+                }
+              ]
+            },
+            {
+              "total": 123.86,
+              "players": [
+                {
+                  "player_id": "3163",
+                  "name": "Jared Goff",
+                  "slot": "QB",
+                  "points": 33.96
+                },
+                {
+                  "player_id": "9509",
+                  "name": "Bijan Robinson",
+                  "slot": "RB",
+                  "points": 19.8
+                },
+                {
+                  "player_id": "5850",
+                  "name": "Josh Jacobs",
+                  "slot": "RB",
+                  "points": 14.4
+                },
+                {
+                  "player_id": "11635",
+                  "name": "Ladd McConkey",
+                  "slot": "WR",
+                  "points": 9.8
+                },
+                {
+                  "player_id": "2216",
+                  "name": "Mike Evans",
+                  "slot": "WR",
+                  "points": 10.6
+                },
+                {
+                  "player_id": "10859",
+                  "name": "Sam LaPorta",
+                  "slot": "TE",
+                  "points": 5.6
+                },
+                {
+                  "player_id": "7525",
+                  "name": "DeVonta Smith",
+                  "slot": "FLEX",
+                  "points": 9.3
+                },
+                {
+                  "player_id": "12489",
+                  "name": "RJ Harvey",
+                  "slot": "FLEX",
+                  "points": 3.4
+                },
+                {
+                  "player_id": "4195",
+                  "name": "Jake Elliott",
+                  "slot": "K",
+                  "points": 12
+                },
+                {
+                  "player_id": "PIT",
+                  "name": "Pittsburgh Steelers",
+                  "slot": "DEF",
+                  "points": 5
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1261499011798413312/matchups/2"
+        },
+        {
+          "key": "1256037594211307520:1:5",
+          "season": 2025,
+          "week": 1,
+          "leagueId": "1256037594211307520",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "idp_int": 2,
+            "rec": 0.5,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "idp_def_td": 6,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "idp_sack": 0,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 112.54,
+              "players": [
+                {
+                  "player_id": "11563",
+                  "name": "Bo Nix",
+                  "slot": "QB",
+                  "points": 8.84
+                },
+                {
+                  "player_id": "12527",
+                  "name": "Ashton Jeanty",
+                  "slot": "RB",
+                  "points": 11
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 13.4
+                },
+                {
+                  "player_id": "6794",
+                  "name": "Justin Jefferson",
+                  "slot": "WR",
+                  "points": 12.8
+                },
+                {
+                  "player_id": "5859",
+                  "name": "A.J. Brown",
+                  "slot": "WR",
+                  "points": 1.3
+                },
+                {
+                  "player_id": "8130",
+                  "name": "Trey McBride",
+                  "slot": "TE",
+                  "points": 9.1
+                },
+                {
+                  "player_id": "11635",
+                  "name": "Ladd McConkey",
+                  "slot": "FLEX",
+                  "points": 10.4
+                },
+                {
+                  "player_id": "8155",
+                  "name": "Breece Hall",
+                  "slot": "FLEX",
+                  "points": 15.5
+                },
+                {
+                  "player_id": "4199",
+                  "name": "Aaron Jones",
+                  "slot": "FLEX",
+                  "points": 14.2
+                },
+                {
+                  "player_id": "DEN",
+                  "name": "Denver Broncos",
+                  "slot": "DEF",
+                  "points": 16
+                }
+              ]
+            },
+            {
+              "total": 111.98,
+              "players": [
+                {
+                  "player_id": "8183",
+                  "name": "Brock Purdy",
+                  "slot": "QB",
+                  "points": 18.78
+                },
+                {
+                  "player_id": "3198",
+                  "name": "Derrick Henry",
+                  "slot": "RB",
+                  "points": 28.7
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 3.9
+                },
+                {
+                  "player_id": "2133",
+                  "name": "Davante Adams",
+                  "slot": "WR",
+                  "points": 7.1
+                },
+                {
+                  "player_id": "11620",
+                  "name": "Rome Odunze",
+                  "slot": "WR",
+                  "points": 12.7
+                },
+                {
+                  "player_id": "5844",
+                  "name": "T.J. Hockenson",
+                  "slot": "TE",
+                  "points": 3
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "FLEX",
+                  "points": 5
+                },
+                {
+                  "player_id": "4981",
+                  "name": "Calvin Ridley",
+                  "slot": "FLEX",
+                  "points": 4.7
+                },
+                {
+                  "player_id": "7543",
+                  "name": "Travis Etienne",
+                  "slot": "FLEX",
+                  "points": 17.1
+                },
+                {
+                  "player_id": "SF",
+                  "name": "San Francisco 49ers",
+                  "slot": "DEF",
+                  "points": 11
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1256037594211307520/matchups/1"
+        },
+        {
+          "key": "1257055081837101056:7:5",
+          "season": 2025,
+          "week": 7,
+          "leagueId": "1257055081837101056",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -2,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_60p": 6,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 0,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 94.8,
+              "players": [
+                {
+                  "player_id": "6797",
+                  "name": "Justin Herbert",
+                  "slot": "QB",
+                  "points": 27.9
+                },
+                {
+                  "player_id": "8155",
+                  "name": "Breece Hall",
+                  "slot": "RB",
+                  "points": 7.2
+                },
+                {
+                  "player_id": "4035",
+                  "name": "Alvin Kamara",
+                  "slot": "RB",
+                  "points": 5.9
+                },
+                {
+                  "player_id": "2449",
+                  "name": "Stefon Diggs",
+                  "slot": "WR",
+                  "points": 13.9
+                },
+                {
+                  "player_id": "5045",
+                  "name": "Courtland Sutton",
+                  "slot": "WR",
+                  "points": 16.7
+                },
+                {
+                  "player_id": "3214",
+                  "name": "Hunter Henry",
+                  "slot": "TE",
+                  "points": 7.3
+                },
+                {
+                  "player_id": "5892",
+                  "name": "David Montgomery",
+                  "slot": "FLEX",
+                  "points": 5.9
+                },
+                {
+                  "player_id": "6650",
+                  "name": "Chase McLaughlin",
+                  "slot": "K",
+                  "points": 5
+                },
+                {
+                  "player_id": "DEN",
+                  "name": "Denver Broncos",
+                  "slot": "DEF",
+                  "points": 5
+                }
+              ]
+            },
+            {
+              "total": 101.28,
+              "players": [
+                {
+                  "player_id": "11564",
+                  "name": "Drake Maye",
+                  "slot": "QB",
+                  "points": 23.08
+                },
+                {
+                  "player_id": "8136",
+                  "name": "Rachaad White",
+                  "slot": "RB",
+                  "points": 8.4
+                },
+                {
+                  "player_id": "9509",
+                  "name": "Bijan Robinson",
+                  "slot": "RB",
+                  "points": 21.2
+                },
+                {
+                  "player_id": "2216",
+                  "name": "Mike Evans",
+                  "slot": "WR",
+                  "points": 0
+                },
+                {
+                  "player_id": "8137",
+                  "name": "George Pickens",
+                  "slot": "WR",
+                  "points": 12.2
+                },
+                {
+                  "player_id": "1339",
+                  "name": "Zach Ertz",
+                  "slot": "TE",
+                  "points": 12.7
+                },
+                {
+                  "player_id": "8408",
+                  "name": "Jordan Mason",
+                  "slot": "FLEX",
+                  "points": 11.7
+                },
+                {
+                  "player_id": "5189",
+                  "name": "Eddy Pineiro",
+                  "slot": "K",
+                  "points": 11
+                },
+                {
+                  "player_id": "PIT",
+                  "name": "Pittsburgh Steelers",
+                  "slot": "DEF",
+                  "points": 1
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1257055081837101056/matchups/7"
+        },
+        {
+          "key": "1185170322272509952:10:4",
+          "season": 2025,
+          "week": 10,
+          "leagueId": "1185170322272509952",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 6,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 114.9,
+              "players": [
+                {
+                  "player_id": "5870",
+                  "name": "Daniel Jones",
+                  "slot": "QB",
+                  "points": 18.5
+                },
+                {
+                  "player_id": "12529",
+                  "name": "TreVeyon Henderson",
+                  "slot": "RB",
+                  "points": 28
+                },
+                {
+                  "player_id": "6790",
+                  "name": "D'Andre Swift",
+                  "slot": "RB",
+                  "points": 14.8
+                },
+                {
+                  "player_id": "9997",
+                  "name": "Zay Flowers",
+                  "slot": "WR",
+                  "points": 12.1
+                },
+                {
+                  "player_id": "9756",
+                  "name": "Jordan Addison",
+                  "slot": "WR",
+                  "points": 6.5
+                },
+                {
+                  "player_id": "5001",
+                  "name": "Dalton Schultz",
+                  "slot": "TE",
+                  "points": 18.3
+                },
+                {
+                  "player_id": "4983",
+                  "name": "DJ Moore",
+                  "slot": "FLEX",
+                  "points": 0
+                },
+                {
+                  "player_id": "8134",
+                  "name": "Khalil Shakir",
+                  "slot": "FLEX",
+                  "points": 12.8
+                },
+                {
+                  "player_id": "6819",
+                  "name": "Michael Pittman",
+                  "slot": "FLEX",
+                  "points": 3.9
+                }
+              ]
+            },
+            {
+              "total": 115.84,
+              "players": [
+                {
+                  "player_id": "6804",
+                  "name": "Jordan Love",
+                  "slot": "QB",
+                  "points": 7.84
+                },
+                {
+                  "player_id": "12527",
+                  "name": "Ashton Jeanty",
+                  "slot": "RB",
+                  "points": 15.3
+                },
+                {
+                  "player_id": "12489",
+                  "name": "RJ Harvey",
+                  "slot": "RB",
+                  "points": 3.8
+                },
+                {
+                  "player_id": "8112",
+                  "name": "Drake London",
+                  "slot": "WR",
+                  "points": 24.4
+                },
+                {
+                  "player_id": "12526",
+                  "name": "Tetairoa McMillan",
+                  "slot": "WR",
+                  "points": 11
+                },
+                {
+                  "player_id": "8130",
+                  "name": "Trey McBride",
+                  "slot": "TE",
+                  "points": 27.7
+                },
+                {
+                  "player_id": "11628",
+                  "name": "Marvin Harrison",
+                  "slot": "FLEX",
+                  "points": 14.3
+                },
+                {
+                  "player_id": "7553",
+                  "name": "Kyle Pitts",
+                  "slot": "FLEX",
+                  "points": 5.8
+                },
+                {
+                  "player_id": "10236",
+                  "name": "Dalton Kincaid",
+                  "slot": "FLEX",
+                  "points": 5.7
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1185170322272509952/matchups/10"
+        },
+        {
+          "key": "1266949127510441984:5:4",
+          "season": 2025,
+          "week": 5,
+          "leagueId": "1266949127510441984",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "def_4_and_stop": 0,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_60p": 6,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "comfortable_win",
+          "teams": [
+            {
+              "total": 122.46,
+              "players": [
+                {
+                  "player_id": "4892",
+                  "name": "Baker Mayfield",
+                  "slot": "QB",
+                  "points": 26.66
+                },
+                {
+                  "player_id": "8138",
+                  "name": "James Cook",
+                  "slot": "RB",
+                  "points": 4.9
+                },
+                {
+                  "player_id": "12481",
+                  "name": "Cam Skattebo",
+                  "slot": "RB",
+                  "points": 14.4
+                },
+                {
+                  "player_id": "5045",
+                  "name": "Courtland Sutton",
+                  "slot": "WR",
+                  "points": 17.9
+                },
+                {
+                  "player_id": "7569",
+                  "name": "Nico Collins",
+                  "slot": "WR",
+                  "points": 16
+                },
+                {
+                  "player_id": "12506",
+                  "name": "Harold Fannin",
+                  "slot": "TE",
+                  "points": 11.3
+                },
+                {
+                  "player_id": "12514",
+                  "name": "Emeka Egbuka",
+                  "slot": "FLEX",
+                  "points": 31.3
+                },
+                {
+                  "player_id": "12711",
+                  "name": "Tyler Loop",
+                  "slot": "K",
+                  "points": 3
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": -3
+                }
+              ]
+            },
+            {
+              "total": 140.46,
+              "players": [
+                {
+                  "player_id": "9758",
+                  "name": "C.J. Stroud",
+                  "slot": "QB",
+                  "points": 28.76
+                },
+                {
+                  "player_id": "11199",
+                  "name": "Emari Demercado",
+                  "slot": "RB",
+                  "points": 6.1
+                },
+                {
+                  "player_id": "3198",
+                  "name": "Derrick Henry",
+                  "slot": "RB",
+                  "points": 9.3
+                },
+                {
+                  "player_id": "4454",
+                  "name": "Kendrick Bourne",
+                  "slot": "WR",
+                  "points": 24.2
+                },
+                {
+                  "player_id": "8676",
+                  "name": "Rashid Shaheed",
+                  "slot": "WR",
+                  "points": 21.4
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 19.1
+                },
+                {
+                  "player_id": "2449",
+                  "name": "Stefon Diggs",
+                  "slot": "FLEX",
+                  "points": 24.6
+                },
+                {
+                  "player_id": "8259",
+                  "name": "Cameron Dicker",
+                  "slot": "K",
+                  "points": 6
+                },
+                {
+                  "player_id": "LAR",
+                  "name": "Los Angeles Rams",
+                  "slot": "DEF",
+                  "points": 1
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1266949127510441984/matchups/5"
+        }
+      ]
+    }
+  },
+  {
+    "season": 2026,
+    "options": {
+      "date": "2026-10-07"
+    },
+    "pack": {
+      "id": "daily:2026-10-07:2026-weeks-1-3-v1",
+      "mode": "daily",
+      "date": "2026-10-07",
+      "rounds": [
+        {
+          "key": "1398697840254943232:4:1",
+          "season": 2026,
+          "week": 4,
+          "leagueId": "1398697840254943232",
+          "scoring": {
+            "sack": 1,
+            "qb_hit": 0,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "fgm_yds": 0,
+            "def_forced_punts": 0,
+            "bonus_rec_yd_100": 0,
+            "bonus_rush_yd_100": 0,
+            "pass_int": -1,
+            "fgmiss_50p": 0,
+            "pts_allow_0": 10,
+            "bonus_pass_yd_400": 0,
+            "pass_2pt": 2,
+            "rec_0_4": 0,
+            "yds_allow_450_499": 0,
+            "blk_kick_ret_yd": 0,
+            "st_td": 6,
+            "def_pr_yd": 0,
+            "rec_30_39": 0.5,
+            "sack_yd": 0,
+            "fgm_yds_over_30": 0,
+            "rec_td": 6,
+            "yds_allow_400_449": 0,
+            "tkl_ast": 0,
+            "rec_20_29": 0,
+            "idp_blk_kick": 0,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "idp_fum_ret_yd": 0,
+            "xpmiss": -1,
+            "rush_td_50p": 0,
+            "rush_td": 6,
+            "def_kr_yd": 0,
+            "bonus_fd_wr": 0,
+            "pts_allow": 0,
+            "def_4_and_stop": 0,
+            "fg_ret_yd": 0,
+            "idp_tkl": 0,
+            "yds_allow_550p": 0,
+            "pass_td_40p": 0,
+            "def_st_tkl_solo": 0,
+            "yds_allow_350_399": 0,
+            "fgm": 0,
+            "idp_sack_yd": 0,
+            "bonus_rush_rec_yd_100": 0,
+            "rec_2pt": 2,
+            "bonus_pass_cmp_25": 0,
+            "idp_tkl_loss": 0,
+            "rush_fd": 0,
+            "pass_int_td": 0,
+            "int_ret_yd": 0,
+            "idp_tkl_solo": 0,
+            "pass_att": 0,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "bonus_def_fum_td_50p": 0,
+            "ff": 1,
+            "idp_int": 0,
+            "bonus_sack_2p": 0,
+            "fgmiss_30_39": 0,
+            "rec": 0.5,
+            "yds_allow_200_299": 0,
+            "idp_int_ret_yd": 0,
+            "idp_safe": 0,
+            "pts_allow_14_20": 1,
+            "def_2pt": 0,
+            "fgm_0_19": 3,
+            "idp_def_td": 0,
+            "idp_pass_def_3p": 0,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "rec_fd": 0,
+            "kr_yd": 0,
+            "fgm_60p": 6,
+            "fgmiss_20_29": 0,
+            "rush_att": 0,
+            "st_tkl_solo": 0,
+            "yds_allow": 0,
+            "rec_5_9": 0,
+            "idp_sack": 0,
+            "fgm_20_29": 3,
+            "fgmiss_60p": 0,
+            "yds_allow_500_549": 0,
+            "pts_allow_21_27": 0,
+            "bonus_rec_wr": 0,
+            "bonus_pass_yd_300": 0,
+            "xpm": 1,
+            "pass_td_50p": 0,
+            "pass_sack": 0,
+            "rec_40p": 1,
+            "def_3_and_out": 0,
+            "fgmiss_50_59": 0,
+            "fgmiss_0_19": 0,
+            "pass_cmp": 0,
+            "tkl_loss": 0,
+            "rush_2pt": 2,
+            "def_pass_def": 0,
+            "yds_allow_300_349": 0,
+            "fum_rec": 2,
+            "idp_pass_def": 0,
+            "bonus_rush_td_qb": 0,
+            "rec_10_19": 0,
+            "bonus_rec_yd_200": 0,
+            "def_st_td": 6,
+            "tkl": 0,
+            "pass_cmp_40p": 0,
+            "fgm_50p": 0,
+            "bonus_tkl_10p": 0,
+            "def_td": 6,
+            "idp_fum_rec": 0,
+            "pass_fd": 0,
+            "rec_td_40p": 0,
+            "bonus_rush_yd_200": 0,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": 0,
+            "rec_td_50p": 0,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "tkl_solo": 0,
+            "bonus_rush_att_20": 0,
+            "yds_allow_100_199": 0,
+            "bonus_def_int_td_50p": 0,
+            "idp_qb_hit": 0,
+            "bonus_fd_qb": 0,
+            "rush_yd": 0.1,
+            "yds_allow_0_100": 0,
+            "bonus_rec_rb": 0,
+            "rush_40p": 0,
+            "pr_yd": 0,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "bonus_rush_rec_yd_200": 0,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "rush_td_40p": 0,
+            "bonus_fd_te": 0,
+            "bonus_fd_rb": 0,
+            "fum_ret_yd": 0,
+            "def_st_ff": 1,
+            "pass_inc": 0,
+            "pts_allow_7_13": 4,
+            "idp_ff": 0,
+            "st_ff": 1,
+            "idp_tkl_ast": 0
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 133.26,
+              "players": [
+                {
+                  "player_id": "9228",
+                  "name": "Bryce Young",
+                  "slot": "QB",
+                  "points": 21.46
+                },
+                {
+                  "player_id": "4034",
+                  "name": "Christian McCaffrey",
+                  "slot": "RB",
+                  "points": 14.5
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 30.4
+                },
+                {
+                  "player_id": "8112",
+                  "name": "Drake London",
+                  "slot": "WR",
+                  "points": 12.6
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "WR",
+                  "points": 12
+                },
+                {
+                  "player_id": "12506",
+                  "name": "Harold Fannin",
+                  "slot": "TE",
+                  "points": 10.2
+                },
+                {
+                  "player_id": "11584",
+                  "name": "Bucky Irving",
+                  "slot": "FLEX",
+                  "points": 6.1
+                },
+                {
+                  "player_id": "4217",
+                  "name": "George Kittle",
+                  "slot": "FLEX",
+                  "points": 16
+                },
+                {
+                  "player_id": "6650",
+                  "name": "Chase McLaughlin",
+                  "slot": "K",
+                  "points": 2
+                },
+                {
+                  "player_id": "JAX",
+                  "name": "Jacksonville Jaguars",
+                  "slot": "DEF",
+                  "points": 8
+                }
+              ]
+            },
+            {
+              "total": 137.16,
+              "players": [
+                {
+                  "player_id": "6797",
+                  "name": "Justin Herbert",
+                  "slot": "QB",
+                  "points": 11.56
+                },
+                {
+                  "player_id": "12495",
+                  "name": "Ollie Gordon",
+                  "slot": "RB",
+                  "points": 17
+                },
+                {
+                  "player_id": "13287",
+                  "name": "Jeremiyah Love",
+                  "slot": "RB",
+                  "points": 6
+                },
+                {
+                  "player_id": "7547",
+                  "name": "Amon-Ra St. Brown",
+                  "slot": "WR",
+                  "points": 11.5
+                },
+                {
+                  "player_id": "11628",
+                  "name": "Marvin Harrison",
+                  "slot": "WR",
+                  "points": 7.7
+                },
+                {
+                  "player_id": "9484",
+                  "name": "Tucker Kraft",
+                  "slot": "TE",
+                  "points": 13.5
+                },
+                {
+                  "player_id": "8146",
+                  "name": "Garrett Wilson",
+                  "slot": "FLEX",
+                  "points": 4.2
+                },
+                {
+                  "player_id": "12526",
+                  "name": "Tetairoa McMillan",
+                  "slot": "FLEX",
+                  "points": 38.7
+                },
+                {
+                  "player_id": "11539",
+                  "name": "Jake Bates",
+                  "slot": "K",
+                  "points": 18
+                },
+                {
+                  "player_id": "MIN",
+                  "name": "Minnesota Vikings",
+                  "slot": "DEF",
+                  "points": 9
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1398697840254943232/matchups/4"
+        },
+        {
+          "key": "1389704453954736128:2:2",
+          "season": 2026,
+          "week": 2,
+          "leagueId": "1389704453954736128",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "def_4_and_stop": 1,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 130.5,
+              "players": [
+                {
+                  "player_id": "12508",
+                  "name": "Jaxson Dart",
+                  "slot": "QB",
+                  "points": 0.8
+                },
+                {
+                  "player_id": "9224",
+                  "name": "Chase Brown",
+                  "slot": "RB",
+                  "points": 11.2
+                },
+                {
+                  "player_id": "6790",
+                  "name": "D'Andre Swift",
+                  "slot": "RB",
+                  "points": 12.9
+                },
+                {
+                  "player_id": "7547",
+                  "name": "Amon-Ra St. Brown",
+                  "slot": "WR",
+                  "points": 35.2
+                },
+                {
+                  "player_id": "7525",
+                  "name": "DeVonta Smith",
+                  "slot": "WR",
+                  "points": 27.7
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 25.1
+                },
+                {
+                  "player_id": "7611",
+                  "name": "Rhamondre Stevenson",
+                  "slot": "FLEX",
+                  "points": 3.6
+                },
+                {
+                  "player_id": "2020",
+                  "name": "Cairo Santos",
+                  "slot": "K",
+                  "points": 4
+                },
+                {
+                  "player_id": "SF",
+                  "name": "San Francisco 49ers",
+                  "slot": "DEF",
+                  "points": 10
+                }
+              ]
+            },
+            {
+              "total": 118.54,
+              "players": [
+                {
+                  "player_id": "11566",
+                  "name": "Jayden Daniels",
+                  "slot": "QB",
+                  "points": 14.74
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "RB",
+                  "points": 23.8
+                },
+                {
+                  "player_id": "5892",
+                  "name": "David Montgomery",
+                  "slot": "RB",
+                  "points": 4.4
+                },
+                {
+                  "player_id": "7564",
+                  "name": "Ja'Marr Chase",
+                  "slot": "WR",
+                  "points": 26.5
+                },
+                {
+                  "player_id": "8144",
+                  "name": "Chris Olave",
+                  "slot": "WR",
+                  "points": 22.6
+                },
+                {
+                  "player_id": "5022",
+                  "name": "Dallas Goedert",
+                  "slot": "TE",
+                  "points": 1.4
+                },
+                {
+                  "player_id": "8167",
+                  "name": "Christian Watson",
+                  "slot": "FLEX",
+                  "points": 14.1
+                },
+                {
+                  "player_id": "11539",
+                  "name": "Jake Bates",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "PHI",
+                  "name": "Philadelphia Eagles",
+                  "slot": "DEF",
+                  "points": 4
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1389704453954736128/matchups/2"
+        },
+        {
+          "key": "1389356934615814144:1:5",
+          "season": 2026,
+          "week": 1,
+          "leagueId": "1389356934615814144",
+          "scoring": {
+            "sack": 1,
+            "qb_hit": 0,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "fgm_yds": 0,
+            "def_forced_punts": 0,
+            "bonus_rec_yd_100": 0,
+            "bonus_rush_yd_100": 0,
+            "pass_int": -2,
+            "fgmiss_50p": 0,
+            "pts_allow_0": 5,
+            "bonus_pass_yd_400": 0,
+            "pass_2pt": 2,
+            "rec_0_4": 0,
+            "yds_allow_450_499": -5,
+            "blk_kick_ret_yd": 0,
+            "st_td": 6,
+            "def_pr_yd": 0,
+            "rec_30_39": 0,
+            "sack_yd": 0,
+            "fgm_yds_over_30": 0,
+            "rec_td": 6,
+            "yds_allow_400_449": -3,
+            "tkl_ast": 0,
+            "rec_20_29": 0,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td_50p": 0,
+            "rush_td": 6,
+            "def_kr_yd": 0,
+            "bonus_fd_wr": 0,
+            "pts_allow": 0,
+            "def_4_and_stop": 0,
+            "fg_ret_yd": 0,
+            "yds_allow_550p": -7,
+            "pass_td_40p": 0,
+            "def_st_tkl_solo": 0,
+            "yds_allow_350_399": -1,
+            "fgm": 0,
+            "idp_sack_yd": 0,
+            "bonus_rush_rec_yd_100": 0,
+            "rec_2pt": 2,
+            "bonus_pass_cmp_25": 0,
+            "rush_fd": 0,
+            "pass_int_td": 0,
+            "int_ret_yd": 0,
+            "pass_att": 0,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "bonus_def_fum_td_50p": 0,
+            "ff": 1,
+            "bonus_sack_2p": 0,
+            "fgmiss_30_39": 0,
+            "rec": 1,
+            "yds_allow_200_299": 2,
+            "pts_allow_14_20": 1,
+            "def_2pt": 0,
+            "fgm_0_19": 3,
+            "idp_pass_def_3p": 0,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 4,
+            "rec_fd": 0,
+            "kr_yd": 0,
+            "fgmiss_20_29": 0,
+            "rush_att": 0,
+            "st_tkl_solo": 0,
+            "yds_allow": 0,
+            "rec_5_9": 0,
+            "fgm_20_29": 3,
+            "yds_allow_500_549": -6,
+            "pts_allow_21_27": 0,
+            "bonus_rec_wr": 0,
+            "bonus_pass_yd_300": 0,
+            "xpm": 1,
+            "pass_td_50p": 0,
+            "pass_sack": 0,
+            "rec_40p": 0,
+            "def_3_and_out": 0,
+            "fgmiss_0_19": 0,
+            "pass_cmp": 0,
+            "tkl_loss": 0,
+            "rush_2pt": 2,
+            "def_pass_def": 0,
+            "yds_allow_300_349": 0,
+            "fum_rec": 2,
+            "rec_10_19": 0,
+            "bonus_rec_yd_200": 0,
+            "def_st_td": 6,
+            "tkl": 0,
+            "pass_cmp_40p": 0,
+            "fgm_50p": 5,
+            "bonus_tkl_10p": 0,
+            "def_td": 6,
+            "pass_fd": 0,
+            "rec_td_40p": 0,
+            "bonus_rush_yd_200": 0,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": 0,
+            "rec_td_50p": 0,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "tkl_solo": 0,
+            "bonus_rush_att_20": 0,
+            "yds_allow_100_199": 3,
+            "bonus_def_int_td_50p": 0,
+            "bonus_fd_qb": 0,
+            "rush_yd": 0.1,
+            "yds_allow_0_100": 5,
+            "bonus_rec_rb": 0,
+            "rush_40p": 0,
+            "pr_yd": 0,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "bonus_rush_rec_yd_200": 0,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "rush_td_40p": 0,
+            "bonus_fd_te": 0,
+            "bonus_fd_rb": 0,
+            "fum_ret_yd": 0,
+            "def_st_ff": 1,
+            "pass_inc": 0,
+            "pts_allow_7_13": 3,
+            "st_ff": 1
+          },
+          "resultClass": "comfortable_win",
+          "teams": [
+            {
+              "total": 154.84,
+              "players": [
+                {
+                  "player_id": "3163",
+                  "name": "Jared Goff",
+                  "slot": "QB",
+                  "points": 16.44
+                },
+                {
+                  "player_id": "4034",
+                  "name": "Christian McCaffrey",
+                  "slot": "RB",
+                  "points": 13.8
+                },
+                {
+                  "player_id": "3198",
+                  "name": "Derrick Henry",
+                  "slot": "RB",
+                  "points": 35.3
+                },
+                {
+                  "player_id": "7569",
+                  "name": "Nico Collins",
+                  "slot": "WR",
+                  "points": 21.2
+                },
+                {
+                  "player_id": "8146",
+                  "name": "Garrett Wilson",
+                  "slot": "WR",
+                  "points": 13.9
+                },
+                {
+                  "player_id": "10859",
+                  "name": "Sam LaPorta",
+                  "slot": "TE",
+                  "points": 9.8
+                },
+                {
+                  "player_id": "12481",
+                  "name": "Cam Skattebo",
+                  "slot": "FLEX",
+                  "points": 14.1
+                },
+                {
+                  "player_id": "4037",
+                  "name": "Chris Godwin",
+                  "slot": "FLEX",
+                  "points": 8.3
+                },
+                {
+                  "player_id": "12015",
+                  "name": "Harrison Mevis",
+                  "slot": "K",
+                  "points": 1
+                },
+                {
+                  "player_id": "PIT",
+                  "name": "Pittsburgh Steelers",
+                  "slot": "DEF",
+                  "points": 21
+                }
+              ]
+            },
+            {
+              "total": 139.26,
+              "players": [
+                {
+                  "player_id": "4984",
+                  "name": "Josh Allen",
+                  "slot": "QB",
+                  "points": 35.66
+                },
+                {
+                  "player_id": "7543",
+                  "name": "Travis Etienne",
+                  "slot": "RB",
+                  "points": 14.8
+                },
+                {
+                  "player_id": "7594",
+                  "name": "Chuba Hubbard",
+                  "slot": "RB",
+                  "points": 23.7
+                },
+                {
+                  "player_id": "7564",
+                  "name": "Ja'Marr Chase",
+                  "slot": "WR",
+                  "points": 3.2
+                },
+                {
+                  "player_id": "8112",
+                  "name": "Drake London",
+                  "slot": "WR",
+                  "points": 5.5
+                },
+                {
+                  "player_id": "10236",
+                  "name": "Dalton Kincaid",
+                  "slot": "TE",
+                  "points": 18
+                },
+                {
+                  "player_id": "6801",
+                  "name": "Tee Higgins",
+                  "slot": "FLEX",
+                  "points": 8.9
+                },
+                {
+                  "player_id": "8148",
+                  "name": "Jameson Williams",
+                  "slot": "FLEX",
+                  "points": 8.5
+                },
+                {
+                  "player_id": "11539",
+                  "name": "Jake Bates",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": 14
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1389356934615814144/matchups/1"
+        },
+        {
+          "key": "1402102379922354176:4:2",
+          "season": 2026,
+          "week": 4,
+          "leagueId": "1402102379922354176",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 0.5,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_60p": 6,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 118.56,
+              "players": [
+                {
+                  "player_id": "9228",
+                  "name": "Bryce Young",
+                  "slot": "QB",
+                  "points": 21.46
+                },
+                {
+                  "player_id": "4866",
+                  "name": "Saquon Barkley",
+                  "slot": "RB",
+                  "points": 1.5
+                },
+                {
+                  "player_id": "7588",
+                  "name": "Javonte Williams",
+                  "slot": "RB",
+                  "points": 28.8
+                },
+                {
+                  "player_id": "9493",
+                  "name": "Puka Nacua",
+                  "slot": "WR",
+                  "points": 23.2
+                },
+                {
+                  "player_id": "9488",
+                  "name": "Jaxon Smith-Njigba",
+                  "slot": "WR",
+                  "points": 10.1
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 2.5
+                },
+                {
+                  "player_id": "4199",
+                  "name": "Aaron Jones",
+                  "slot": "FLEX",
+                  "points": 14.8
+                },
+                {
+                  "player_id": "12529",
+                  "name": "TreVeyon Henderson",
+                  "slot": "FLEX",
+                  "points": 4.2
+                },
+                {
+                  "player_id": "7839",
+                  "name": "Evan McPherson",
+                  "slot": "K",
+                  "points": 5
+                },
+                {
+                  "player_id": "CHI",
+                  "name": "Chicago Bears",
+                  "slot": "DEF",
+                  "points": 7
+                }
+              ]
+            },
+            {
+              "total": 130.02,
+              "players": [
+                {
+                  "player_id": "4984",
+                  "name": "Josh Allen",
+                  "slot": "QB",
+                  "points": 19.52
+                },
+                {
+                  "player_id": "9221",
+                  "name": "Jahmyr Gibbs",
+                  "slot": "RB",
+                  "points": 15.7
+                },
+                {
+                  "player_id": "6790",
+                  "name": "D'Andre Swift",
+                  "slot": "RB",
+                  "points": 6.4
+                },
+                {
+                  "player_id": "4983",
+                  "name": "DJ Moore",
+                  "slot": "WR",
+                  "points": 2.2
+                },
+                {
+                  "player_id": "12526",
+                  "name": "Tetairoa McMillan",
+                  "slot": "WR",
+                  "points": 38.2
+                },
+                {
+                  "player_id": "10236",
+                  "name": "Dalton Kincaid",
+                  "slot": "TE",
+                  "points": 1.2
+                },
+                {
+                  "player_id": "5001",
+                  "name": "Dalton Schultz",
+                  "slot": "FLEX",
+                  "points": 1.9
+                },
+                {
+                  "player_id": "7611",
+                  "name": "Rhamondre Stevenson",
+                  "slot": "FLEX",
+                  "points": 16.9
+                },
+                {
+                  "player_id": "11792",
+                  "name": "Will Reichard",
+                  "slot": "K",
+                  "points": 19
+                },
+                {
+                  "player_id": "MIN",
+                  "name": "Minnesota Vikings",
+                  "slot": "DEF",
+                  "points": 9
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1402102379922354176/matchups/4"
+        },
+        {
+          "key": "1396912922709458944:4:1",
+          "season": 2026,
+          "week": 4,
+          "leagueId": "1396912922709458944",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 5,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 128.74,
+              "players": [
+                {
+                  "player_id": "12545",
+                  "name": "Tyler Shough",
+                  "slot": "QB",
+                  "points": 15.94
+                },
+                {
+                  "player_id": "3198",
+                  "name": "Derrick Henry",
+                  "slot": "RB",
+                  "points": 15.9
+                },
+                {
+                  "player_id": "5967",
+                  "name": "Tony Pollard",
+                  "slot": "RB",
+                  "points": 13
+                },
+                {
+                  "player_id": "4037",
+                  "name": "Chris Godwin",
+                  "slot": "WR",
+                  "points": 9.1
+                },
+                {
+                  "player_id": "11635",
+                  "name": "Ladd McConkey",
+                  "slot": "WR",
+                  "points": 0
+                },
+                {
+                  "player_id": "12518",
+                  "name": "Tyler Warren",
+                  "slot": "TE",
+                  "points": 9.1
+                },
+                {
+                  "player_id": "12526",
+                  "name": "Tetairoa McMillan",
+                  "slot": "FLEX",
+                  "points": 45.2
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "FLEX",
+                  "points": 3.5
+                },
+                {
+                  "player_id": "2747",
+                  "name": "Jason Myers",
+                  "slot": "K",
+                  "points": 5
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": 12
+                }
+              ]
+            },
+            {
+              "total": 128.32,
+              "players": [
+                {
+                  "player_id": "8183",
+                  "name": "Brock Purdy",
+                  "slot": "QB",
+                  "points": 19.62
+                },
+                {
+                  "player_id": "12533",
+                  "name": "Jacory Croskey-Merritt",
+                  "slot": "RB",
+                  "points": 7
+                },
+                {
+                  "player_id": "6813",
+                  "name": "Jonathan Taylor",
+                  "slot": "RB",
+                  "points": 22.7
+                },
+                {
+                  "player_id": "10232",
+                  "name": "Michael Wilson",
+                  "slot": "WR",
+                  "points": 16.5
+                },
+                {
+                  "player_id": "9487",
+                  "name": "Parker Washington",
+                  "slot": "WR",
+                  "points": 2
+                },
+                {
+                  "player_id": "12506",
+                  "name": "Harold Fannin",
+                  "slot": "TE",
+                  "points": 11.7
+                },
+                {
+                  "player_id": "2133",
+                  "name": "Davante Adams",
+                  "slot": "FLEX",
+                  "points": 7.2
+                },
+                {
+                  "player_id": "8144",
+                  "name": "Chris Olave",
+                  "slot": "FLEX",
+                  "points": 19.6
+                },
+                {
+                  "player_id": "11786",
+                  "name": "Cam Little",
+                  "slot": "K",
+                  "points": 14
+                },
+                {
+                  "player_id": "PIT",
+                  "name": "Pittsburgh Steelers",
+                  "slot": "DEF",
+                  "points": 8
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1396912922709458944/matchups/4"
+        }
+      ]
+    }
+  },
+  {
+    "season": 2026,
+    "options": {
+      "date": "2026-10-07",
+      "practiceSeed": "confidence-2026-2026-10-07",
+      "freezeDaily": true
+    },
+    "pack": {
+      "id": "practice:confidence-2026-2026-10-07:2026-weeks-1-3-v1",
+      "mode": "practice",
+      "date": "2026-10-07",
+      "rounds": [
+        {
+          "key": "1393351811208871936:2:3",
+          "season": 2026,
+          "week": 2,
+          "leagueId": "1393351811208871936",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 3,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "xpmiss": 0,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": 0,
+            "ff": 0,
+            "fgmiss_30_39": -1,
+            "rec": 1,
+            "pts_allow_14_20": 2,
+            "def_2pt": 2,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgmiss_20_29": -1,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "fgmiss_0_19": -1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "fgm_50p": 4,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": -0.5,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -2,
+            "pts_allow_35p": -5,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 146.62,
+              "players": [
+                {
+                  "player_id": "11560",
+                  "name": "Caleb Williams",
+                  "slot": "QB",
+                  "points": 8.72
+                },
+                {
+                  "player_id": "9221",
+                  "name": "Jahmyr Gibbs",
+                  "slot": "RB",
+                  "points": 23.3
+                },
+                {
+                  "player_id": "12507",
+                  "name": "Omarion Hampton",
+                  "slot": "RB",
+                  "points": 17.5
+                },
+                {
+                  "player_id": "8112",
+                  "name": "Drake London",
+                  "slot": "WR",
+                  "points": 8.9
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "WR",
+                  "points": 21.8
+                },
+                {
+                  "player_id": "8148",
+                  "name": "Jameson Williams",
+                  "slot": "WR",
+                  "points": 5.3
+                },
+                {
+                  "player_id": "12506",
+                  "name": "Harold Fannin",
+                  "slot": "TE",
+                  "points": 10.4
+                },
+                {
+                  "player_id": "8155",
+                  "name": "Breece Hall",
+                  "slot": "FLEX",
+                  "points": 14.2
+                },
+                {
+                  "player_id": "11620",
+                  "name": "Rome Odunze",
+                  "slot": "FLEX",
+                  "points": 7.3
+                },
+                {
+                  "player_id": "9500",
+                  "name": "Josh Downs",
+                  "slot": "FLEX",
+                  "points": 14.2
+                },
+                {
+                  "player_id": "11786",
+                  "name": "Cam Little",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "DEN",
+                  "name": "Denver Broncos",
+                  "slot": "DEF",
+                  "points": 8
+                }
+              ]
+            },
+            {
+              "total": 146.96,
+              "players": [
+                {
+                  "player_id": "7523",
+                  "name": "Trevor Lawrence",
+                  "slot": "QB",
+                  "points": 7.16
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 15.7
+                },
+                {
+                  "player_id": "7543",
+                  "name": "Travis Etienne",
+                  "slot": "RB",
+                  "points": 7.1
+                },
+                {
+                  "player_id": "6794",
+                  "name": "Justin Jefferson",
+                  "slot": "WR",
+                  "points": 8.5
+                },
+                {
+                  "player_id": "6786",
+                  "name": "CeeDee Lamb",
+                  "slot": "WR",
+                  "points": 35.3
+                },
+                {
+                  "player_id": "11646",
+                  "name": "Jalen Coker",
+                  "slot": "WR",
+                  "points": 14.6
+                },
+                {
+                  "player_id": "7002",
+                  "name": "Juwan Johnson",
+                  "slot": "TE",
+                  "points": 10.6
+                },
+                {
+                  "player_id": "13286",
+                  "name": "Jadarian Price",
+                  "slot": "FLEX",
+                  "points": 5
+                },
+                {
+                  "player_id": "5045",
+                  "name": "Courtland Sutton",
+                  "slot": "FLEX",
+                  "points": 5.5
+                },
+                {
+                  "player_id": "5872",
+                  "name": "Deebo Samuel",
+                  "slot": "FLEX",
+                  "points": 6.5
+                },
+                {
+                  "player_id": "7839",
+                  "name": "Evan McPherson",
+                  "slot": "K",
+                  "points": 10
+                },
+                {
+                  "player_id": "NE",
+                  "name": "New England Patriots",
+                  "slot": "DEF",
+                  "points": 21
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1393351811208871936/matchups/2"
+        },
+        {
+          "key": "1389356934615814144:1:2",
+          "season": 2026,
+          "week": 1,
+          "leagueId": "1389356934615814144",
+          "scoring": {
+            "sack": 1,
+            "qb_hit": 0,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "fgm_yds": 0,
+            "def_forced_punts": 0,
+            "bonus_rec_yd_100": 0,
+            "bonus_rush_yd_100": 0,
+            "pass_int": -2,
+            "fgmiss_50p": 0,
+            "pts_allow_0": 5,
+            "bonus_pass_yd_400": 0,
+            "pass_2pt": 2,
+            "rec_0_4": 0,
+            "yds_allow_450_499": -5,
+            "blk_kick_ret_yd": 0,
+            "st_td": 6,
+            "def_pr_yd": 0,
+            "rec_30_39": 0,
+            "sack_yd": 0,
+            "fgm_yds_over_30": 0,
+            "rec_td": 6,
+            "yds_allow_400_449": -3,
+            "tkl_ast": 0,
+            "rec_20_29": 0,
+            "fgm_30_39": 3,
+            "xpmiss": -1,
+            "rush_td_50p": 0,
+            "rush_td": 6,
+            "def_kr_yd": 0,
+            "bonus_fd_wr": 0,
+            "pts_allow": 0,
+            "def_4_and_stop": 0,
+            "fg_ret_yd": 0,
+            "yds_allow_550p": -7,
+            "pass_td_40p": 0,
+            "def_st_tkl_solo": 0,
+            "yds_allow_350_399": -1,
+            "fgm": 0,
+            "idp_sack_yd": 0,
+            "bonus_rush_rec_yd_100": 0,
+            "rec_2pt": 2,
+            "bonus_pass_cmp_25": 0,
+            "rush_fd": 0,
+            "pass_int_td": 0,
+            "int_ret_yd": 0,
+            "pass_att": 0,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "bonus_def_fum_td_50p": 0,
+            "ff": 1,
+            "bonus_sack_2p": 0,
+            "fgmiss_30_39": 0,
+            "rec": 1,
+            "yds_allow_200_299": 2,
+            "pts_allow_14_20": 1,
+            "def_2pt": 0,
+            "fgm_0_19": 3,
+            "idp_pass_def_3p": 0,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 4,
+            "rec_fd": 0,
+            "kr_yd": 0,
+            "fgmiss_20_29": 0,
+            "rush_att": 0,
+            "st_tkl_solo": 0,
+            "yds_allow": 0,
+            "rec_5_9": 0,
+            "fgm_20_29": 3,
+            "yds_allow_500_549": -6,
+            "pts_allow_21_27": 0,
+            "bonus_rec_wr": 0,
+            "bonus_pass_yd_300": 0,
+            "xpm": 1,
+            "pass_td_50p": 0,
+            "pass_sack": 0,
+            "rec_40p": 0,
+            "def_3_and_out": 0,
+            "fgmiss_0_19": 0,
+            "pass_cmp": 0,
+            "tkl_loss": 0,
+            "rush_2pt": 2,
+            "def_pass_def": 0,
+            "yds_allow_300_349": 0,
+            "fum_rec": 2,
+            "rec_10_19": 0,
+            "bonus_rec_yd_200": 0,
+            "def_st_td": 6,
+            "tkl": 0,
+            "pass_cmp_40p": 0,
+            "fgm_50p": 5,
+            "bonus_tkl_10p": 0,
+            "def_td": 6,
+            "pass_fd": 0,
+            "rec_td_40p": 0,
+            "bonus_rush_yd_200": 0,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "fgmiss_40_49": 0,
+            "rec_td_50p": 0,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "tkl_solo": 0,
+            "bonus_rush_att_20": 0,
+            "yds_allow_100_199": 3,
+            "bonus_def_int_td_50p": 0,
+            "bonus_fd_qb": 0,
+            "rush_yd": 0.1,
+            "yds_allow_0_100": 5,
+            "bonus_rec_rb": 0,
+            "rush_40p": 0,
+            "pr_yd": 0,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "bonus_rush_rec_yd_200": 0,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "rush_td_40p": 0,
+            "bonus_fd_te": 0,
+            "bonus_fd_rb": 0,
+            "fum_ret_yd": 0,
+            "def_st_ff": 1,
+            "pass_inc": 0,
+            "pts_allow_7_13": 3,
+            "st_ff": 1
+          },
+          "resultClass": "close_winner",
+          "teams": [
+            {
+              "total": 159.06,
+              "players": [
+                {
+                  "player_id": "6797",
+                  "name": "Justin Herbert",
+                  "slot": "QB",
+                  "points": 13.26
+                },
+                {
+                  "player_id": "9509",
+                  "name": "Bijan Robinson",
+                  "slot": "RB",
+                  "points": 31.3
+                },
+                {
+                  "player_id": "13286",
+                  "name": "Jadarian Price",
+                  "slot": "RB",
+                  "points": 7.8
+                },
+                {
+                  "player_id": "11635",
+                  "name": "Ladd McConkey",
+                  "slot": "WR",
+                  "points": 19.2
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "WR",
+                  "points": 1.2
+                },
+                {
+                  "player_id": "7002",
+                  "name": "Juwan Johnson",
+                  "slot": "TE",
+                  "points": 14.4
+                },
+                {
+                  "player_id": "12490",
+                  "name": "Bhayshul Tuten",
+                  "slot": "FLEX",
+                  "points": 9.8
+                },
+                {
+                  "player_id": "8151",
+                  "name": "Kenneth Walker",
+                  "slot": "FLEX",
+                  "points": 34.1
+                },
+                {
+                  "player_id": "11786",
+                  "name": "Cam Little",
+                  "slot": "K",
+                  "points": 12
+                },
+                {
+                  "player_id": "JAX",
+                  "name": "Jacksonville Jaguars",
+                  "slot": "DEF",
+                  "points": 16
+                }
+              ]
+            },
+            {
+              "total": 158.06,
+              "players": [
+                {
+                  "player_id": "11560",
+                  "name": "Caleb Williams",
+                  "slot": "QB",
+                  "points": 37.26
+                },
+                {
+                  "player_id": "9221",
+                  "name": "Jahmyr Gibbs",
+                  "slot": "RB",
+                  "points": 33.6
+                },
+                {
+                  "player_id": "12507",
+                  "name": "Omarion Hampton",
+                  "slot": "RB",
+                  "points": 8.3
+                },
+                {
+                  "player_id": "8137",
+                  "name": "George Pickens",
+                  "slot": "WR",
+                  "points": 5.8
+                },
+                {
+                  "player_id": "12514",
+                  "name": "Emeka Egbuka",
+                  "slot": "WR",
+                  "points": 11.3
+                },
+                {
+                  "player_id": "9484",
+                  "name": "Tucker Kraft",
+                  "slot": "TE",
+                  "points": 9.5
+                },
+                {
+                  "player_id": "9997",
+                  "name": "Zay Flowers",
+                  "slot": "FLEX",
+                  "points": 26
+                },
+                {
+                  "player_id": "8228",
+                  "name": "Jaylen Warren",
+                  "slot": "FLEX",
+                  "points": 10.3
+                },
+                {
+                  "player_id": "2747",
+                  "name": "Jason Myers",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "BAL",
+                  "name": "Baltimore Ravens",
+                  "slot": "DEF",
+                  "points": 9
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1389356934615814144/matchups/1"
+        },
+        {
+          "key": "1382195849081147392:2:3",
+          "season": 2026,
+          "week": 2,
+          "leagueId": "1382195849081147392",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_60p": 6,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "comfortable_win",
+          "teams": [
+            {
+              "total": 141.48,
+              "players": [
+                {
+                  "player_id": "421",
+                  "name": "Matthew Stafford",
+                  "slot": "QB",
+                  "points": 27.98
+                },
+                {
+                  "player_id": "6813",
+                  "name": "Jonathan Taylor",
+                  "slot": "RB",
+                  "points": 29.2
+                },
+                {
+                  "player_id": "9226",
+                  "name": "De'Von Achane",
+                  "slot": "RB",
+                  "points": 12.3
+                },
+                {
+                  "player_id": "8137",
+                  "name": "George Pickens",
+                  "slot": "WR",
+                  "points": 10
+                },
+                {
+                  "player_id": "9754",
+                  "name": "Quentin Johnston",
+                  "slot": "WR",
+                  "points": 2.4
+                },
+                {
+                  "player_id": "10859",
+                  "name": "Sam LaPorta",
+                  "slot": "TE",
+                  "points": 17.2
+                },
+                {
+                  "player_id": "6801",
+                  "name": "Tee Higgins",
+                  "slot": "FLEX",
+                  "points": 14.5
+                },
+                {
+                  "player_id": "6790",
+                  "name": "D'Andre Swift",
+                  "slot": "FLEX",
+                  "points": 12.9
+                },
+                {
+                  "player_id": "11539",
+                  "name": "Jake Bates",
+                  "slot": "K",
+                  "points": 7
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": 8
+                }
+              ]
+            },
+            {
+              "total": 125.08,
+              "players": [
+                {
+                  "player_id": "8183",
+                  "name": "Brock Purdy",
+                  "slot": "QB",
+                  "points": 28.48
+                },
+                {
+                  "player_id": "9509",
+                  "name": "Bijan Robinson",
+                  "slot": "RB",
+                  "points": 11.1
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 15.7
+                },
+                {
+                  "player_id": "8146",
+                  "name": "Garrett Wilson",
+                  "slot": "WR",
+                  "points": 16.7
+                },
+                {
+                  "player_id": "5872",
+                  "name": "Deebo Samuel",
+                  "slot": "WR",
+                  "points": 6.5
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 25.1
+                },
+                {
+                  "player_id": "4199",
+                  "name": "Aaron Jones",
+                  "slot": "FLEX",
+                  "points": 10.5
+                },
+                {
+                  "player_id": "13286",
+                  "name": "Jadarian Price",
+                  "slot": "FLEX",
+                  "points": 5
+                },
+                {
+                  "player_id": "12015",
+                  "name": "Harrison Mevis",
+                  "slot": "K",
+                  "points": 3
+                },
+                {
+                  "player_id": "BAL",
+                  "name": "Baltimore Ravens",
+                  "slot": "DEF",
+                  "points": 3
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1382195849081147392/matchups/2"
+        },
+        {
+          "key": "1400556721931288576:4:1",
+          "season": 2026,
+          "week": 4,
+          "leagueId": "1400556721931288576",
+          "scoring": {
+            "sack": 1,
+            "fgm_40_49": 4,
+            "pass_int": -1,
+            "pts_allow_0": 10,
+            "pass_2pt": 2,
+            "st_td": 6,
+            "rec_td": 6,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "xpmiss": -1,
+            "rush_td": 6,
+            "rec_2pt": 2,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "ff": 1,
+            "rec": 1,
+            "pts_allow_14_20": 1,
+            "fgm_0_19": 3,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "fgm_60p": 6,
+            "fgm_20_29": 3,
+            "pts_allow_21_27": 0,
+            "xpm": 1,
+            "rush_2pt": 2,
+            "fum_rec": 2,
+            "def_st_td": 6,
+            "def_td": 6,
+            "safe": 2,
+            "pass_yd": 0.04,
+            "blk_kick": 2,
+            "pass_td": 4,
+            "rush_yd": 0.1,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "def_st_ff": 1,
+            "pts_allow_7_13": 4,
+            "st_ff": 1
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 138.42,
+              "players": [
+                {
+                  "player_id": "4984",
+                  "name": "Josh Allen",
+                  "slot": "QB",
+                  "points": 19.52
+                },
+                {
+                  "player_id": "6813",
+                  "name": "Jonathan Taylor",
+                  "slot": "RB",
+                  "points": 22.7
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 36.7
+                },
+                {
+                  "player_id": "12519",
+                  "name": "Luther Burden",
+                  "slot": "WR",
+                  "points": 11.4
+                },
+                {
+                  "player_id": "4983",
+                  "name": "DJ Moore",
+                  "slot": "WR",
+                  "points": 2.7
+                },
+                {
+                  "player_id": "12517",
+                  "name": "Colston Loveland",
+                  "slot": "TE",
+                  "points": 11.7
+                },
+                {
+                  "player_id": "2216",
+                  "name": "Mike Evans",
+                  "slot": "FLEX",
+                  "points": 12.6
+                },
+                {
+                  "player_id": "12490",
+                  "name": "Bhayshul Tuten",
+                  "slot": "FLEX",
+                  "points": 11.1
+                },
+                {
+                  "player_id": "4227",
+                  "name": "Harrison Butker",
+                  "slot": "K",
+                  "points": 6
+                },
+                {
+                  "player_id": "HOU",
+                  "name": "Houston Texans",
+                  "slot": "DEF",
+                  "points": 4
+                }
+              ]
+            },
+            {
+              "total": 145.78,
+              "players": [
+                {
+                  "player_id": "6804",
+                  "name": "Jordan Love",
+                  "slot": "QB",
+                  "points": 14.08
+                },
+                {
+                  "player_id": "7588",
+                  "name": "Javonte Williams",
+                  "slot": "RB",
+                  "points": 31.3
+                },
+                {
+                  "player_id": "12481",
+                  "name": "Cam Skattebo",
+                  "slot": "RB",
+                  "points": 7.6
+                },
+                {
+                  "player_id": "9488",
+                  "name": "Jaxon Smith-Njigba",
+                  "slot": "WR",
+                  "points": 12.6
+                },
+                {
+                  "player_id": "7569",
+                  "name": "Nico Collins",
+                  "slot": "WR",
+                  "points": 30.8
+                },
+                {
+                  "player_id": "12506",
+                  "name": "Harold Fannin",
+                  "slot": "TE",
+                  "points": 11.7
+                },
+                {
+                  "player_id": "7611",
+                  "name": "Rhamondre Stevenson",
+                  "slot": "FLEX",
+                  "points": 18.4
+                },
+                {
+                  "player_id": "5892",
+                  "name": "David Montgomery",
+                  "slot": "FLEX",
+                  "points": 4.3
+                },
+                {
+                  "player_id": "1945",
+                  "name": "Chris Boswell",
+                  "slot": "K",
+                  "points": 3
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": 12
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1400556721931288576/matchups/4"
+        },
+        {
+          "key": "1403449701885300736:4:5",
+          "season": 2026,
+          "week": 4,
+          "leagueId": "1403449701885300736",
+          "scoring": {
+            "sack": 1,
+            "qb_hit": 0,
+            "fgm_40_49": 4,
+            "bonus_rec_te": 0,
+            "fgm_yds": 0,
+            "def_forced_punts": 0,
+            "bonus_rec_yd_100": 0,
+            "bonus_rush_yd_100": 0,
+            "pass_int": -1,
+            "fgmiss_50p": 0,
+            "pts_allow_0": 10,
+            "bonus_pass_yd_400": 0,
+            "pass_2pt": 2,
+            "rec_0_4": 0,
+            "yds_allow_450_499": 0,
+            "blk_kick_ret_yd": 0,
+            "st_td": 6,
+            "def_pr_yd": 0,
+            "rec_30_39": 0,
+            "sack_yd": 0,
+            "fgm_yds_over_30": 0,
+            "rec_td": 6,
+            "yds_allow_400_449": 0,
+            "tkl_ast": 0,
+            "rec_20_29": 0,
+            "idp_blk_kick": 0,
+            "fgm_30_39": 3,
+            "fgm_50_59": 5,
+            "idp_fum_ret_yd": 0,
+            "xpmiss": -1,
+            "rush_td_50p": 1,
+            "rush_td": 6,
+            "def_kr_yd": 0,
+            "bonus_fd_wr": 0,
+            "pts_allow": 0,
+            "def_4_and_stop": 0,
+            "fg_ret_yd": 0,
+            "idp_tkl": 0,
+            "yds_allow_550p": 0,
+            "pass_td_40p": 0,
+            "def_st_tkl_solo": 0,
+            "yds_allow_350_399": 0,
+            "fgm": 0,
+            "idp_sack_yd": 0,
+            "bonus_rush_rec_yd_100": 0,
+            "rec_2pt": 2,
+            "bonus_pass_cmp_25": 0,
+            "idp_tkl_loss": 0,
+            "rush_fd": 0,
+            "pass_int_td": 0,
+            "int_ret_yd": 0,
+            "idp_tkl_solo": 0,
+            "pass_att": 0,
+            "st_fum_rec": 1,
+            "fgmiss": -1,
+            "bonus_def_fum_td_50p": 0,
+            "ff": 1,
+            "idp_int": 0,
+            "bonus_sack_2p": 0,
+            "fgmiss_30_39": 0,
+            "rec": 1,
+            "yds_allow_200_299": 0,
+            "idp_int_ret_yd": 0,
+            "idp_safe": 0,
+            "pts_allow_14_20": 1,
+            "def_2pt": 0,
+            "fgm_0_19": 3,
+            "idp_def_td": 0,
+            "idp_pass_def_3p": 0,
+            "int": 2,
+            "def_st_fum_rec": 1,
+            "fum_lost": -2,
+            "pts_allow_1_6": 7,
+            "rec_fd": 0,
+            "kr_yd": 0,
+            "fgm_60p": 6,
+            "fgmiss_20_29": 0,
+            "rush_att": 0,
+            "st_tkl_solo": 0,
+            "yds_allow": 0,
+            "rec_5_9": 0,
+            "idp_sack": 0,
+            "fgm_20_29": 3,
+            "fgmiss_60p": 0,
+            "yds_allow_500_549": 0,
+            "pts_allow_21_27": 0,
+            "bonus_rec_wr": 0,
+            "bonus_pass_yd_300": 0,
+            "xpm": 1,
+            "pass_td_50p": 1,
+            "pass_sack": 0,
+            "rec_40p": 0,
+            "def_3_and_out": 0,
+            "fgmiss_50_59": 0,
+            "fgmiss_0_19": 0,
+            "pass_cmp": 0,
+            "tkl_loss": 0,
+            "rush_2pt": 2,
+            "def_pass_def": 0,
+            "yds_allow_300_349": 0,
+            "fum_rec": 2,
+            "idp_pass_def": 0,
+            "bonus_rush_td_qb": 0,
+            "rec_10_19": 0,
+            "bonus_rec_yd_200": 0,
+            "def_st_td": 6,
+            "tkl": 0,
+            "pass_cmp_40p": 0,
+            "fgm_50p": 0,
+            "bonus_tkl_10p": 0,
+            "def_td": 6,
+            "idp_fum_rec": 0,
+            "pass_fd": 0,
+            "rec_td_40p": 0,
+            "bonus_rush_yd_200": 0,
+            "safe": 2,
+            "pass_yd": 0.05,
+            "fgmiss_40_49": 0,
+            "rec_td_50p": 1,
+            "blk_kick": 2,
+            "pass_td": 6,
+            "tkl_solo": 0,
+            "bonus_rush_att_20": 0,
+            "yds_allow_100_199": 0,
+            "bonus_def_int_td_50p": 0,
+            "idp_qb_hit": 0,
+            "bonus_fd_qb": 0,
+            "rush_yd": 0.1,
+            "yds_allow_0_100": 0,
+            "bonus_rec_rb": 0,
+            "rush_40p": 0,
+            "pr_yd": 0,
+            "fum": 0,
+            "pts_allow_28_34": -1,
+            "pts_allow_35p": -4,
+            "bonus_rush_rec_yd_200": 0,
+            "fum_rec_td": 6,
+            "rec_yd": 0.1,
+            "rush_td_40p": 0,
+            "bonus_fd_te": 0,
+            "bonus_fd_rb": 0,
+            "fum_ret_yd": 0,
+            "def_st_ff": 1,
+            "pass_inc": 0,
+            "pts_allow_7_13": 4,
+            "idp_ff": 0,
+            "st_ff": 1,
+            "idp_tkl_ast": 0
+          },
+          "resultClass": "competitive_win",
+          "teams": [
+            {
+              "total": 126.35,
+              "players": [
+                {
+                  "player_id": "4984",
+                  "name": "Josh Allen",
+                  "slot": "QB",
+                  "points": 24.05
+                },
+                {
+                  "player_id": "9221",
+                  "name": "Jahmyr Gibbs",
+                  "slot": "RB",
+                  "points": 17.7
+                },
+                {
+                  "player_id": "8150",
+                  "name": "Kyren Williams",
+                  "slot": "RB",
+                  "points": 36.7
+                },
+                {
+                  "player_id": "4983",
+                  "name": "DJ Moore",
+                  "slot": "WR",
+                  "points": 2.7
+                },
+                {
+                  "player_id": "2133",
+                  "name": "Davante Adams",
+                  "slot": "WR",
+                  "points": 7.2
+                },
+                {
+                  "player_id": "1466",
+                  "name": "Travis Kelce",
+                  "slot": "TE",
+                  "points": 3.5
+                },
+                {
+                  "player_id": "12481",
+                  "name": "Cam Skattebo",
+                  "slot": "FLEX",
+                  "points": 7.6
+                },
+                {
+                  "player_id": "13346",
+                  "name": "Denzel Boston",
+                  "slot": "FLEX",
+                  "points": 12.9
+                },
+                {
+                  "player_id": "7839",
+                  "name": "Evan McPherson",
+                  "slot": "K",
+                  "points": 5
+                },
+                {
+                  "player_id": "MIN",
+                  "name": "Minnesota Vikings",
+                  "slot": "DEF",
+                  "points": 9
+                }
+              ]
+            },
+            {
+              "total": 140.05,
+              "players": [
+                {
+                  "player_id": "7523",
+                  "name": "Trevor Lawrence",
+                  "slot": "QB",
+                  "points": 17.35
+                },
+                {
+                  "player_id": "12507",
+                  "name": "Omarion Hampton",
+                  "slot": "RB",
+                  "points": 13.3
+                },
+                {
+                  "player_id": "12495",
+                  "name": "Ollie Gordon",
+                  "slot": "RB",
+                  "points": 18
+                },
+                {
+                  "player_id": "9487",
+                  "name": "Parker Washington",
+                  "slot": "WR",
+                  "points": 2
+                },
+                {
+                  "player_id": "7526",
+                  "name": "Jaylen Waddle",
+                  "slot": "WR",
+                  "points": 14.5
+                },
+                {
+                  "player_id": "8130",
+                  "name": "Trey McBride",
+                  "slot": "TE",
+                  "points": 10.1
+                },
+                {
+                  "player_id": "9493",
+                  "name": "Puka Nacua",
+                  "slot": "FLEX",
+                  "points": 27.7
+                },
+                {
+                  "player_id": "9756",
+                  "name": "Jordan Addison",
+                  "slot": "FLEX",
+                  "points": 9.1
+                },
+                {
+                  "player_id": "12185",
+                  "name": "Spencer Shrader",
+                  "slot": "K",
+                  "points": 16
+                },
+                {
+                  "player_id": "SEA",
+                  "name": "Seattle Seahawks",
+                  "slot": "DEF",
+                  "points": 12
+                }
+              ]
+            }
+          ],
+          "source": "https://api.sleeper.app/v1/league/1403449701885300736/matchups/4"
+        }
+      ]
+    }
+  }
+]
