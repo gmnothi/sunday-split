@@ -1,4 +1,11 @@
 [hidden]{display:none!important}
+.header-right{gap:8px}
+.header-right #theme{width:40px;height:40px;border-color:transparent;color:#aebbc1}
+.header-right #theme svg{width:18px;height:18px}
+.header-right #theme:hover{background:#252e32;color:var(--a)}
+.header-right #theme:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.header-right #season{min-height:40px;padding:6px;border-color:transparent;background:transparent;color:#c1cdd1}
+.header-right #season:hover,.header-right #season:focus-visible{border-color:var(--dark-line);background:var(--dark)}
 html{scrollbar-gutter:stable}
 .social-dialog .dialog-close{color:var(--text);border-color:var(--line)}
 .game-top h1,.social-dialog h2,.social-dialog h3,.extras-link{overflow-wrap:anywhere;min-width:0}
