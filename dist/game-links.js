@@ -8,8 +8,8 @@
       return value;
     }catch{return null;}
   }
-  const token=new URLSearchParams(location.hash.slice(1)).get('play');
-  const incoming=decode(token);
+  let token=new URLSearchParams(location.hash.slice(1)).get('play');
+  let incoming=decode(token);
   function resolve(pool) {
     if(!incoming)return null;
     const rounds=incoming.keys.map((key,i)=>{
@@ -27,5 +27,6 @@
     })};
     const link=new URL(base);link.search='';if(pool.custom)link.searchParams.set('league',pool.leagueId);if(value.season===2025)link.searchParams.set('season','2025');link.hash='play='+encode(value);return link.href;
   }
-  window.GameLinks={decode,incoming,resolve,url,invalid:!!token&&!incoming};
+  function accept(value){const spec=decode(value);if(!spec)throw new Error('Invalid server challenge');token=value;incoming=spec;}
+  window.GameLinks={decode,get incoming(){return incoming;},resolve,url,accept,get invalid(){return !!token&&!incoming;}};
 })();

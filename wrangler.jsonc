@@ -1,0 +1,7 @@
+{
+  "name": "sunday-split-social",
+  "main": "server/worker.mjs",
+  "compatibility_date": "2026-10-16",
+  "assets": {"directory": ".sites-runtime/social-assets", "binding": "ASSETS", "run_worker_first": ["/api/*"]},
+  "d1_databases": [{"binding": "DB", "database_name": "sunday-split-social", "migrations_dir": "server/migrations"}]
+}
