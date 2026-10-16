@@ -5,8 +5,9 @@
   const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
   const shared=window.GameLinks?.resolve(pool);
-  const endless=!shared&&params.get('endless')==='1';
-  const confidence=!shared&&!endless && params.get('confidence')==='1';
+  const variant=shared?.variant||(!shared&&['fourth-quarter','blind'].includes(params.get('mode'))?params.get('mode'):null);
+  const endless=!shared&&!variant&&params.get('endless')==='1';
+  const confidence=!shared&&!variant&&!endless && params.get('confidence')==='1';
   const endlessVersion=(pool.revision||pool.version)+(window.MATCHUP_CURATION?':'+window.MATCHUP_CURATION.revision:'');
   const practiceParam=params.get('practice');
   const practiceSeed=!endless && !confidence && practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:(!endless&&!confidence&&season===2025?'throwback-'+date:null);
@@ -21,15 +22,15 @@
   }
   function newPracticeUrl() {
     const seed=crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+Math.random().toString(36).slice(2);
-    const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);if(season===2025)url.searchParams.set('season','2025');url.hash='';return url;
+    const url=new URL(location.href);url.search='';url.searchParams.set('practice',seed);if(variant)url.searchParams.set('mode',variant);if(season===2025)url.searchParams.set('season','2025');url.hash='';return url;
   }
   const practiceNav=document.querySelector('#practice-nav');
-  practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
+  const practiceUrl=newPracticeUrl();practiceUrl.searchParams.delete('mode');practiceNav.href=practiceSeed&&!variant ? location.href : practiceUrl.href;
   for(const id of ['practice-nav','confidence-nav','endless-nav'])if(season===2025){const a=document.querySelector('#'+id);const u=new URL(a.href);u.searchParams.set('season','2025');a.href=u.href;}
   if(!shared)document.querySelector(endless?'#endless-nav':confidence?'#confidence-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
   const seasonSelect=document.querySelector('#season');seasonSelect.value=String(season);
   seasonSelect.onchange=()=>{const url=new URL(location.href);if(shared||pool.custom){url.search='';url.hash='';}url.searchParams.set('season',seasonSelect.value);if(shared||pool.custom||!endless&&!confidence&&!practiceSeed)url.searchParams.set('practice',crypto.randomUUID());location.assign(url);};
-  const selectionKey=confidence?`sunday-split:selection:confidence:${season}:${date}`:practiceSeed?`sunday-split:selection:${practiceSeed}${season===2025?':2025':''}`:`sunday-split:selection:daily:${date}:${pool.version}`;
+  const selectionKey=variant?`sunday-split:selection:${variant}:${season}:${practiceSeed||date}`:confidence?`sunday-split:selection:confidence:${season}:${date}`:practiceSeed?`sunday-split:selection:${practiceSeed}${season===2025?':2025':''}`:`sunday-split:selection:daily:${date}:${pool.version}`;
   let savedKeys=null,seen=[];
   try {
     savedKeys=JSON.parse(localStorage.getItem(selectionKey));
@@ -38,8 +39,12 @@
     if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
   } catch {}
   const pack=shared?{...shared,date}:endless ? {id:`endless:${endlessSeed}:${endlessVersion}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
+  if(variant&&!shared){
+    const selected=window.GamePacks.makePack(pool,{date,practiceSeed:`${variant}-${season}-${practiceSeed||date}`,excluded:practiceSeed?seen:[],savedKeys});
+    Object.assign(pack,selected,{id:`${variant}:${season}:${practiceSeed||date}:${pool.version}`,mode:variant});
+  }
   const roundLimit=shared?shared.rounds.length:5;
-  const emit=stage=>document.dispatchEvent(new CustomEvent('split:'+stage,{detail:{pack,pool,index,round:pack.rounds[index],results:results.map(r=>({...r})),date,confidence}}));
+  const emit=stage=>document.dispatchEvent(new CustomEvent('split:'+stage,{detail:{pack,pool,index,round:pack.rounds[index],results:results.map(r=>({...r})),date,confidence,variant,played:!!results[index]}}));
   if(confidence) {
     const selected=window.GamePacks.makePack(pool,{date,practiceSeed:`confidence-${season}-${date}`,savedKeys,freezeDaily:true});
     Object.assign(pack,selected,{id:`confidence:${season}:${date}:${pool.version}`,mode:'confidence'});
@@ -139,6 +144,7 @@
     return `<span><strong>${wins}/${results.length}</strong> CORRECT</span><span><strong>${results.length?Math.round(wins/results.length*100):0}%</strong> ACCURACY</span><span><strong>${streak}</strong> STREAK</span>`;
   }
   function player(p,side,i,slotLabel) {
+    if(variant==='blind')return window.SplitExtras.blindPlayer(p,side,i,slotLabel,round());
     const defense = p.slot === 'DEF';
     const clue=window.PlayerClues?.player(round(),p.player_id);
     const opponent=clue?.opponent;
@@ -190,6 +196,20 @@
     if(paceControl)paceControl.onchange=()=>{revealPace=paceControl.value;try {localStorage.setItem('sunday-split:reveal-pace',revealPace);} catch {}};
     document.querySelector('#hint').onclick = toggleHint;
     document.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>useHint(Number(b.dataset.hint)));
+    if(variant){
+      document.querySelector('.edition-tag').textContent=variant==='blind'?'BLIND RESUME':'FOURTH QUARTER';
+      if(variant==='fourth-quarter'){
+        const remaining=window.SplitExtras.remaining(r),banked=r.teams.map(t=>t.players.reduce((n,p,i)=>n+(remaining.includes(i)?0:p.points),0));
+        r.teams[0].players.forEach((_,i)=>{if(!remaining.includes(i))revealRow(i);});
+        banked.forEach((n,s)=>{document.querySelector(`#total-${s}`).textContent=fmt(n);});
+        document.querySelector('h1').textContent='Who closes it out?';
+        broadcast('FOURTH QUARTER',`${remaining.length} STARTERS LEFT PER LINEUP`);
+        document.querySelector('.hint-bar').innerHTML='<span class="social-note">Banked points shown. Final two offensive slots still to come.</span>';
+      }else{
+        document.querySelector('h1').textContent='Trust the numbers.';
+        document.querySelector('.hint-bar').innerHTML='<span class="social-note">Names after your pick. Position, opponent and recent form stay visible.</span>';
+      }
+    }
     if(confidence) {
       document.querySelector('.edition-tag').textContent='CONFIDENCE FIVE';
       document.querySelector('.hint-bar').innerHTML=`<fieldset class="confidence-picker"><legend>Confidence</legend>${[1,2,3,4,5].map(n=>`<button type="button" data-confidence="${n}" aria-label="Confidence ${n}" aria-pressed="${confidenceValue===n}" ${played||!window.Confidence.available(results).includes(n)?'disabled':''}>${n}</button>`).join('')}</fieldset><span class="confidence-stake">${confidenceValue?confidenceValue+' points at stake':'Select a value'}</span>`;
@@ -204,7 +224,7 @@
     if(hint !== null) { revealRow(hint,true); document.querySelector('#hint').disabled=true; }
     if(played) { allRows(); showResult(); }
     icons();
-    if(shared){document.querySelector('.edition-tag').textContent=roundLimit===1?'GRUDGE MATCH':'FRIEND CHALLENGE';document.querySelector('.round-count').textContent=`MATCHUP ${index+1} / ${roundLimit}`;document.querySelector('.score-label').textContent='CHALLENGE POINTS';}
+    if(shared){if(!variant)document.querySelector('.edition-tag').textContent=roundLimit===1?'GRUDGE MATCH':'FRIEND CHALLENGE';document.querySelector('.round-count').textContent=`MATCHUP ${index+1} / ${roundLimit}`;document.querySelector('.score-label').textContent='CHALLENGE POINTS';}
     emit('round');
     const next = endless?ensureRound(index+1):pack.rounds[index+1];
     if(next) next.teams.flatMap(t=>t.players).filter(p=>p.slot!=='DEF').forEach(p=>{const img=new Image();img.src=`https://sleepercdn.com/content/nfl/players/thumb/${p.player_id}.jpg`;});
@@ -275,19 +295,24 @@
     document.querySelector('#decision').classList.add('reveal-controls');
     document.querySelectorAll('[data-pick]').forEach(b=>{b.disabled=true;b.classList.toggle('picked',Number(b.dataset.pick)===side);});
     if(confidence)document.querySelectorAll('[data-confidence]').forEach(b=>b.disabled=true);
-    else document.querySelector('#hint').disabled=true;
+    else if(document.querySelector('#hint'))document.querySelector('#hint').disabled=true;
+    if(variant==='blind')document.querySelectorAll('.player').forEach(el=>{
+      const side=Number(el.dataset.side),i=Number(el.dataset.row),p=round().teams[side].players[i];
+      el.outerHTML=window.SplitExtras.identityPlayer(p,side,i,round());
+    });
     document.querySelector('#decision').innerHTML=`<span class="locked">${icon('lock-keyhole')} Lineup ${labels[side]} locked in</span><button id="skip" class="text-button">Show all ${icon('fast-forward')}</button>`;
     document.querySelector('#skip').onclick=()=> {cancel();allRows();showResult();};
     broadcast('PICK LOCKED',`LINEUP ${labels[side]}`);
     if(innerWidth <= 600) {
-      const qbIndex=round().teams[0].players.findIndex(p=>p.slot==='QB');
+      const qbIndex=variant==='fourth-quarter'?window.SplitExtras.remaining(round())[0]:round().teams[0].players.findIndex(p=>p.slot==='QB');
       const row=document.querySelector(`.paired-row[data-row="${Math.max(0,qbIndex)}"]`);
       const scoreboard=document.querySelector('.scoreboard');
       // Keep the starting reveal visible below the sticky scoreboard.
       window.scrollTo({top:window.scrollY+row.getBoundingClientRect().top-scoreboard.offsetHeight-8,behavior:reduceMotion?'instant':'smooth'});
     }
-    const groups=['QB','RB','WR','TE','FLEX','SPECIAL TEAMS'].map(group=>({group,rows:round().teams[0].players.map((p,i)=>({p,i})).filter(({p})=>group==='SPECIAL TEAMS'?['K','DEF'].includes(p.slot):p.slot===group).map(({i})=>i)})).filter(g=>g.rows.length);
-    const revealed=new Set();
+    const remaining=variant==='fourth-quarter'?window.SplitExtras.remaining(round()):null;
+    const groups=['QB','RB','WR','TE','FLEX','SPECIAL TEAMS'].map(group=>({group,rows:round().teams[0].players.map((p,i)=>({p,i})).filter(({p,i})=>(!remaining||remaining.includes(i))&&(group==='SPECIAL TEAMS'?['K','DEF'].includes(p.slot):p.slot===group)).map(({i})=>i)})).filter(g=>g.rows.length);
+    const revealed=new Set(remaining?round().teams[0].players.map((_,i)=>i).filter(i=>!remaining.includes(i)):[]);
     const closeFinish=Math.abs(round().teams[0].total-round().teams[1].total)<=5;
     const quick=endless && revealPace==='quick';
     const stagger=quick?140:420;
@@ -331,6 +356,7 @@
     timers.push(setTimeout(()=>showResult(true),reduceMotion?30:elapsed)); icons();
   }
   function allRows() {
+    if(variant==='blind')document.querySelectorAll('.player[data-blind]').forEach(el=>{const s=Number(el.dataset.side),i=Number(el.dataset.row);el.outerHTML=window.SplitExtras.identityPlayer(round().teams[s].players[i],s,i,round());});
     round().teams[0].players.forEach((_,i)=>revealRow(i));
     round().teams.forEach((t,s)=>{const el=document.querySelector(`#total-${s}`);el.textContent=fmt(t.total);el.dataset.value=t.total;});
   }
@@ -364,7 +390,7 @@
       return clue?.games.length?{p,side,average:clue.average,delta:p.points-clue.average,count:clue.games.length}:null;
     })).filter(Boolean).sort((a,b)=>Math.abs(b.delta)-Math.abs(a.delta)).slice(0,3);
     section.querySelector('.result-copy').insertAdjacentHTML('beforeend',`<details class="matchup-breakdown"><summary>Inside the matchup</summary><table><caption>Points by position</caption><thead><tr><th scope="col">Position</th><th scope="col">A</th><th scope="col">B</th><th scope="col">Edge</th></tr></thead><tbody>${positions}</tbody></table>${standouts.length?`<h4>Biggest swings from recent form</h4><ul>${standouts.map(({p,side,delta,count})=>`<li><span><b>${esc(p.name)}</b><small>Lineup ${labels[side]} / ${fmt(p.points)} pts / last ${count}-game average</small></span><strong class="${delta>=0?'above-form':'below-form'}">${delta>=0?'+':''}${fmt(delta)}</strong></li>`).join('')}</ul>`:''}</details>`);
-    if(!confidence)document.querySelector('#hint').disabled=true;
+    if(!confidence&&document.querySelector('#hint'))document.querySelector('#hint').disabled=true;
     document.querySelector('.session-score>span').innerHTML=scoreMarkup();
     if(endless) {
       document.querySelector('#endless-stats').innerHTML=endlessStats();
@@ -404,8 +430,14 @@
       section.querySelector('.prototype-note').textContent='Shared challenges are separate from your daily score.';
       section.querySelector('#share').onclick=()=>window.SplitSocial.share(`I got ${wins}/${roundLimit}. Beat my score on these exact matchups.`,window.GameLinks.url(pack.rounds,pool),'shared_results');
     }
+    if(variant){
+      section.querySelector('.eyebrow').textContent=(variant==='blind'?'BLIND RESUME':'FOURTH QUARTER')+' / '+date;
+      section.querySelector('.prototype-note').textContent='Bonus mode. Your daily score and streak are unchanged.';
+      section.querySelector('#share').onclick=()=>window.SplitSocial.share(`${variant==='blind'?'Blind Resume':'Fourth Quarter'}: ${results.filter(correct).length}/${roundLimit}.`,window.GameLinks.url(pack.rounds,pool,modeShareBase()),variant);
+    }
     emit('complete');
   }
+  function modeShareBase(){const url=new URL(location.href);url.searchParams.set('mode',variant);return url.href;}
   function confidenceSummary() {
     const wins=results.filter(correct).length;
     app.innerHTML=`<section class="summary"><div class="eyebrow">CONFIDENCE FIVE / ${season} / ${date}</div><div class="trophy">${icon('trophy')}</div><h1>${points()===15?'Perfect confidence.':wins>=3?'You know ball.':'Any given Sunday.'}</h1><div class="big-result">${points()}<span>/15</span></div><span class="summary-label">CONFIDENCE POINTS</span>${progress()}<div class="summary-stats"><div><strong>${wins}<small>/5</small></strong><span>WINNERS PICKED</span></div><div><strong>${results.filter((r,i)=>!correct(r,i)).reduce((n,r)=>n+r.confidence,0)}</strong><span>POINTS MISSED</span></div></div><div class="round-recap">${results.map((r,i)=>`<div><span class="recap-round">${i+1}</span><span>Lineup ${labels[r.pick]} ${icon(correct(r,i)?'check':'x')}</span><span>Confidence ${r.confidence}</span><strong>${earned(r,i)} pts</strong></div>`).join('')}</div><button id="share" class="share-button">${icon('share-2')} Share results</button><a class="more-button" href="${newPracticeUrl()}">Practice another five</a></section>`;

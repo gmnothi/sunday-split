@@ -1,6 +1,6 @@
 (() => {
   document.addEventListener('split:reveal',({detail:d})=>{
-    if(d.pool.custom)return;const result=document.querySelector('#result');if(!result||result.querySelector('[data-community]'))return;
+    if(d.pool.custom||d.variant)return;const result=document.querySelector('#result');if(!result||result.querySelector('[data-community]'))return;
     const {dialog,button,esc}=window.SplitSocial;
     const b=button('See community picks','chart-no-axes-combined',async()=>{
       b.disabled=true;
