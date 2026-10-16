@@ -21,12 +21,12 @@ function validateSpec(spec,catalog) {
   const rounds=spec.keys.map((key,i)=>{const r=catalog.find(r=>r.key===key&&r.season===spec.season);if(!r)fail(400,'This matchup is not in the published pool.');return {...r,teams:spec.flips[i]?[...r.teams].reverse():r.teams};});
   return rounds;
 }
-export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=async()=>null}) {
+export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=async()=>null,allowedOrigins=[]}) {
   return async request=>{
     try {
       const url=new URL(request.url),time=now();
       if(!db)return json({error:'Shared challenges are not configured on this host.'},503);
-      if(request.method!=='GET'&&request.headers.get('Origin')!==url.origin)fail(403,'Cross-origin writes are not allowed.');
+      if(request.method!=='GET'&&request.headers.get('Origin')!==url.origin&&!allowedOrigins.includes(request.headers.get('Origin')))fail(403,'Cross-origin writes are not allowed.');
       if(!['GET','POST'].includes(request.method))fail(405,'Method not allowed');
       const user=await session(request,db,time);
       const ip=request.headers.get('CF-Connecting-IP')||request.headers.get('X-Local-IP')||'unknown';

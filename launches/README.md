@@ -9,7 +9,7 @@
 | 5 | League challenges | codex/league-challenges | Server runtime + persistent database |
 | 6 | The Split / community picks | codex/community-split | Same backend + votes migration |
 
-These are stacked PRs: each targets the preceding branch so reviews show one feature at a time. Merge in order using merge commits, retarget the next PR to main, and only then delete its old base branch. No changes were merged or published as part of creating this stack.
+The six PRs were reviewed as a stack, then retargeted and merged into main in order on October 16, 2026. The production integration uses the existing Sites project with an ESM Worker and the logical `DB` binding; generated Drizzle migrations provision the shared-play schema at publication.
 
 Each launch file includes a post draft, behavior, tests, and rollout caveats. Gate the last two announcements on a successful database-backed staging deployment. The existing static Sites manifest is not silently converted or pointed at a different provider.
 
@@ -27,4 +27,4 @@ Browser screenshots and exported test cards are ignored under `output/playwright
 
 Browser-local Wrapped is not account sync. Anonymous browser profiles and community votes are not verified unique humans. Answers remain public browser assets; these are casual challenges, not an anti-cheat system or prize competition. Shared rooms use frozen published-pool matchups, while on-demand custom league imports can be shared as regular challenge links without server standings.
 
-No cloud database has been provisioned, and a production Worker/D1 deployment has not been tested in this task. The portable API, persistence, migrations and cross-browser flow are tested locally. Treat backend provisioning and staging as a release gate, not as completed infrastructure.
+The production build adds Worker/D1 validation on top of the portable tests: `npm run build`, `npm run check:sites`, and the local Wrangler preview all use the generated production migrations. Record final native deployment status and live shared-play verification in the release handoff; merging code alone is not evidence of publication.
