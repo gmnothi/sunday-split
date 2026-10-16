@@ -4,6 +4,7 @@
     try {
       if(typeof token!=='string'||token.length>6000||!/^[\w-]+$/.test(token))return null;
       const value=JSON.parse(atob(token.replace(/-/g,'+').replace(/_/g,'/')));
+      if(value.mode!==undefined&&!['blind','fourth-quarter'].includes(value.mode))return null;
       if(value.v!==1||![2025,2026].includes(value.season)||![1,5].includes(value.keys?.length)||new Set(value.keys).size!==value.keys.length||value.keys.some(k=>typeof k!=='string'||!/^\d{15,22}:\d{1,2}:\d+$/.test(k))||!Array.isArray(value.flips)||value.flips.length!==value.keys.length||value.flips.some(f=>![0,1].includes(f)))return null;
       return value;
     }catch{return null;}
@@ -17,7 +18,7 @@
       return r?{...r,teams:incoming.flips[i]?[...r.teams].reverse():[...r.teams]}:null;
     });
     if(rounds.some(r=>!r))throw new Error('This challenge is not in the available matchup pool.');
-    return {id:'shared:'+token,mode:rounds.length===1?'grudge':'challenge',rounds};
+    return {id:'shared:'+token,mode:incoming.mode||(rounds.length===1?'grudge':'challenge'),variant:incoming.mode||null,rounds};
   }
   function url(rounds,pool,base=location.href) {
     const value={v:1,season:rounds[0].season,keys:rounds.map(r=>r.key),flips:rounds.map(r=>{
@@ -25,6 +26,7 @@
       if(!original)throw new Error('Matchup is not shareable');
       return original.teams[0].total===r.teams[0].total?0:1;
     })};
+    const mode=new URL(base).searchParams.get('mode');if(['blind','fourth-quarter'].includes(mode))value.mode=mode;
     const link=new URL(base);link.search='';if(pool.custom)link.searchParams.set('league',pool.leagueId);if(value.season===2025)link.searchParams.set('season','2025');link.hash='play='+encode(value);return link.href;
   }
   function accept(value){const spec=decode(value);if(!spec)throw new Error('Invalid server challenge');token=value;incoming=spec;}

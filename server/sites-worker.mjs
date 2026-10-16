@@ -1,11 +1,11 @@
 import {createApi} from './api.mjs';
-import {votesApi} from './votes.mjs';
+import {engagementApi} from './engagement.mjs';
 import {assets,catalogs} from '../.sites-runtime/sites-assets.mjs';
 
 function bytes(value){const binary=atob(value),result=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)result[i]=binary.charCodeAt(i);return result;}
 export default {async fetch(request,env){
   const url=new URL(request.url);
-  if(url.pathname.startsWith('/api/'))return createApi({db:env.DB,extra:votesApi,catalog:async season=>catalogs[season]||[],allowedOrigins:['https://sundaysplit.app','https://www.sundaysplit.app','https://sunday-split.othigurman.chatgpt.site']})(request);
+  if(url.pathname.startsWith('/api/'))return createApi({db:env.DB,extra:engagementApi,catalog:async season=>catalogs[season]||[],allowedOrigins:['https://sundaysplit.app','https://www.sundaysplit.app','https://sunday-split.othigurman.chatgpt.site']})(request);
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
   const asset=assets[url.pathname==='/'?'/index.html':url.pathname];
   if(!asset)return new Response('Not found',{status:404});

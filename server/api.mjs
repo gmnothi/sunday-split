@@ -16,8 +16,8 @@ export async function session(request,db,now) {
   const token=request.headers.get('Cookie')?.match(/(?:^|;\s*)split_session=([a-f0-9]{64})(?:;|$)/)?.[1];
   if(!token)return null;return db.prepare('SELECT id,name,expires FROM sessions WHERE id=? AND expires>?').bind(await digest(token),now).first();
 }
-function validateSpec(spec,catalog) {
-  if(spec?.v!==1||![2025,2026].includes(spec.season)||spec.keys?.length!==5||new Set(spec.keys).size!==5||!Array.isArray(spec.flips)||spec.flips.length!==5||spec.flips.some(f=>![0,1].includes(f)))fail(400,'A league challenge needs five distinct published matchups.');
+export function validateSpec(spec,catalog) {
+  if(spec?.v!==1||![2025,2026].includes(spec.season)||!Array.isArray(spec.keys)||spec.keys.length!==5||new Set(spec.keys).size!==5||!Array.isArray(spec.flips)||spec.flips.length!==5||spec.flips.some(f=>![0,1].includes(f)))fail(400,'A league challenge needs five distinct published matchups.');
   const rounds=spec.keys.map((key,i)=>{const r=catalog.find(r=>r.key===key&&r.season===spec.season);if(!r)fail(400,'This matchup is not in the published pool.');return {...r,teams:spec.flips[i]?[...r.teams].reverse():r.teams};});
   return rounds;
 }
@@ -53,13 +53,18 @@ export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=
       if(url.pathname==='/api/rooms'&&request.method==='POST') {
         if(!user)fail(401,'Choose a nickname first.');await limit(db,'rooms:'+user.id,time,6);
         const spec=await body(request),rounds=validateSpec(spec,await catalog(spec.season));
+        const title=spec.title==null?null:typeof spec.title==='string'?spec.title.trim():'';
+        if(title!==null&&(title.length<1||title.length>60||/[\x00-\x1f\x7f]/.test(title)))fail(400,'Choose a challenge title from 1 to 60 characters.');
+        const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(time*1000));
+        const monday=new Date(today+'T00:00:00Z');monday.setUTCDate(monday.getUTCDate()-(monday.getUTCDay()+6)%7);
+        const week=title?monday.toISOString().slice(0,10):null;
         const token=btoa(JSON.stringify({v:1,season:spec.season,keys:spec.keys,flips:spec.flips})).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-        const id=random();await db.prepare('INSERT INTO rooms(id,host,token,rounds,created,expires) VALUES(?,?,?,?,?,?)').bind(id,user.id,token,JSON.stringify(rounds),time,time+30*86400).run();return json({id,token},201);
+        const id=random();await db.prepare('INSERT INTO rooms(id,host,token,rounds,created,expires,title,week) VALUES(?,?,?,?,?,?,?,?)').bind(id,user.id,token,JSON.stringify(rounds),time,time+30*86400,title,week).run();return json({id,token,title,week},201);
       }
       const match=/^\/api\/rooms\/([a-f0-9]{32})(?:\/(scores|submit))?$/.exec(url.pathname);
       if(match){
         const room=await db.prepare('SELECT * FROM rooms WHERE id=? AND expires>?').bind(match[1],time).first();if(!room)fail(404,'Challenge not found or expired.');
-        if(!match[2]&&request.method==='GET')return json({id:room.id,token:room.token,expires:room.expires});
+        if(!match[2]&&request.method==='GET')return json({id:room.id,token:room.token,expires:room.expires,title:room.title,week:room.week});
         if(!user)fail(401,'Choose a nickname first.');
         if(match[2]==='submit'&&request.method==='POST'){
           const data=await body(request),rounds=JSON.parse(room.rounds);
@@ -67,7 +72,7 @@ export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=
           const wins=data.picks.filter((p,i)=>p.pick===(rounds[i].teams[0].total>rounds[i].teams[1].total?0:1)).length;
           const assisted=data.picks.filter(p=>p.hint!==null).length;
           const points=data.picks.reduce((n,p,i)=>n+(p.pick===(rounds[i].teams[0].total>rounds[i].teams[1].total?0:1)?p.hint===null?2:1:0),0);
-          await db.prepare('INSERT OR IGNORE INTO submissions(room,session,wins,points,assisted,created) VALUES(?,?,?,?,?,?)').bind(room.id,user.id,wins,points,assisted,time).run();
+          await db.prepare('INSERT OR IGNORE INTO submissions(room,session,wins,points,assisted,created,picks) VALUES(?,?,?,?,?,?,?)').bind(room.id,user.id,wins,points,assisted,time,JSON.stringify(data.picks.map(p=>({pick:p.pick,hint:p.hint})))).run();
           const stored=await db.prepare('SELECT wins,points,assisted FROM submissions WHERE room=? AND session=?').bind(room.id,user.id).first();return json(stored);
         }
         if(match[2]==='scores'&&request.method==='GET'){

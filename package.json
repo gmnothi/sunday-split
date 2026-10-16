@@ -5,7 +5,7 @@
     "build": "node server/build-sites.mjs",
     "db:generate": "drizzle-kit generate",
     "check:sites": "node scripts/test-sites-build.mjs",
-    "check:social": "node scripts/test-game-links.mjs && node scripts/test-film-room.mjs && node scripts/test-wrapped.mjs && node scripts/test-sleeper-import.mjs && node scripts/test-rooms.mjs && node scripts/test-votes.mjs && node scripts/test-worker.mjs && node --check server/worker.mjs",
+    "check:social": "node scripts/run-feature-tests.mjs && node --check server/worker.mjs && node --check dist/extras.js && node --check dist/engagement.js",
     "start": "node serve.mjs",
     "check": "node --check dist/app.js && node --check dist/theme.js && node --check dist/clues.js && node scripts/test-clues.mjs && node scripts/test-form-trend.mjs && node scripts/validate.mjs && node scripts/test-curation.mjs && node scripts/test-week4.mjs && node scripts/test-diversity.mjs && node scripts/test-refresh.mjs",
     "refresh:pool": "node scripts/refresh-pool.mjs",

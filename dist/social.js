@@ -20,6 +20,7 @@
   function iconButton(label,icon,action){const b=button(label,icon,action);b.className='icon-button';b.title=label;b.setAttribute('aria-label',label);b.querySelector('span').remove();return b;}
   window.SplitSocial={esc,dialog,share,track,button,iconButton};
   document.addEventListener('split:reveal',({detail:d})=>{
+    if(d.variant)return;
     const result=document.querySelector('#result');if(result&&!result.querySelector('[data-grudge]')){
       const b=button('Challenge a friend','swords',()=>share('Who are you taking? Pick before the reveal.',window.GameLinks.url([d.round],d.pool),'grudge'));b.dataset.grudge='';result.append(b);window.lucide?.createIcons();
     }
@@ -27,6 +28,7 @@
   document.addEventListener('split:pick',({detail:d})=>{if(d.index===0)once('pick:'+d.pack.id,()=>track('first_pick',{mode:d.pack.mode,season:d.round.season}));});
   document.addEventListener('split:complete',({detail:d})=>{
     once('finish:'+d.pack.id,()=>track('finish',{mode:d.pack.mode,rounds:d.results.length}));
+    if(d.variant)return;
     const summary=document.querySelector('.summary');
     if(summary&&!summary.querySelector('[data-beat]')){
       const wins=d.results.filter((r,i)=>r.pick===(d.pack.rounds[i].teams[0].total>d.pack.rounds[i].teams[1].total?0:1)).length;
