@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const code=fs.readFileSync(new URL('../dist/game-links.js',import.meta.url),'utf8');
+const ctx={window:{},URL,URLSearchParams,btoa,atob,location:{href:'https://example.com/?endless=1',hash:''}};
+vm.runInNewContext(code,ctx);
+const round={key:'123456789012345678:5:1',season:2026,teams:[{total:100},{total:99}]};
+const flipped={...round,teams:[...round.teams].reverse()},pool={rounds:[round]};
+const url=ctx.window.GameLinks.url([flipped],pool);
+assert(!url.includes('endless'));assert(!url.includes('100'));assert(!url.includes('99'));
+ctx.location=new URL(url);vm.runInNewContext(code,ctx);
+assert.equal(ctx.window.GameLinks.resolve(pool).rounds[0].teams[0].total,99);
+assert.equal(ctx.window.GameLinks.resolve(pool).mode,'grudge');
+assert.throws(()=>ctx.window.GameLinks.resolve({rounds:[]}));
+for(const token of ['!!!','x'.repeat(6001),btoa(JSON.stringify({v:1,season:2026,keys:[round.key],flips:[2]}))])assert.equal(ctx.window.GameLinks.decode(token),null);
+console.log('Challenge links preserve sides, omit answers, reject malformed/oversized input and report missing matchups.');
