@@ -1,0 +1,3 @@
+ALTER TABLE rooms ADD COLUMN title TEXT;
+ALTER TABLE rooms ADD COLUMN week TEXT;
+ALTER TABLE submissions ADD COLUMN picks TEXT;
