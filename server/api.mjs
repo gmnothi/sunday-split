@@ -27,7 +27,7 @@ export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=
       const url=new URL(request.url),time=now();
       if(!db)return json({error:'Shared challenges are not configured on this host.'},503);
       if(request.method!=='GET'&&request.headers.get('Origin')!==url.origin&&!allowedOrigins.includes(request.headers.get('Origin')))fail(403,'Cross-origin writes are not allowed.');
-      if(!['GET','POST'].includes(request.method))fail(405,'Method not allowed');
+      if(!['GET','POST','DELETE'].includes(request.method))fail(405,'Method not allowed');
       const user=await session(request,db,time);
       const ip=request.headers.get('CF-Connecting-IP')||request.headers.get('X-Local-IP')||'unknown';
       await limit(db,'ip:'+await digest(ip),time,240);
@@ -41,6 +41,15 @@ export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=
         return json({name},201,{'Set-Cookie':`split_session=${token}; Path=/api; HttpOnly; SameSite=Lax; Max-Age=2592000${url.protocol==='https:'?'; Secure':''}`});
       }
       if(url.pathname==='/api/session'&&request.method==='GET')return json({name:user?.name||null});
+      if(url.pathname==='/api/session'&&request.method==='DELETE'){
+        if(user)await db.batch([
+          db.prepare('DELETE FROM submissions WHERE session=? OR room IN (SELECT id FROM rooms WHERE host=?)').bind(user.id,user.id),
+          db.prepare('DELETE FROM votes WHERE session=?').bind(user.id),
+          db.prepare('DELETE FROM rooms WHERE host=?').bind(user.id),
+          db.prepare('DELETE FROM sessions WHERE id=?').bind(user.id),
+        ]);
+        return json({deleted:true},200,{'Set-Cookie':`split_session=; Path=/api; HttpOnly; SameSite=Lax; Max-Age=0${url.protocol==='https:'?'; Secure':''}`});
+      }
       if(url.pathname==='/api/rooms'&&request.method==='POST') {
         if(!user)fail(401,'Choose a nickname first.');await limit(db,'rooms:'+user.id,time,6);
         const spec=await body(request),rounds=validateSpec(spec,await catalog(spec.season));

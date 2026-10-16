@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';import {openDb} from '../server/sqlite.mjs';import {createApi} from '../server/api.mjs';
+const db=openDb(),api=createApi({db,catalog:async()=>[]});
+const request=(method,cookie='',origin='https://game.test',body)=>new Request('https://game.test/api/session',{method,headers:{Origin:origin,Cookie:cookie},...(body?{body:JSON.stringify(body)}:{})});
+const create=await api(request('POST','','https://game.test',{name:'Release QA'}));const cookie=create.headers.get('Set-Cookie').split(';')[0],id=db.raw.prepare('SELECT id FROM sessions').get().id;
+db.raw.prepare('INSERT INTO sessions VALUES(?,?,?)').run('other','Other',9999999999);
+db.raw.prepare('INSERT INTO rooms VALUES(?,?,?,?,?,?)').run('owned',id,'token','[]',1,9999999999);
+db.raw.prepare('INSERT INTO submissions VALUES(?,?,?,?,?,?)').run('owned','other',1,2,0,1);
+db.raw.prepare('INSERT INTO votes VALUES(?,?,?,?)').run(id,'key',0,1);
+assert.equal((await api(request('DELETE',cookie,'https://evil.test'))).status,403);
+const response=await api(request('DELETE',cookie));assert.equal(response.status,200);assert(response.headers.get('Set-Cookie').includes('Max-Age=0'));
+for(const table of ['rooms','votes','submissions'])assert.equal(db.raw.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get().n,0);
+assert.equal(db.raw.prepare('SELECT COUNT(*) AS n FROM sessions').get().n,1);assert.equal((await (await api(request('GET',cookie))).json()).name,null);
+db.raw.close();console.log('Anonymous profile removal is atomic, clears owned test data, preserves other profiles and rejects cross-origin requests.');
