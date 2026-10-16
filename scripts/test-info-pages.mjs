@@ -4,7 +4,7 @@ const sitemap=fs.readFileSync(new URL('sitemap.xml',root),'utf8');
 for(const name of pages){
   const html=fs.readFileSync(new URL(name,root),'utf8');
   assert.equal((html.match(/<footer\b/g)||[]).length,1);
-  for(const href of ['/how-it-works/','/about/','/privacy/','https://github.com/gmnothi/sunday-split/issues'])assert(html.includes(`href="${href}"`),name+' missing link '+href);
+  for(const href of ['/how-it-works/','/about/','/privacy/','https://github.com/gmnothi'])assert(html.includes(`href="${href}"`),name+' missing link '+href);
   assert(html.includes('independent, fan-made game'));assert(html.includes('Sleeper API'));
   const canonical='https://www.sundaysplit.app/'+name.replace(/index\.html$/,'');assert(html.includes(`rel="canonical" href="${canonical}"`));assert(sitemap.includes(`<loc>${canonical}</loc>`));
   for(const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)(?:#[^"]*)?"/g)){
