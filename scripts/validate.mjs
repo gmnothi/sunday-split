@@ -53,7 +53,7 @@ if(pool.legacyRoundKeys) {
   assert.equal(JSON.stringify(daily),JSON.stringify(ctx.window.GamePacks.makePack(legacy,{date:'2026-10-01'})));
   assert.equal(pool.legacyRoundKeys.length,72);
   assert(rounds.length>pool.legacyRoundKeys.length);
-  assert(rounds.every(r=>r.week>=1&&r.week<=4));
+  assert(rounds.every(r=>r.week>=1&&r.week<=18));
   assert(rounds.filter(r=>r.resultClass==='close_winner').length>13);
 }
 assert.equal(daily.rounds.length,5);

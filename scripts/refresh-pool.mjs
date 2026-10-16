@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {lastCompletedWeek,nextDailyDate} from './refresh-policy.mjs';
 
 const sourcePath=process.argv.slice(2).find(a=>!a.startsWith('--'))||new URL('./league-sources.json',import.meta.url);
 const season=process.argv.includes('--2025')?2025:2026;
@@ -21,7 +22,8 @@ async function request(url,json=true) {
 const api=path=>request(`https://api.sleeper.app/v1/${path}`);
 const state=await api('state/nfl');
 assert.equal(state.season,'2026');
-const lastWeek=season===2025?14:Math.min(4,state.week-1);
+const lastWeek=season===2025?14:lastCompletedWeek(state);
+report.state={season:state.season,week:state.week,season_type:state.season_type,lastCompletedWeek:lastWeek};
 const knownOnly=process.argv.includes('--known-only');
 const ids=new Set(registry.league_ids);
 if(knownOnly)original.rounds.forEach(r=>ids.add(r.leagueId));
@@ -100,6 +102,8 @@ const revision=createHash('sha256').update(ordered.map(r=>r.key).join('\n')).dig
 const snapshots=original.dailySnapshots||[];
 if(season===2026&&!snapshots.some(s=>s.before==='2026-10-03'))snapshots.push({before:'2026-10-03',keys:original.rounds.map(r=>r.key)});
 if(season===2026&&!snapshots.some(s=>s.before==='2026-10-07'))snapshots.push({before:'2026-10-07',keys:original.rounds.map(r=>r.key)});
+const dailyFrom=nextDailyDate();
+if(!snapshots.some(s=>s.before===dailyFrom))snapshots.push({before:dailyFrom,keys:original.rounds.map(r=>r.key)});
 const pool={...original,revision:`${season}-${revision}`,dailySnapshots:snapshots,legacyRoundKeys:original.legacyRoundKeys||original.rounds.map(r=>r.key),dailyExpansionDate:original.dailyExpansionDate||'2026-10-02',refreshedAt:new Date().toISOString(),rounds:ordered};
 await fs.writeFile(output,`window.${season===2025?'MATCHUP_POOL_2025':'MATCHUP_POOL'} = ${JSON.stringify(pool,null,2)};\n`);
 console.log(JSON.stringify(summary));

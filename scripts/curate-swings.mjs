@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {createHash} from 'node:crypto';
+import {nextDailyDate} from './refresh-policy.mjs';
 const ctx={window:{}};
 vm.runInNewContext(fs.readFileSync(new URL('../dist/curation.js',import.meta.url),'utf8'),ctx);
 const previous=ctx.window.MATCHUP_CURATION;
@@ -32,7 +34,11 @@ for(const pool of [ctx.window.MATCHUP_POOL,ctx.window.MATCHUP_POOL_2025]) {
 }
 const dailySnapshots=[...(previous.dailySnapshots||[])];
 if(!dailySnapshots.some(s=>s.before==='2026-10-07'))dailySnapshots.push({before:'2026-10-07',dailyFrom:previous.dailyFrom,seasons:previous.seasons});
-const curation={revision:'swings-v2-week4',dailyFrom:'2026-10-03',dailySnapshots,seasons};
+const changed=JSON.stringify(seasons)!==JSON.stringify(previous.seasons);
+const dailyFrom=nextDailyDate();
+if(changed&&!dailySnapshots.some(s=>s.before===dailyFrom))dailySnapshots.push({before:dailyFrom,dailyFrom:previous.dailyFrom,seasons:previous.seasons});
+const revision=changed?'swings-'+createHash('sha256').update(JSON.stringify(seasons)).digest('hex').slice(0,12):previous.revision;
+const curation={revision,dailyFrom:previous.dailyFrom,dailySnapshots,seasons};
 fs.writeFileSync(new URL('../dist/curation.js',import.meta.url),'window.MATCHUP_CURATION='+JSON.stringify(curation)+';\n');
 fs.writeFileSync(new URL('../research/swing-curation-report.json',import.meta.url),JSON.stringify({method:'Fourfold selection weight for top-quartile dramatic matchups; prior-form upsets require full three-game history for every starter. Reveal deficits describe presentation order, not NFL chronology.',reports},null,2)+'\n');
 console.log(JSON.stringify(reports.map(({season,total,featured,classes})=>({season,total,featured,classes}))));
