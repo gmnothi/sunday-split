@@ -5,6 +5,7 @@
     document.head.append(script);
   });
   try {
+    await window.LeagueRooms?.prepare();
     if(window.GameLinks.invalid)throw new Error('Invalid challenge link');
     if(window.GameLinks.incoming?.season===2025){const url=new URL(location.href);url.searchParams.set('season','2025');history.replaceState(null,'',url);}
     const league=new URLSearchParams(location.search).get('league');
