@@ -11,6 +11,7 @@
     const id=new URLSearchParams(location.search).get('room');if(!id)return;
     if(!/^[a-f0-9]{32}$/.test(id))throw new Error('Invalid room link');
     const room=await request('rooms/'+id);window.GameLinks.accept(room.token);
+    window.LeagueRooms.active=room;
     const url=new URL(location.href);url.hash='play='+room.token;history.replaceState(null,'',url);
   }
   async function scores(id) {
@@ -19,7 +20,7 @@
     el.querySelector('.dialog-body').append(window.SplitSocial.button('Refresh','refresh-cw',async()=>{el.close();try{await scores(id);}catch(error){window.SplitSocial.dialog('Standings unavailable',`<p>${esc(error.message)}</p>`);}}));window.lucide?.createIcons();
   }
   document.addEventListener('split:complete',({detail:d})=>{
-    if(d.pack.rounds.length!==5||d.confidence||d.pool.custom)return;
+    if(d.pack.rounds.length!==5||d.confidence||d.variant||d.pool.custom)return;
     const summary=document.querySelector('.summary');if(!summary||summary.querySelector('[data-room]'))return;
     const id=new URLSearchParams(location.search).get('room');
     const b=window.SplitSocial.button(id?'Submit & see league scores':'Challenge your league','users',()=>nickname(async()=>{
