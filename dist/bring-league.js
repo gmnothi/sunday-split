@@ -7,7 +7,7 @@
       try{const pool=await window.SleeperImport.load(input.value.trim(),fetch,(week,total)=>{status.textContent=`Loading completed week ${week}/${total}...`;});try{sessionStorage.setItem('sunday-split:league:'+pool.leagueId,JSON.stringify(pool));}catch{}const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('league',pool.leagueId);url.searchParams.set('season',pool.rounds[0].season);url.searchParams.set('practice',crypto.randomUUID());location.assign(url);}catch(error){status.textContent=error.message;status.classList.add('social-error');submit.disabled=false;input.disabled=false;}
     };
   }
-  function mount(){const header=document.querySelector('.header-right');if(header&&!header.querySelector('[data-bring-league]')){const b=window.SplitSocial.button('Your league','users-round',open);b.dataset.bringLeague='';header.append(b);window.lucide?.createIcons();}}
+  function mount(){const header=document.querySelector('.header-right');if(header&&!header.querySelector('[data-bring-league]')){const b=window.SplitSocial.iconButton('Your league','users-round',open);b.dataset.bringLeague='';header.append(b);window.lucide?.createIcons();}}
   document.addEventListener('split:round',mount);document.addEventListener('split:complete',mount);
   window.BringLeague={open};
 })();

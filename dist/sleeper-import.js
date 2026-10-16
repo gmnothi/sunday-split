@@ -10,7 +10,7 @@
     for(const [matchup,pair] of pairs){
       if(pair.length!==2||pair.some(t=>t.custom_points!=null||!Array.isArray(t.starters)||t.starters.length!==slots.length||new Set(t.starters).size!==slots.length||t.starters.some(id=>!id||id==='0'||!name(id))||!Array.isArray(t.starters_points)||t.starters_points.length!==slots.length||!t.starters_points.every(Number.isFinite)||t.starters_points.filter(n=>n===0).length>=2||!Number.isFinite(t.points)||Math.abs(t.starters_points.reduce((n,p)=>n+p,0)-t.points)>=.01)||pair[0].points===pair[1].points)continue;
       const margin=Math.abs(pair[0].points-pair[1].points);
-      rounds.push({key:`${league.league_id}:${week}:${matchup}`,leagueId:league.league_id,season:Number(league.season),week,scoring:league.scoring_settings,resultClass:margin<=5?'close_winner':margin<=15?'competitive_win':margin<30?'comfortable_win':'blowout',teams:pair.map(t=>({total:t.points,players:t.starters.map((player_id,i)=>({player_id,name:name(player_id),slot:slots[i],points:t.starters_points[i]}))})),source:`https://api.sleeper.app/v1/league/${league.league_id}/matchups/${week}`});
+      rounds.push({key:`${league.league_id}:${week}:${matchup}`,leagueId:league.league_id,season:Number(league.season),week,scoring:league.scoring_settings,resultClass:margin<=5?'close_winner':margin<=15?'competitive_win':margin<30?'comfortable_win':'blowout',teams:[...pair].sort((a,b)=>b.points-a.points).map(t=>({total:t.points,players:t.starters.map((player_id,i)=>({player_id,name:name(player_id),slot:slots[i],points:t.starters_points[i]}))})),source:`https://api.sleeper.app/v1/league/${league.league_id}/matchups/${week}`});
     }return rounds;
   }
   async function load(id,request=fetch,onProgress=()=>{}) {
