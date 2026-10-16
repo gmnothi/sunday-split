@@ -1,5 +1,7 @@
 # Sunday Split
 
+The game is followed by a compact explanation and a site-wide footer. Static `/how-it-works/`, `/about/`, and `/privacy/` pages cover the actual rules, data sources, and storage behavior without loading game datasets. Slashless routes redirect to their canonical trailing-slash URLs, and all pages are in the sitemap. Contact links to the public GitHub issue tracker; no private contact channel is implied. The Privacy page uses the existing authenticated profile-deletion endpoint with explicit confirmation, leaving device-local saves untouched. Run `node scripts/test-info-pages.mjs` for content/link/control checks, and use `scripts/qa-info-pages.js` in a Playwright CLI session for responsive, no-JS, navigation, and deletion-flow checks.
+
 Extra play stays behind **More**, leaving only Daily and Endless in the main navigation. Postgame actions and league/community tools collapse into disclosures; no new feature prompts interrupt a round.
 
 - Fourth Quarter (`?mode=fourth-quarter`) and Blind Resume (`?mode=blind`) are separate five-round games with isolated saves and no Daily streak effects. Each has a daily set and unlimited new practice sets. Shared links preserve the exact five, sides and mode. Fourth Quarter banks every slot except the final two offensive slots in roster order: this is a staged historical reveal, not actual NFL fourth-quarter timing. Blind Resume keeps opponent and last-three-game clues but replaces names and headshots until the pick. Neither mode has score hints or contributes community votes.
