@@ -113,7 +113,9 @@ assert.equal(stats(['2024-02-28','2024-02-29','2024-03-01'],'2024-03-01').curren
 assert.equal(stats(['2025-12-31','2026-01-01'],'2026-01-01').current,2);
 assert.throws(()=>stats([],'invalid'));
 const head=fs.readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
-assert(head.includes('<title>Sunday Split | Wordle for fantasy football</title>'));
+assert(head.includes('<title>Sunday Split | You Know Ball?</title>'));
+for(const tag of ['og:title','twitter:title'])assert(head.includes(`${tag}" content="Sunday Split | You Know Ball?"`));
+for(const id of ['help','motion','practice-nav','confidence-nav'])assert(new RegExp(`id="${id}"[^>]*\\bhidden`).test(head),'Secondary controls must start hidden: '+id);
 for(const tag of ['og:title','og:description','og:image','og:url','twitter:card','twitter:image']) assert(head.includes(tag));
 const png=fs.readFileSync(new URL('../dist/og.png',import.meta.url));
 assert.equal(png.readUInt32BE(16),1200);
