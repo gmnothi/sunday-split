@@ -4,8 +4,9 @@
   const pool=season===2025?window.MATCHUP_POOL_2025:window.MATCHUP_POOL;
   const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
-  const endless=params.get('endless')==='1';
-  const confidence=!endless && params.get('confidence')==='1';
+  const shared=window.GameLinks?.resolve(pool);
+  const endless=!shared&&params.get('endless')==='1';
+  const confidence=!shared&&!endless && params.get('confidence')==='1';
   const endlessVersion=(pool.revision||pool.version)+(window.MATCHUP_CURATION?':'+window.MATCHUP_CURATION.revision:'');
   const practiceParam=params.get('practice');
   const practiceSeed=!endless && !confidence && practiceParam && /^[a-zA-Z0-9-]{1,80}$/.test(practiceParam)?practiceParam:(!endless&&!confidence&&season===2025?'throwback-'+date:null);
@@ -25,9 +26,9 @@
   const practiceNav=document.querySelector('#practice-nav');
   practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
   for(const id of ['practice-nav','confidence-nav','endless-nav'])if(season===2025){const a=document.querySelector('#'+id);const u=new URL(a.href);u.searchParams.set('season','2025');a.href=u.href;}
-  document.querySelector(endless?'#endless-nav':confidence?'#confidence-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
+  if(!shared)document.querySelector(endless?'#endless-nav':confidence?'#confidence-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
   const seasonSelect=document.querySelector('#season');seasonSelect.value=String(season);
-  seasonSelect.onchange=()=>{const url=new URL(location.href);url.searchParams.set('season',seasonSelect.value);if(!endless&&!confidence&&!practiceSeed)url.searchParams.set('practice',crypto.randomUUID());location.assign(url);};
+  seasonSelect.onchange=()=>{const url=new URL(location.href);if(shared||pool.custom){url.search='';url.hash='';}url.searchParams.set('season',seasonSelect.value);if(shared||pool.custom||!endless&&!confidence&&!practiceSeed)url.searchParams.set('practice',crypto.randomUUID());location.assign(url);};
   const selectionKey=confidence?`sunday-split:selection:confidence:${season}:${date}`:practiceSeed?`sunday-split:selection:${practiceSeed}${season===2025?':2025':''}`:`sunday-split:selection:daily:${date}:${pool.version}`;
   let savedKeys=null,seen=[];
   try {
@@ -36,7 +37,9 @@
     const storedSeen=JSON.parse(localStorage.getItem('sunday-split:seen'));
     if(Array.isArray(storedSeen)) seen=storedSeen.filter(key=>typeof key==='string');
   } catch {}
-  const pack=endless ? {id:`endless:${endlessSeed}:${endlessVersion}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
+  const pack=shared?{...shared,date}:endless ? {id:`endless:${endlessSeed}:${endlessVersion}`,mode:'endless',date,rounds:[]} : window.GamePacks.makePack(pool,{date,practiceSeed,excluded:practiceSeed?seen:[],savedKeys});
+  const roundLimit=shared?shared.rounds.length:5;
+  const emit=stage=>document.dispatchEvent(new CustomEvent('split:'+stage,{detail:{pack,pool,index,round:pack.rounds[index],results:results.map(r=>({...r})),date,confidence}}));
   if(confidence) {
     const selected=window.GamePacks.makePack(pool,{date,practiceSeed:`confidence-${season}-${date}`,savedKeys,freezeDaily:true});
     Object.assign(pack,selected,{id:`confidence:${season}:${date}:${pool.version}`,mode:'confidence'});
@@ -45,7 +48,7 @@
     if(endless && !pack.rounds[i]) pack.rounds[i]=window.GamePacks.endlessRound(pool,endlessSeed,i);
     return pack.rounds[i];
   }
-  if(!endless) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
+  if(!endless&&!shared) try {localStorage.setItem(selectionKey,JSON.stringify(pack.rounds.map(r=>r.key)));} catch {}
   document.querySelector('#pool-count').textContent=`${pool.rounds.length} matchups / ${season} season`;
   const app = document.querySelector('#app');
   const storageKey = `sunday-split:${pack.id}`;
@@ -90,13 +93,13 @@
   }
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (saved && Array.isArray(saved.results) && (!confidence || window.Confidence.valid(saved.results)) && (endless || saved.results.length <= 5) && saved.results.every((r,i) =>
+    if (saved && Array.isArray(saved.results) && (!confidence || window.Confidence.valid(saved.results)) && (endless || saved.results.length <= roundLimit) && saved.results.every((r,i) =>
       r && [0,1].includes(r.pick) && (r.hint === null || Number.isInteger(r.hint) && r.hint >= 0 && r.hint < ensureRound(i).teams[0].players.length))) {
       results = saved.results;
       results.forEach((_,i)=>ensureRound(i));
-      index = !endless && results.length === 5 ? 5 : Math.max(0,results.length-1);
+      index = !endless && results.length === roundLimit ? roundLimit : Math.max(0,results.length-1);
       if (results.length === 0) index = 0;
-      if (saved.pendingIndex === results.length && (endless || results.length < 5)) index = results.length;
+      if (saved.pendingIndex === results.length && (endless || results.length < roundLimit)) index = results.length;
       const pending = saved.pendingHint;
       if (index === results.length && Number.isInteger(pending) && pending >= 0 && pending < ensureRound(index)?.teams[0].players.length) hint = pending;
       if(confidence && window.Confidence.available(results).includes(saved.pendingConfidence))confidenceValue=saved.pendingConfidence;
@@ -120,7 +123,7 @@
   function cancel() { timers.forEach(clearTimeout); timers=[]; animations.forEach(cancelAnimationFrame); animations=[]; document.querySelector('.celebration')?.remove(); }
   function progress() {
     const first=endless?Math.max(0,index-4):0;
-    const count=endless?index-first+1:5;
+    const count=endless?index-first+1:roundLimit;
     return `<div class="progress" aria-label="${endless?'Recent rounds':'Round progress'}">${Array.from({length:count},(_,offset)=> {
       const i=first+offset;
       const r = results[i];
@@ -128,7 +131,7 @@
       return `<span class="step ${r ? correct(r,i) ? 'correct' : 'wrong' : i === index ? 'current' : ''}" ${i===index?'aria-current="step"':''} aria-label="Round ${i+1}: ${status}" title="Round ${i+1}: ${status}">${r ? icon(correct(r,i)?'check':'x') : endless?icon('circle-dot'):String(i+1).padStart(2,'0')}</span>`;
     }).join('')}</div>`;
   }
-  function scoreMarkup() {return `${points()}<small>${endless?' pts':confidence?'/15':'/10'}</small>`;}
+  function scoreMarkup() {return `${points()}<small>${endless?' pts':confidence?'/15':'/'+(roundLimit*2)}</small>`;}
   function endlessStats() {
     const wins=results.filter(correct).length;
     let streak=0;
@@ -151,7 +154,7 @@
   }
   function render() {
     cancel();
-    if (!endless && index >= 5) { summary(); return; }
+    if (!endless && index >= roundLimit) { summary(); return; }
     ensureRound(index);
     const r = round(); const played = results[index]; hint = played ? played.hint : hint;
     finished = !!played; revealing=false; hintMode=false;
@@ -201,6 +204,8 @@
     if(hint !== null) { revealRow(hint,true); document.querySelector('#hint').disabled=true; }
     if(played) { allRows(); showResult(); }
     icons();
+    if(shared){document.querySelector('.edition-tag').textContent=roundLimit===1?'GRUDGE MATCH':'FRIEND CHALLENGE';document.querySelector('.round-count').textContent=`MATCHUP ${index+1} / ${roundLimit}`;document.querySelector('.score-label').textContent='CHALLENGE POINTS';}
+    emit('round');
     const next = endless?ensureRound(index+1):pack.rounds[index+1];
     if(next) next.teams.flatMap(t=>t.players).filter(p=>p.slot!=='DEF').forEach(p=>{const img=new Image();img.src=`https://sleepercdn.com/content/nfl/players/thumb/${p.player_id}.jpg`;});
   }
@@ -264,7 +269,7 @@
     if(finished || revealing || results[index]) return;
     if(confidence && !window.Confidence.available(results).includes(confidenceValue))return;
     if(hintMode) toggleHint();
-    results.push({pick:side,hint,...(confidence?{confidence:confidenceValue}:{})}); save(); revealing=true;
+    results.push({pick:side,hint,...(confidence?{confidence:confidenceValue}:{})}); save(); revealing=true;emit('pick');
     const paceControl=document.querySelector('#reveal-pace');if(paceControl)paceControl.disabled=true;
     document.querySelector('.matchup').classList.add('in-reveal');
     document.querySelector('#decision').classList.add('reveal-controls');
@@ -367,6 +372,8 @@
     }
     if(pack.mode==='daily') {recordDaily();document.querySelector('#daily-stats').innerHTML=dailyStats();}
     document.querySelector('#next').onclick=()=>{index++;hint=null;confidenceValue=null;save();render();window.scrollTo({top:0,behavior:reduceMotion?'instant':'smooth'});};
+    if(!endless&&index===roundLimit-1)document.querySelector('#next').innerHTML=`See results ${icon('trophy')}`;
+    emit('reveal');
     icons();
     if(innerWidth <= 600) section.scrollIntoView({block:'nearest',behavior:reduceMotion?'instant':'smooth'});
     if(ok && !reduceMotion) section.animate([{transform:'translateY(10px)',opacity:0},{transform:'translateY(0)',opacity:1}],{duration:260,easing:'cubic-bezier(.23,1,.32,1)'});
@@ -390,6 +397,14 @@
     [...recap.children].forEach((row,i)=>row.classList.add(correct(results[i],i)?'recap-win':'recap-loss'));
     section.querySelector('#share').insertAdjacentHTML('afterend',`<div class="share-footnote">${icon('shield-check')} Spoiler-free results</div>`);
     if(pack.mode==='daily')section.querySelector('.prototype-note').outerHTML=`<div class="next-daily">${icon('calendar-clock')}<span>THE NEXT DAILY FIVE<strong>Midnight Eastern</strong></span></div>`;
+    if(shared){
+      const wins=results.filter(correct).length;
+      section.querySelector('.eyebrow').textContent=roundLimit===1?'GRUDGE MATCH COMPLETE':'FRIEND CHALLENGE COMPLETE';section.querySelector('.big-result span').textContent='/'+roundLimit;section.querySelector('.calls-label').textContent='YOUR CALLS';section.querySelector('.summary-sub').textContent='Same matchups. Settle it with your league.';section.querySelector('.summary-stats small').textContent='/'+(roundLimit*2);
+      section.querySelector('h1').textContent=wins===roundLimit?'A perfect read.':wins>=3?'You know ball.':'Any given Sunday.';section.querySelector('.trophy').innerHTML=icon(wins===roundLimit?'trophy':'flag');
+      section.querySelector('.prototype-note').textContent='Shared challenges are separate from your daily score.';
+      section.querySelector('#share').onclick=()=>window.SplitSocial.share(`I got ${wins}/${roundLimit}. Beat my score on these exact matchups.`,window.GameLinks.url(pack.rounds,pool),'shared_results');
+    }
+    emit('complete');
   }
   function confidenceSummary() {
     const wins=results.filter(correct).length;
