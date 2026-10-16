@@ -16,7 +16,7 @@
     const b=document.createElement('button');b.type='button';b.className='social-button';b.innerHTML=`<i data-lucide="${icon}" aria-hidden="true"></i><span>${esc(label)}</span>`;b.onclick=action;return b;
   }
   const seen=new Set();
-  function once(key,fn){if(seen.has(key))return;seen.add(key);fn();}
+  function once(key,fn){if(seen.has(key))return;try{if(localStorage.getItem('sunday-split:metric:'+key))return;localStorage.setItem('sunday-split:metric:'+key,'1');}catch{}seen.add(key);fn();}
   function iconButton(label,icon,action){const b=button(label,icon,action);b.className='icon-button';b.title=label;b.setAttribute('aria-label',label);b.querySelector('span').remove();return b;}
   window.SplitSocial={esc,dialog,share,track,button,iconButton};
   document.addEventListener('split:reveal',({detail:d})=>{
@@ -24,7 +24,7 @@
       const b=button('Challenge a friend','swords',()=>share('Who are you taking? Pick before the reveal.',window.GameLinks.url([d.round],d.pool),'grudge'));b.dataset.grudge='';result.append(b);window.lucide?.createIcons();
     }
   });
-  document.addEventListener('split:pick',({detail:d})=>once('pick:'+d.pack.id,()=>track('first_pick',{mode:d.pack.mode,season:d.round.season})));
+  document.addEventListener('split:pick',({detail:d})=>{if(d.index===0)once('pick:'+d.pack.id,()=>track('first_pick',{mode:d.pack.mode,season:d.round.season}));});
   document.addEventListener('split:complete',({detail:d})=>{
     once('finish:'+d.pack.id,()=>track('finish',{mode:d.pack.mode,rounds:d.results.length}));
     const summary=document.querySelector('.summary');
