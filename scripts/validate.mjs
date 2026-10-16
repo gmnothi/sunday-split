@@ -128,7 +128,7 @@ const robots=fs.readFileSync(new URL('../dist/robots.txt',import.meta.url),'utf8
 assert(robots.includes('Allow: /'));
 assert(robots.includes('Sitemap: https://www.sundaysplit.app/sitemap.xml'));
 const sitemap=fs.readFileSync(new URL('../dist/sitemap.xml',import.meta.url),'utf8');
-assert.equal((sitemap.match(/<loc>/g)||[]).length,1);
+assert.equal((sitemap.match(/<loc>/g)||[]).length,4);
 assert(sitemap.includes('<loc>https://www.sundaysplit.app/</loc>'));
 const gtm=head.match(/<!-- Google Tag Manager -->\s*<script>([\s\S]*?)<\/script>/)[1];
 const injected=[];
