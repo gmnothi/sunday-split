@@ -26,9 +26,9 @@
   const practiceNav=document.querySelector('#practice-nav');
   practiceNav.href=practiceSeed ? location.href : newPracticeUrl().href;
   for(const id of ['practice-nav','confidence-nav','endless-nav'])if(season===2025){const a=document.querySelector('#'+id);const u=new URL(a.href);u.searchParams.set('season','2025');a.href=u.href;}
-  document.querySelector(endless?'#endless-nav':confidence?'#confidence-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
+  if(!shared)document.querySelector(endless?'#endless-nav':confidence?'#confidence-nav':practiceSeed?'#practice-nav':'#daily-nav').setAttribute('aria-current','page');
   const seasonSelect=document.querySelector('#season');seasonSelect.value=String(season);
-  seasonSelect.onchange=()=>{const url=new URL(location.href);url.searchParams.set('season',seasonSelect.value);if(!endless&&!confidence&&!practiceSeed)url.searchParams.set('practice',crypto.randomUUID());location.assign(url);};
+  seasonSelect.onchange=()=>{const url=new URL(location.href);if(shared||pool.custom){url.search='';url.hash='';}url.searchParams.set('season',seasonSelect.value);if(shared||pool.custom||!endless&&!confidence&&!practiceSeed)url.searchParams.set('practice',crypto.randomUUID());location.assign(url);};
   const selectionKey=confidence?`sunday-split:selection:confidence:${season}:${date}`:practiceSeed?`sunday-split:selection:${practiceSeed}${season===2025?':2025':''}`:`sunday-split:selection:daily:${date}:${pool.version}`;
   let savedKeys=null,seen=[];
   try {
@@ -397,7 +397,13 @@
     [...recap.children].forEach((row,i)=>row.classList.add(correct(results[i],i)?'recap-win':'recap-loss'));
     section.querySelector('#share').insertAdjacentHTML('afterend',`<div class="share-footnote">${icon('shield-check')} Spoiler-free results</div>`);
     if(pack.mode==='daily')section.querySelector('.prototype-note').outerHTML=`<div class="next-daily">${icon('calendar-clock')}<span>THE NEXT DAILY FIVE<strong>Midnight Eastern</strong></span></div>`;
-    if(shared){section.querySelector('.eyebrow').textContent=roundLimit===1?'GRUDGE MATCH COMPLETE':'FRIEND CHALLENGE COMPLETE';section.querySelector('.big-result span').textContent='/'+roundLimit;section.querySelector('.calls-label').textContent='YOUR CALLS';section.querySelector('.summary-sub').textContent='Same matchups. Settle it with your league.';section.querySelector('.summary-stats small').textContent='/'+(roundLimit*2);}
+    if(shared){
+      const wins=results.filter(correct).length;
+      section.querySelector('.eyebrow').textContent=roundLimit===1?'GRUDGE MATCH COMPLETE':'FRIEND CHALLENGE COMPLETE';section.querySelector('.big-result span').textContent='/'+roundLimit;section.querySelector('.calls-label').textContent='YOUR CALLS';section.querySelector('.summary-sub').textContent='Same matchups. Settle it with your league.';section.querySelector('.summary-stats small').textContent='/'+(roundLimit*2);
+      section.querySelector('h1').textContent=wins===roundLimit?'A perfect read.':wins>=3?'You know ball.':'Any given Sunday.';section.querySelector('.trophy').innerHTML=icon(wins===roundLimit?'trophy':'flag');
+      section.querySelector('.prototype-note').textContent='Shared challenges are separate from your daily score.';
+      section.querySelector('#share').onclick=()=>window.SplitSocial.share(`I got ${wins}/${roundLimit}. Beat my score on these exact matchups.`,window.GameLinks.url(pack.rounds,pool),'shared_results');
+    }
     emit('complete');
   }
   function confidenceSummary() {
