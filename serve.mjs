@@ -12,6 +12,8 @@ const api=createApi({db,extra:engagementApi,catalog:async season=>{if(!catalogs.
 const root = path.resolve('dist');
 const types = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.txt':'text/plain','.xml':'application/xml'};
 const server = http.createServer(async (req,res) => {
+  const incoming=new URL(req.url,'http://localhost');
+  if(['/how-it-works','/about','/privacy'].includes(incoming.pathname)){res.writeHead(308,{Location:incoming.pathname+'/'+incoming.search}).end();return;}
   if(req.url.startsWith('/api/')){
     try{const port=server.address().port,origin=`http://127.0.0.1:${port}`;const headers=new Headers(req.headers);headers.set('X-Local-IP',req.socket.remoteAddress||'local');const request=new Request(new URL(req.url,origin),{method:req.method,headers,...(['GET','HEAD'].includes(req.method)?{}:{body:req,duplex:'half'})});const response=await api(request);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));}catch{res.writeHead(503).end('Service unavailable');}return;
   }

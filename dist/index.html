@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="social.css">
   <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="info.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,7 +93,16 @@
       <noscript><p>Enable JavaScript to play Sunday Split.</p></noscript>
     </section>
   </main>
-  <footer><span>Real lineups. Real results.</span><span>10-team Sleeper leagues <span class="footer-divider">/</span> <span id="pool-count">2026 season</span></span></footer>
+  <section class="site-context" aria-labelledby="about-game">
+    <div class="context-intro"><p class="eyebrow">YOU KNOW BALL? PROVE IT.</p><h2 id="about-game">What is Sunday Split?</h2><p>A free daily fantasy football guessing game. Two real starting lineups. One completed matchup. Pick who won, then watch the points come in. Make five separate calls for a daily score out of five.</p></div>
+    <div class="context-columns"><div><h3>Five matchups. Your calls.</h3><p>Everyone gets the same Daily Five, refreshed at midnight Eastern. Compare starters, scoring, NFL opponents, and recent form before locking in each pick.</p><a class="context-link" href="/how-it-works/">How it works <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div><div><h3>Read the lineup. Not the score.</h3><p>Correct calls earn two points without a hint, or one with a paired-position hint. Your headline result is winners picked out of five. Keep playing in Endless, or find more modes under More.</p><a class="context-link" href="/how-it-works/#scoring">Scoring &amp; modes <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
+    <p class="context-data">Real completed matchups from 10-team Sleeper leagues. Recent-form clues use games played before the matchup, never its hidden score. <a href="/about/#data">About the data</a></p>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-top"><a class="footer-wordmark" href="/">SUNDAY<span>SPLIT</span></a><nav aria-label="Footer"><a href="/how-it-works/">How It Works</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="https://github.com/gmnothi/sunday-split/issues" target="_blank" rel="noopener noreferrer">Contact <span class="sr-only">(GitHub issues, opens in a new tab)</span></a></nav></div>
+    <p class="footer-disclaimer">Sunday Split is an independent, fan-made game. It is not affiliated with, endorsed by, or sponsored by the NFL, its teams, the NFL Players Association, or Sleeper. Names, images, logos, and trademarks belong to their respective owners and identify real players, teams, and matchups.</p>
+    <div class="footer-bottom"><span>Data: <a href="https://docs.sleeper.com/" target="_blank" rel="noopener noreferrer">Sleeper API</a> &amp; Sleeper-hosted images.</span><span id="pool-count">2026 season</span><span>&copy; 2026 Sunday Split</span></div>
+  </footer>
   <div id="toast" role="status"></div>
 </body>
 </html>
