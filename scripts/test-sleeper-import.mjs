@@ -4,6 +4,7 @@ const league={league_id:'123456789012345678',sport:'nfl',season:'2026',total_ros
 assert(eligible(league));assert(!eligible({...league,total_rosters:12}));assert(!eligible({...league,roster_positions:['QB','SUPER_FLEX']}));assert(!eligible({...league,scoring_settings:{bonus_rec_yd:1}}));
 const a={matchup_id:1,starters:['q','r'],starters_points:[10,5],points:15},b={...a,points:16,starters_points:[10,6]},players={q:{full_name:'QB'},r:{full_name:'RB'}};
 assert.equal(convert(league,5,[a,b],players).length,1);assert.equal(convert(league,5,[a,{...b,custom_points:16}],players).length,0);assert.equal(convert(league,5,[a,a],players).length,0);assert.equal(convert(league,5,[a,{...b,points:99}],players).length,0);
+assert.equal(JSON.stringify(convert(league,5,[a,b],players)),JSON.stringify(convert(league,5,[b,a],players)),'API response order must not flip shared lineups');
 const weeks=[];const request=async url=>({ok:true,json:async()=>{if(url.endsWith('/league/'+league.league_id))return league;if(url.endsWith('/state/nfl'))return {season:'2026',season_type:'regular',week:6};if(url.endsWith('/players/nfl'))return players;weeks.push(Number(url.split('/').at(-1)));return [a,b];}});
 const pool=await load(league.league_id,request);assert.equal(pool.rounds.length,5);assert.equal(Math.max(...weeks),5);await assert.rejects(load('not-an-id',request));
 console.log('Sleeper import format restrictions, score validation, ties, adjusted lineups, input validation and live-week exclusion passed.');
