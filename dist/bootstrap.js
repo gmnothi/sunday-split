@@ -16,7 +16,8 @@
     try {await load('curation.js');}catch { /* Fall back to the original pool order. */ }
     try {await load(`clues-${season}.js`);}catch { /* A missing clue pack must not prevent playing. */ }
     await load('app.js');
-  }catch {
+  }catch(error) {
     document.querySelector('#app').innerHTML='<section class="summary"><h1>Game unavailable</h1><p>Check your connection and reload.</p><button onclick="location.reload()">Retry</button></section>';
+    document.querySelector('#app p').textContent=error.message||'Check your connection and reload.';
   }
 })();

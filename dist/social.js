@@ -17,7 +17,8 @@
   }
   const seen=new Set();
   function once(key,fn){if(seen.has(key))return;seen.add(key);fn();}
-  window.SplitSocial={esc,dialog,share,track,button};
+  function iconButton(label,icon,action){const b=button(label,icon,action);b.className='icon-button';b.title=label;b.setAttribute('aria-label',label);b.querySelector('span').remove();return b;}
+  window.SplitSocial={esc,dialog,share,track,button,iconButton};
   document.addEventListener('split:reveal',({detail:d})=>{
     const result=document.querySelector('#result');if(result&&!result.querySelector('[data-grudge]')){
       const b=button('Challenge a friend','swords',()=>share('Who are you taking? Pick before the reveal.',window.GameLinks.url([d.round],d.pool),'grudge'));b.dataset.grudge='';result.append(b);window.lucide?.createIcons();
