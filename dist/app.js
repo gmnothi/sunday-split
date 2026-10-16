@@ -1,7 +1,7 @@
 (() => {
   const params=new URLSearchParams(location.search);
   const season=params.get('season')==='2025'?2025:2026;
-  const pool=season===2025?window.MATCHUP_POOL_2025:window.MATCHUP_POOL;
+  const pool=window.CUSTOM_POOL||(season===2025?window.MATCHUP_POOL_2025:window.MATCHUP_POOL);
   const dateParts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Toronto',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const date=['year','month','day'].map(type=>dateParts.find(p=>p.type===type).value).join('-');
   const shared=window.GameLinks?.resolve(pool);

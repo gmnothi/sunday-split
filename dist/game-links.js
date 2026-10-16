@@ -25,7 +25,7 @@
       if(!original)throw new Error('Matchup is not shareable');
       return original.teams[0].total===r.teams[0].total?0:1;
     })};
-    const link=new URL(base);link.search='';if(value.season===2025)link.searchParams.set('season','2025');link.hash='play='+encode(value);return link.href;
+    const link=new URL(base);link.search='';if(pool.custom)link.searchParams.set('league',pool.leagueId);if(value.season===2025)link.searchParams.set('season','2025');link.hash='play='+encode(value);return link.href;
   }
   window.GameLinks={decode,incoming,resolve,url,invalid:!!token&&!incoming};
 })();
