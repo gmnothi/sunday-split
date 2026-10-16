@@ -25,7 +25,7 @@
     if(s.played){el.querySelector('.dialog-body').append(button('Download card','download',()=>download(s)),button('Share recap','share-2',()=>share(`My Sunday Split week: ${s.wins}/${s.played}, ${s.accuracy}% accuracy. Think you know ball?`,'https://www.sundaysplit.app/','weekly')));window.lucide?.createIcons();}
   }
   window.SplitWrapped={summarize,report,open};
-  function mount(){const header=document.querySelector('.header-right');if(header&&!header.querySelector('[data-wrapped]')){const b=window.SplitSocial.button('Weekly recap','calendar-range',open);b.dataset.wrapped='';header.append(b);window.lucide?.createIcons();}}
+  function mount(){const header=document.querySelector('.header-right');if(header&&!header.querySelector('[data-wrapped]')){const b=window.SplitSocial.iconButton('Weekly recap','calendar-range',open);b.dataset.wrapped='';header.append(b);window.lucide?.createIcons();}}
   document.addEventListener('split:round',mount);document.addEventListener('split:complete',mount);
   document.addEventListener('split:pick',({detail:d})=>{
     const entry=d.results[d.index];if(!entry)return;
