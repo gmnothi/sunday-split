@@ -10,6 +10,7 @@ async function body(request) {
 export async function limit(db,id,now,max=120) {
   const bucket=Math.floor(now/60),row=await db.prepare('INSERT INTO request_limits (id,count,expires) VALUES (?,1,?) ON CONFLICT(id) DO UPDATE SET count=count+1 RETURNING count').bind(id+':'+bucket,now+120).first();
   if(row.count>max)fail(429,'Too many requests. Try again shortly.');
+  if(row.count===1)await db.prepare('DELETE FROM request_limits WHERE expires<=?').bind(now).run();
 }
 export async function session(request,db,now) {
   const token=request.headers.get('Cookie')?.match(/(?:^|;\s*)split_session=([a-f0-9]{64})(?:;|$)/)?.[1];
@@ -43,7 +44,7 @@ export function createApi({db,catalog,now=()=>Math.floor(Date.now()/1000),extra=
       if(url.pathname==='/api/rooms'&&request.method==='POST') {
         if(!user)fail(401,'Choose a nickname first.');await limit(db,'rooms:'+user.id,time,6);
         const spec=await body(request),rounds=validateSpec(spec,await catalog(spec.season));
-        const token=btoa(JSON.stringify(spec)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+        const token=btoa(JSON.stringify({v:1,season:spec.season,keys:spec.keys,flips:spec.flips})).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
         const id=random();await db.prepare('INSERT INTO rooms(id,host,token,rounds,created,expires) VALUES(?,?,?,?,?,?)').bind(id,user.id,token,JSON.stringify(rounds),time,time+30*86400).run();return json({id,token},201);
       }
       const match=/^\/api\/rooms\/([a-f0-9]{32})(?:\/(scores|submit))?$/.exec(url.pathname);

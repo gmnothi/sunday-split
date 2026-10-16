@@ -18,4 +18,4 @@ const server = http.createServer(async (req,res) => {
   if (!file.startsWith(root + path.sep)) {res.writeHead(403).end();return;}
   fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end('Not found');return;}res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream'}).end(data);});
 });
-server.listen(Number(process.env.PORT || 4317),'127.0.0.1',()=>console.log('Sunday Split: http://127.0.0.1:4317'));
+server.listen(Number(process.env.PORT || 4317),'127.0.0.1',()=>console.log(`Sunday Split: http://127.0.0.1:${server.address().port}`));
