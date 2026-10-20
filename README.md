@@ -1,51 +1,137 @@
 # Sunday Split
 
-The game is followed by a compact explanation and a site-wide footer. Static `/how-it-works/`, `/about/`, and `/privacy/` pages cover the actual rules, data sources, and storage behavior without loading game datasets. Slashless routes redirect to their canonical trailing-slash URLs, and all pages are in the sitemap. Contact currently links to the creator's public GitHub profile: the source repository and its issue tracker are private, and no private support inbox is implied. The Privacy page uses the existing authenticated profile-deletion endpoint with explicit confirmation, leaving device-local saves untouched. Run `node scripts/test-info-pages.mjs` for content/link/control checks, and use `scripts/qa-info-pages.js` in a Playwright CLI session for responsive, no-JS, navigation, and deletion-flow checks.
+**You know ball? Prove it.**
 
-Extra play stays behind **More**, leaving only Daily and Endless in the main navigation. Postgame actions and league/community tools collapse into disclosures; no new feature prompts interrupt a round.
+A daily fantasy-football guessing game built from real, completed Sleeper matchups. Compare two starting lineups, pick the winner, then watch the actual points come in. Five matchups. Five calls.
 
-- Fourth Quarter (`?mode=fourth-quarter`) and Blind Resume (`?mode=blind`) are separate five-round games with isolated saves and no Daily streak effects. Each has a daily set and unlimited new practice sets. Shared links preserve the exact five, sides and mode. Fourth Quarter banks every slot except the final two offensive slots in roster order: this is a staged historical reveal, not actual NFL fourth-quarter timing. Blind Resume keeps opponent and last-three-game clues but replaces names and headshots until the pick. Neither mode has score hints or contributes community votes.
-- The optional difference-maker side call locks with the main pick and survives reloads. It identifies the winning starter with the largest point edge over the opposite roster slot; tied largest edges both count. It never changes the five-round score and is kept locally.
-- Community-created weekly challenges let a browser profile title and curate five published matchups. The editor checks for repeated player-week performances. Challenges are dated to the current Toronto Monday, carry a 30-day invite link and unlock standings after submission. They are not verified creator endorsements. Recent links are saved on the creator's device; no public directory or automatic weekly replacement is implied.
-- League rivalries use rooms both profiles submitted, comparing set scores and disagreements from newly recorded picks. Identical sets count once per opponent. Old submissions remain valid score-only history; there is no invented backfill. Records cover active 30-day profiles, with up to 200 recent shared-room entries. Private profiles and unrelated rooms are not listed.
-- Monday Debrief is an on-demand recap of a finished published five, available after any completed set rather than gated to Monday. Explicitly opening it adds those picks to the existing community tally. It shows real per-round browser-profile samples, withholding percentages below five. Earlier votes cannot be replaced, and no seeded or fabricated consensus is used.
+[Play Sunday Split](https://www.sundaysplit.app/) · [How to play](https://www.sundaysplit.app/how-it-works/) · [Engineering notes](docs/ENGINEERING_NOTES.md)
 
-`node scripts/run-feature-tests.mjs` includes bonus-mode and engagement coverage. With the local server and a Playwright CLI session open, `playwright-cli run-code "$(< scripts/qa-extras.js)"` checks compact navigation, both five-round modes, identity hiding, banked totals, exact-set sharing, saved state, mobile/dark layouts, two-browser creator/rivalry flows, and debrief gating. It removes its test profiles and hosted rooms afterwards. Schema changes are additive in `drizzle/0001_young_mikhail_rasputin.sql`; the deployed initial migration is unchanged.
+![Sunday Split showing two real fantasy lineups, recent-form clues, and the daily five-round challenge](docs/images/sunday-split-preview.png)
 
-The six social features are merged: one-round Grudge Matches and exact-set score challenges, post-reveal Film Room, device-local Weekly Wrapped, on-demand Sleeper league imports, shared league rooms, and post-reveal community votes. See `launches/` for feature descriptions and launch copy.
+## The Game
 
-Hosting now targets the same Sites project as an ESM Worker with a logical `DB` D1 binding. `npm run build` embeds the existing static assets losslessly with gzip compression and builds a compact authoritative score catalog. `npm run check:sites` verifies asset integrity, cache handling, the Worker entrypoint, and the generated production schema. Sites provisions the database and applies `drizzle/` migrations during publication; no external Cloudflare account or database ID is needed for this path. The standalone `wrangler.jsonc` path remains an alternative, not the production Site's resource configuration.
+Everyone receives the same Daily Five, refreshed by date in `America/Toronto`. Each round is a separate head-to-head matchup, not another attempt at the same question.
 
-To preview the production runtime locally: run `npm run build`, then `./node_modules/.bin/wrangler d1 migrations apply DB --local --config .sites-runtime/sites-preview.json --persist-to .sites-runtime/d1-preview`, then `./node_modules/.bin/wrangler dev --config .sites-runtime/sites-preview.json --local --persist-to .sites-runtime/d1-preview --ip 127.0.0.1 --port 4321`. Local data is separate from production.
+1. Compare the starters, league scoring, NFL opponents, and recent form.
+2. Pick Lineup A or B. Optionally reveal the same starting slot on both sides as a hint.
+3. Watch starter scores and team totals reveal by position.
+4. Finish five rounds for a result out of five and a spoiler-free share.
 
-Recent-form sparklines plot up to three prior appearances in chronological order. Green/red compares the latest prior score with the oldest prior score, not the current hidden matchup or a projection. Flat and single-game histories are neutral; missing histories have no graph. A minimum 40-point vertical range avoids exaggerating small changes. Hover text and accessible labels include the source weeks and scores.
+Correct picks earn **2 points unassisted** or **1 with a hint**. The headline result counts winners picked, regardless of hints. Completed Daily games build a device-local streak.
 
-Swing curation: run `npm run curate:swings` after refreshing pools and player clues. The generated `dist/curation.js` weights 562 dramatic matchups across both seasons fourfold, based on full-history recent-form deficits, individual departures, and deficits in the game's reveal order (not actual NFL game chronology). New five-round sets favor featured rounds while retaining margin-class variety and prioritizing anti-spoiler diversity. Daily curation starts October 3, 2026; pool and curation snapshots preserve earlier daily sets, with the Week 4 update entering Daily on October 7 and Week 5 on October 17. Endless uses a weighted permutation without repeating within a cycle; its content-derived curation revision gets a separate saved-run namespace so existing answers are never applied to a reordered matchup. The audit is in `research/swing-curation-report.json`. These are historical departures from recent form, not verified betting upsets or pregame projections.
+## What Makes It Interesting
 
-A snapshot pool of 1,429 real 2026 Week 1-5 matchups from 63 ten-team Sleeper leagues, including 162 finishes within five points and 278 more within fifteen points. The 2025 archive adds 863 matchups from 14 leagues across Weeks 1-14, including 98 finishes within five points. Everyone receives the same date-seeded 2026 daily set of five, resetting on the next visit after midnight America/Toronto. Practice sets prioritize unseen matchups on this device, then reuse the pool when depleted. Daily and practice progress are stored separately. Team sides are shuffled deterministically per pack, with no alternating winner pattern.
+- **Clues without hindsight.** Last-three-game averages use only appearances before the hidden matchup, scored using that league's settings.
+- **Anti-spoiler daily selection.** Packs prioritize avoiding repeated player-season-week performances across both lineups, then balance weeks, margins, and dramatic score swings.
+- **Real lineups and scoring.** Imported starter totals are validated; ties, adjusted scores, incomplete lineups, and unsupported formats are excluded.
+- **A short daily session, more when you want it.** Daily and Endless stay in the main navigation. Extra modes and shared tools live under More or postgame disclosures.
+- **A reveal built for phones.** Position-by-position totals, automatic reveal scrolling, faster Endless playback, skip controls, and reduced-motion support.
+- **Social play with honest numbers.** Exact-set links, league standings, real community votes, and no fabricated consensus.
 
-Confidence (`?confidence=1`) is a separate daily five-round challenge for each season. Assign each confidence value 1-5 exactly once before making a pick. Correct picks earn that value; incorrect picks earn zero, with a maximum of 15. There are no hints. Values lock with the pick, pending selections and completed results survive reloads, and results have a spoiler-free share. Confidence progress does not affect Daily scores or streaks. The season selector supports 2025 Practice, Confidence, and Endless; Daily always returns to the current 2026 season. Historical assets load only when selecting 2025.
+## Modes & Shared Play
 
-Both starting lineups are visible; one optional paired-slot hint per round. Correct picks earn 2 points unassisted or 1 with a hint. Incorrect picks earn 0. Grouped score reveals run in a fixed position order, with skip and reduced-motion controls.
+| Mode | Experience |
+| --- | --- |
+| Daily | The same five matchups for everyone on that date |
+| Endless | Keep picking; track accuracy and a correct-pick streak |
+| Practice | Another five, separate from Daily |
+| Confidence | Spend values 1-5 once each; up to 15 points, no hints |
+| Fourth Quarter | Banked scores visible, two offensive slots left to reveal |
+| Blind Resume | Positions, opponents, and recent form; identities after the pick |
 
-Starting October 2, 2026, daily packs target two close wins, two competitive wins, and one comfortable win, with unique-matchup fallback when a category is depleted. Earlier daily selections remain unchanged. Daily pack selections are saved locally alongside progress. Practice uses the same weighting; Endless still covers the full pool.
+Fourth Quarter is a staged historical reveal, not an NFL-clock simulation.
 
-Anti-spoiler selection starts October 8, 2026 for Daily and Confidence, and immediately for new Practice sets. Both lineups are checked for repeated player-season-week performances, including kickers and defenses. Avoiding those repeats takes priority, followed by spreading rounds across weeks, margin variety, and featured swings. The same player in a different week is allowed. Sparse pools use bounded deterministic retries to reduce unavoidable overlap rather than failing to load. Previously saved five-round selections are restored exactly, and October 7's shared daily set is unchanged. `scripts/test-diversity.mjs` checks 600 seeded packs across both seasons, sparse fallback, saved sets, and the pre-change daily fixtures.
+Postgame tools include the Film Room, a device-local weekly recap, one-round Grudge Matches, five-round score challenges, named creator sets, league rivalries, and a community debrief. An optional difference-maker side call does not change the main score.
 
-Daily streaks count consecutive completed five-round games, regardless of score. An unfinished today preserves yesterday's streak; a missed calendar day breaks it. Current streak, best streak, and days played are saved on this device, and existing completed daily records are migrated. Practice and Endless do not extend daily streaks. Spoiler-free shares include the daily streak and the custom domain.
+## Architecture
 
-Endless mode (`?endless=1`) continues beyond five rounds, with running points, correct picks, accuracy, and current streak. A device-local seed preserves round order and lineup sides across refreshes and days. Every matchup in the selected season appears once per cycle before the pool reshuffles; cycle boundaries avoid an immediate repeat. Pool expansions start a fresh Endless run rather than interpreting saved answers against a changed sequence. Daily and Practice progress remain intact. Endless progress is separate from Daily and Practice, and a wrong pick does not end the run.
+```text
+Sleeper league matchups + historical player stats
+                    |
+                    v
+Import -> validate -> enrich prior-game clues -> curate
+                    |
+          +---------+----------+
+          |                    |
+          v                    v
+Static game assets      Compact score catalog
+          |                    |
+          v                    v
+Browser game             Worker API
+Local saves              Anonymous sessions
+Streaks + recap          Room scoring + votes
+                               |
+                               v
+                          D1 / SQLite
+```
 
-Reveals take roughly 12 seconds; margins of 5 points or less add a suspense hold and a slower final tally (about 15 seconds total). Paired rows enter together, position groups are highlighted, and correct picks receive a brief confetti celebration. Refresh recovery and skipped/reduced-motion reveals do not replay celebrations.
+The frontend is vanilla JavaScript, HTML, and CSS. Production runs as an ESM Worker on Sites with a D1 database. The local development server uses Node.js and SQLite. An alternative Cloudflare deployment configuration is also included.
 
-Run `npm install`, then `npm start`; open http://127.0.0.1:4317 for the portable Node/SQLite development server. `npm run check` validates the fixture totals; `npm run check:social` checks shared-play behavior. Static source assets remain in `dist/`; the generated Sites Worker is ignored under `dist/server/`.
+The build embeds compressed static assets and a compact authoritative score catalog. Room submissions are scored against frozen server snapshots rather than client-supplied point totals.
 
-Browser layout regression: with the local server and a Playwright CLI session open, run `playwright-cli run-code "$(< scripts/qa-lineups.js)"`. The audit checks every matchup fixture at 12 widths, with hidden scores, active reveals, and hints, for portrait boundaries, paired alignment, text overlaps, and horizontal overflow. It replaces test-page roster content; reload before further gameplay checks.
+## Run Locally
 
-Data is a manually refreshed snapshot. Run `npm run refresh:pool` to discover publicly posted invites and completed drafts from `scripts/league-sources.json`, then validate actual matchups through Sleeper's API. Use `--known-only` to import later completed weeks from established league IDs without rediscovery. Run `npm run refresh:pool -- --2025` for historical leagues, including verified previous-season links from current public leagues. The importer accepts only fully completed 2026 regular-season weeks (through Week 18) and historical 2025 Weeks 1-14; current NFL state and each league's last scored week guard against live scores. Existing rounds are immutable. Each refresh snapshots the old daily pool and curation until the next America/Toronto calendar day. Week 5 enters Daily and Confidence on October 17, 2026; new Practice and Endless use it immediately. Eligible leagues have ten teams, one QB, up to twelve conventional starting slots, and no Superflex, IDP, best ball, or bonus scoring. Ties, adjusted scores, incomplete lineups, and totals that don't match starter scores are excluded. Season-specific reports in `research/` record exclusions and discovery sources. Runs with no additions leave the shipped pool unchanged.
+Use **Node.js 22.13+**; the local server uses `node:sqlite`.
 
-The browser rotates daily sets from that snapshot, balancing margin classes. Imported rounds retain source endpoint URLs but no league-owner identities. Starters display historical NFL opponents and averages from their last three prior NFL regular-season appearances, including prior seasons, under the matchup's exact league scoring. Byes and missed games are excluded; played games with zero points are included. Labels show LAST 3 on desktop and L3G on mobile, with the count adjusted for limited history or NO PRIOR GAMES when none exists. Missing opponents are labeled unavailable. The week being guessed is never included. Hovering an average shows its source weeks and points. Clues are baseline information, not the optional scored hint.
+```sh
+git clone https://github.com/gmnothi/sunday-split.git
+cd sunday-split
+npm ci
+npm start
+```
 
-Run `npm run refresh:clues` after refreshing either matchup pool. `scripts/enrich-clues.mjs` uses Sleeper weekly raw stats and schedules, with historical projection team/game identity as an opponent-only fallback; it never uses projected points. It cross-checks league scoring against imported starter points before writing season-specific clue assets. Network responses are cached in ignored `.sites-runtime/clues-cache`; use `npm run refresh:clues -- --fresh` to re-fetch corrections. The offline check covers every clue's temporal cutoff, scoring and history count. Opponent data uses week-specific top-level teams, not the mutable current player profile. Only the selected season's clue pack loads. These enrichment endpoints, like the headshot URLs, are undocumented and need monitoring. Headshots have initials fallbacks. Image rights and commercial API licensing must be clarified.
+Open [127.0.0.1:4317](http://127.0.0.1:4317/). No API key or production database credentials are needed for the checked-in game pool.
 
-Daily/practice progress, streaks and Wrapped stay on this device. League-room submissions and community votes use persistent server storage, with anonymous 30-day browser profiles rather than verified accounts. Room standings remain locked until a full submission and scores are calculated from frozen server snapshots. Answers still ship in public browser assets, so this is casual play, not a prize competition or an anti-cheat system. Custom Sleeper imports run only on request; no automatic live-week imports are enabled.
+Local shared-play data is stored in the ignored `.sites-runtime/social.sqlite` file, separate from production.
+
+## Checks
+
+```sh
+npm run check          # Data, scoring, clues, selection, saved-game regressions
+npm run check:social   # Shared links, rooms, votes, bonus modes, privacy controls
+npm run build         # Production Worker and static asset bundle
+npm run check:sites   # Bundle integrity, routes, cache handling, generated schema
+```
+
+The diversity suite tests 600 seeded packs across both seasons, plus sparse-pool fallback and saved-set restoration. Browser QA scripts in `scripts/qa-*.js` cover mobile layouts, themes, hints, reveal timing, and multi-browser shared play.
+
+## Data Pipeline
+
+The checked-in snapshot contains **2,292 matchups**: 1,429 from 2026 Weeks 1-5 and 863 from the 2025 archive. These are snapshot counts, not a promise of live or automatically refreshed coverage.
+
+```sh
+npm run refresh:pool -- --known-only
+npm run refresh:clues
+npm run curate:swings
+npm run check
+```
+
+Refreshes only import completed weeks and preserve existing matchup records. New-pool snapshots protect earlier Daily selections. The data-refresh scripts access external Sleeper endpoints; some enrichment and image endpoints are undocumented and can change.
+
+See [engineering notes](docs/ENGINEERING_NOTES.md) for detailed selection rules, refresh commands, deployment steps, schema history, and browser QA procedures.
+
+## Project Layout
+
+```text
+dist/        Browser source, game data, clues, and static information pages
+server/      Worker API, local SQLite adapter, build pipeline, portable migrations
+db/          Drizzle schema
+drizzle/     Production database migrations
+scripts/     Importers, enrichment, curation, regression tests, browser QA
+research/    Data-validation and curation reports
+docs/        Project preview and deeper engineering notes
+```
+
+Despite its name, `dist/` contains the maintained static source. Generated Worker output is ignored under `dist/server/`.
+
+## Privacy & Boundaries
+
+Daily progress, streaks, preferences, and weekly recaps stay in the browser. Shared rooms and votes use anonymous 30-day browser profiles, not verified accounts. Community percentages remain hidden below five submitted browser-profile picks.
+
+Answers are delivered with the game assets. This is casual fan play, not an anti-cheat system or a prize competition. Recent form is a clue, not a projection; a dramatic historical finish is not a reconstructed betting upset.
+
+## Attribution
+
+Independent, fan-made project; not affiliated with the NFL, its teams, the NFL Players Association, or Sleeper. Matchups and historical clues use Sleeper data; headshots and team logos use Sleeper-hosted images. Third-party data and image rights are not granted by this repository. [Lucide](https://lucide.dev/) supplies the interface icons; see [third-party notices](docs/THIRD_PARTY_NOTICES.md).
+
+[About the data](https://www.sundaysplit.app/about/#data) · [Privacy](https://www.sundaysplit.app/privacy/)
