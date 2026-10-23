@@ -1,14 +1,14 @@
 {
   "summary": {
-    "previous": 1167,
-    "total": 1429,
-    "added": 262,
+    "previous": 1429,
+    "total": 1659,
+    "added": 230,
     "leagues": 63,
     "distribution": {
-      "close_winner": 162,
-      "competitive_win": 278,
-      "comfortable_win": 373,
-      "blowout": 616
+      "close_winner": 193,
+      "competitive_win": 324,
+      "comfortable_win": 451,
+      "blowout": 691
     }
   },
   "pages": [],
@@ -29,7 +29,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1312635303336357888",
@@ -47,7 +47,7 @@
         "FLEX",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 2
     },
     {
       "league_id": "1389704453954736128",
@@ -63,7 +63,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1402727529042718720",
@@ -96,7 +96,7 @@
         "FLEX",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1401712522104483840",
@@ -113,7 +113,7 @@
         "FLEX",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 5
     },
     {
       "league_id": "1312542744433938432",
@@ -129,7 +129,7 @@
         "FLEX",
         "FLEX"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1314524061405048832",
@@ -145,7 +145,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 1
+      "accepted": 0
     },
     {
       "league_id": "1367223707642134528",
@@ -195,7 +195,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1382195849081147392",
@@ -212,7 +212,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 2
     },
     {
       "league_id": "1389356934615814144",
@@ -229,7 +229,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 5
     },
     {
       "league_id": "1389357974920654848",
@@ -278,7 +278,7 @@
         "FLEX",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1389362699644706816",
@@ -360,7 +360,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1389740595995480066",
@@ -376,7 +376,7 @@
         "FLEX",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 3
     },
     {
       "league_id": "1389755923915894784",
@@ -392,7 +392,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 3
+      "accepted": 4
     },
     {
       "league_id": "1390742094192066560",
@@ -459,7 +459,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1393351811208871936",
@@ -478,7 +478,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1394185143731625984",
@@ -493,7 +493,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1394719780912508928",
@@ -510,7 +510,7 @@
         "FLEX",
         "FLEX"
       ],
-      "accepted": 1
+      "accepted": 4
     },
     {
       "league_id": "1394736960454545408",
@@ -562,7 +562,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 3
+      "accepted": 1
     },
     {
       "league_id": "1395181284304617472",
@@ -612,7 +612,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1396187833743454208",
@@ -629,7 +629,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1396912922709458944",
@@ -663,7 +663,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 3
+      "accepted": 2
     },
     {
       "league_id": "1399132794830987264",
@@ -681,7 +681,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 5
     },
     {
       "league_id": "1399197943726125056",
@@ -699,7 +699,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 3
+      "accepted": 2
     },
     {
       "league_id": "1399488623161704448",
@@ -716,7 +716,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1399582281898672128",
@@ -732,7 +732,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     },
     {
       "league_id": "1399730088240500736",
@@ -783,7 +783,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 3
     },
     {
       "league_id": "1400701943906590720",
@@ -799,7 +799,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1401066384359710720",
@@ -816,7 +816,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 1
+      "accepted": 0
     },
     {
       "league_id": "1401255623105982464",
@@ -883,7 +883,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 1
     },
     {
       "league_id": "1402832254970953728",
@@ -899,7 +899,7 @@
         "FLEX",
         "FLEX"
       ],
-      "accepted": 4
+      "accepted": 5
     },
     {
       "league_id": "1403072250596306944",
@@ -914,7 +914,7 @@
         "FLEX",
         "FLEX"
       ],
-      "accepted": 5
+      "accepted": 3
     },
     {
       "league_id": "1403162822250127360",
@@ -999,7 +999,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 4
+      "accepted": 3
     },
     {
       "league_id": "1403449701885300736",
@@ -1016,7 +1016,7 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 3
     },
     {
       "league_id": "1405665562817744896",
@@ -1049,21 +1049,21 @@
         "K",
         "DEF"
       ],
-      "accepted": 5
+      "accepted": 4
     }
   ],
   "rejections": {
     "wrong_season_size_or_status": 38,
-    "nonstandard_format": 14,
-    "incomplete_adjusted_or_unmapped": 48
+    "incomplete_adjusted_or_unmapped": 80,
+    "nonstandard_format": 14
   },
   "errors": [
     "https://api.sleeper.app/v1/league/1400556721931288576: 404"
   ],
   "state": {
     "season": "2026",
-    "week": 6,
+    "week": 7,
     "season_type": "regular",
-    "lastCompletedWeek": 5
+    "lastCompletedWeek": 6
   }
 }

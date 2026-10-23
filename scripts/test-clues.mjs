@@ -16,6 +16,17 @@ const schedule=[{week:1,home:'SEA',away:'SF'}];
 assert.deepEqual(matchupOpponent(traded,schedule,2025,1),{team:'SEA',opponent:'SF',home:true});
 assert.equal(matchupOpponent(traded,schedule,2025,2),null);
 assert.throws(()=>matchupOpponent({...traded,opponent:'LA'},schedule,2025,1));
+const rescheduled=[
+  {week:6,home:'DAL',away:'SEA',game_id:'canceled-game',status:'canceled'},
+  {week:6,home:'DEN',away:'SEA',game_id:'played-game',status:'complete'},
+];
+const seattle={...record(2026,6),player_id:'test',team:'SEA',opponent:'DEN',game_id:'played-game'};
+assert.deepEqual(matchupOpponent(seattle,rescheduled,2026,6),{team:'SEA',opponent:'DEN',home:false});
+assert.deepEqual(matchupOpponent({...seattle,game_id:undefined},rescheduled,2026,6),{team:'SEA',opponent:'DEN',home:false});
+assert.equal(matchupOpponent(seattle,rescheduled.slice(0,1),2026,6),null,'Canceled games must not supply opponents');
+assert.throws(()=>matchupOpponent({...seattle,game_id:'unknown'},rescheduled,2026,6));
+assert.throws(()=>matchupOpponent({...seattle,opponent:'DAL'},rescheduled,2026,6));
+assert.throws(()=>matchupOpponent({...seattle,game_id:undefined},[...rescheduled,{week:6,home:'SEA',away:'SF'}],2026,6));
 
 const ctx={window:{}};
 for(const file of ['data.js','data-2025.js','clues-2026.js','clues-2025.js','clues.js'])vm.runInNewContext(fs.readFileSync(new URL('../dist/'+file,import.meta.url),'utf8'),ctx);

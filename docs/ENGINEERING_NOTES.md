@@ -1,5 +1,11 @@
 # Engineering Notes
 
+## Week 6 Refresh: October 23, 2026
+
+Imported 230 completed Week 6 matchups from established ten-team Sleeper leagues. The pool now contains 1,659 current-season matchups and 863 archived 2025 matchups. Of the new rounds, 31 finished within five points and 12 within one point. Refreshed opponents, prior-game clues, and swing curation; 619 rounds across both seasons now receive featured weight. Earlier curation counts below describe previous snapshots.
+
+The old pool and curation are frozen through October 23. New Practice and Endless games use the expanded pool immediately; Daily and Confidence can select Week 6 starting October 24. Verified all 1,429 existing matchup records and 46 published October packs remain unchanged. Opponent lookup now excludes canceled schedule entries and checks the matching game ID, with regression coverage for rescheduled games and mismatched records.
+
 The game is followed by a compact explanation and a site-wide footer. Static `/how-it-works/`, `/about/`, and `/privacy/` pages cover the actual rules, data sources, and storage behavior without loading game datasets. Slashless routes redirect to their canonical trailing-slash URLs, and all pages are in the sitemap. Contact currently links to the creator's public GitHub profile; no private support inbox is implied. The Privacy page uses the existing authenticated profile-deletion endpoint with explicit confirmation, leaving device-local saves untouched. Run `node scripts/test-info-pages.mjs` for content/link/control checks, and use `scripts/qa-info-pages.js` in a Playwright CLI session for responsive, no-JS, navigation, and deletion-flow checks.
 
 Extra play stays behind **More**, leaving only Daily and Endless in the main navigation. Postgame actions and league/community tools collapse into disclosures; no new feature prompts interrupt a round.

@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {lastCompletedWeek,nextDailyDate} from './refresh-policy.mjs';
 
 assert.equal(lastCompletedWeek({season_type:'regular',week:6}),5);
+assert.equal(lastCompletedWeek({season_type:'regular',week:7}),6);
 assert.equal(lastCompletedWeek({season_type:'regular',week:1}),0);
 assert.equal(lastCompletedWeek({season_type:'regular',week:18}),17);
 assert.equal(lastCompletedWeek({season_type:'post',week:1}),18);

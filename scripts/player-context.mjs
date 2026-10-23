@@ -9,7 +9,10 @@ export function priorGames(records,season,week) {
 
 export function matchupOpponent(record,schedule,season,week) {
   if(!record || Number(record.season)!==season || record.week!==week || !record.team)return null;
-  const game=schedule.find(g=>g.week===week && [g.home,g.away].includes(record.team));
+  const games=schedule.filter(g=>g.week===week && g.status!=='canceled' && [g.home,g.away].includes(record.team));
+  const game=record.game_id?games.find(g=>g.game_id===record.game_id):games[0];
+  if(!record.game_id && games.length>1)throw new Error(`Ambiguous schedule: ${season} W${week} ${record.player_id}`);
+  if(record.game_id && games.length && !game)throw new Error(`Game identity disagreement: ${season} W${week} ${record.player_id}`);
   if(!game)return null;
   if(record.game_id && game.game_id!==record.game_id)throw new Error(`Game identity disagreement: ${season} W${week} ${record.player_id}`);
   const opponent=game.home===record.team?game.away:game.home;
