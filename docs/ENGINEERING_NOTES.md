@@ -1,5 +1,11 @@
 # Engineering Notes
 
+## Week 7 Refresh: October 28, 2026
+
+Added 248 completed Week 7 matchups from established ten-team leagues, including 32 decided by five points or less and five by under one point. The pool contains 1,907 current-season matchups and 863 archived matchups. Opponent and prior-game clues were regenerated and starter scores cross-checked. Updated swing curation features 681 matchups across both seasons.
+
+The previous pool and curation remain frozen through October 28; Week 7 enters Daily and Confidence selection on October 29 and is immediately available in new Practice and Endless games. All 1,659 previously imported matchup records and 56 published October daily/confidence packs were verified unchanged. One source league returned HTTP 404 and was skipped; previously imported records remain intact.
+
 ## Week 6 Refresh: October 23, 2026
 
 Imported 230 completed Week 6 matchups from established ten-team Sleeper leagues. The pool now contains 1,659 current-season matchups and 863 archived 2025 matchups. Of the new rounds, 31 finished within five points and 12 within one point. Refreshed opponents, prior-game clues, and swing curation; 619 rounds across both seasons now receive featured weight. Earlier curation counts below describe previous snapshots.
