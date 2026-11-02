@@ -97,7 +97,7 @@ The diversity suite tests 600 seeded packs across both seasons, plus sparse-pool
 
 ## Data Pipeline
 
-The checked-in snapshot contains **2,770 matchups**: 1,907 from 2026 Weeks 1-7 and 863 from the 2025 archive. Week 7 adds 248 matchups, including 32 decided by five points or less. It is available immediately in new Practice and Endless games and joins Daily selection on October 29, 2026. These are snapshot counts, not a promise of live or automatically refreshed coverage.
+The checked-in snapshot contains **2,870 matchups**: 2,007 from 2026 Weeks 1-7 and 863 from the 2025 archive. The November 1 expansion adds 100 completed matchups from three additional ten-team leagues, including eight decided by five points or less. It is available immediately in new Practice and Endless games and joins Daily selection on November 2, 2026. Week 8 is excluded while still in progress. These are snapshot counts, not a promise of live or automatically refreshed coverage.
 
 ```sh
 npm run refresh:pool -- --known-only

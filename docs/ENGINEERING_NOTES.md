@@ -1,5 +1,13 @@
 # Engineering Notes
 
+## Pool Expansion: November 1, 2026
+
+Added public ten-team draft-board pages 10-12 to the source registry. These yielded three additional eligible leagues and 100 verified matchups across completed Weeks 1-7: eight within five points and three within one point. The pool contains 2,007 current-season matchups and 863 archived matchups; 706 rounds receive featured swing weight. Current Week 8 is not imported.
+
+One newly imported matchup (`1395925276042485760:7:2`) was quarantined because a subsequent forced-fumble correction changed San Francisco's score relative to the frozen weekly stats. Its exclusion is recorded in the refresh report. Existing matchup records and stats were not rewritten to accommodate the correction. Re-importing this source requires reviewing that mismatch; enrichment fails rather than silently accepting inconsistent scores.
+
+Refreshed clues and swing weights, preserving all 1,907 previously imported matchups and 64 published October/November daily-confidence packs. The old selection snapshot remains in force through November 1; expanded Daily and Confidence selection begins November 2. Added regular-season Week 8 cutoff and Toronto fall-back date-boundary checks. Refresh validation now allows newly discovered historical weeks, not only Week 5 onward, while retaining completed-week and immutability checks.
+
 ## Week 7 Refresh: October 28, 2026
 
 Added 248 completed Week 7 matchups from established ten-team leagues, including 32 decided by five points or less and five by under one point. The pool contains 1,907 current-season matchups and 863 archived matchups. Opponent and prior-game clues were regenerated and starter scores cross-checked. Updated swing curation features 681 matchups across both seasons.

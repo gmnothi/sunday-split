@@ -6,6 +6,7 @@ import {lastCompletedWeek,nextDailyDate} from './refresh-policy.mjs';
 
 assert.equal(lastCompletedWeek({season_type:'regular',week:6}),5);
 assert.equal(lastCompletedWeek({season_type:'regular',week:7}),6);
+assert.equal(lastCompletedWeek({season_type:'regular',week:8}),7);
 assert.equal(lastCompletedWeek({season_type:'regular',week:1}),0);
 assert.equal(lastCompletedWeek({season_type:'regular',week:18}),17);
 assert.equal(lastCompletedWeek({season_type:'post',week:1}),18);
@@ -15,6 +16,8 @@ assert.throws(()=>lastCompletedWeek({season_type:'unknown',week:6}));
 assert.equal(nextDailyDate(new Date('2026-10-17T02:00:00Z')),'2026-10-17');
 assert.equal(nextDailyDate(new Date('2026-10-17T05:00:00Z')),'2026-10-18');
 assert.equal(nextDailyDate(new Date('2026-12-31T18:00:00Z')),'2027-01-01');
+assert.equal(nextDailyDate(new Date('2026-11-01T05:30:00Z')),'2026-11-02');
+assert.equal(nextDailyDate(new Date('2026-11-01T06:30:00Z')),'2026-11-02');
 
 const ctx={window:{}};
 for(const file of ['data.js','data-2025.js','curation.js','packs.js','clues-2026.js','clues.js'])vm.runInNewContext(fs.readFileSync(new URL('../dist/'+file,import.meta.url),'utf8'),ctx);
@@ -33,7 +36,7 @@ const report=JSON.parse(fs.readFileSync(new URL('../research/pool-refresh-2026-r
 assert(pool.rounds.every(r=>r.week<=report.state.lastCompletedWeek),'Live week imported');
 const added=pool.rounds.filter(r=>!fixture.hashes[r.key]);
 assert(added.length>50,'Expected a substantial completed-week import');
-assert(added.every(r=>r.week>=5&&r.week<=report.state.lastCompletedWeek),'Unexpected week in this refresh');
+assert(added.every(r=>Number.isInteger(r.week)&&r.week>=1&&r.week<=report.state.lastCompletedWeek),'Unexpected or live week in this refresh');
 for(const r of added)for(const p of r.teams.flatMap(t=>t.players)) {
   const clue=ctx.window.PlayerClues.player(r,p.player_id);
   assert(clue,'Missing new player context');
