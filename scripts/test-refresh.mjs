@@ -7,6 +7,7 @@ import {lastCompletedWeek,nextDailyDate} from './refresh-policy.mjs';
 assert.equal(lastCompletedWeek({season_type:'regular',week:6}),5);
 assert.equal(lastCompletedWeek({season_type:'regular',week:7}),6);
 assert.equal(lastCompletedWeek({season_type:'regular',week:8}),7);
+assert.equal(lastCompletedWeek({season_type:'regular',week:11}),10);
 assert.equal(lastCompletedWeek({season_type:'regular',week:1}),0);
 assert.equal(lastCompletedWeek({season_type:'regular',week:18}),17);
 assert.equal(lastCompletedWeek({season_type:'post',week:1}),18);
@@ -43,8 +44,11 @@ for(const r of added)for(const p of r.teams.flatMap(t=>t.players)) {
   assert(clue.games.every(g=>g.season<r.season||g.week<r.week),'Recent form leaks the answer');
 }
 let included=0;
-for(let day=17;day<47;day++) {
-  const date=new Date(Date.UTC(2026,9,day)).toISOString().slice(0,10);
+const firstDaily=nextDailyDate(new Date(pool.refreshedAt));
+for(let day=0;day<30;day++) {
+  const future=new Date(firstDaily+'T00:00:00Z');
+  future.setUTCDate(future.getUTCDate()+day);
+  const date=future.toISOString().slice(0,10);
   included+=ctx.window.GamePacks.makePack(pool,{date}).rounds.filter(r=>r.week===report.state.lastCompletedWeek).length;
 }
 assert(included>0,'New week never reaches Daily');
